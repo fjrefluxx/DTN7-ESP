@@ -22,7 +22,7 @@ The easiest starting point is to modify an [example](/examples/). In Visual Stud
 
 To develop your own application, start from the [Template Project](/examples/TemplateProject/).
 
-> [!NOTE] Logging
+> [!NOTE] 
 > The project makes heavy use of the [ESP logging library](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/log.html). 
 > Log levels are defined in menuconfig. 
 > Turning to `debug` might help find problems. Turn off logging in menuconfig before deploying to reduce overhead.
@@ -42,15 +42,15 @@ To develop your own application, start from the [Template Project](/examples/Tem
             path: "dtn7-esp"
     ```
 
-    > [!NOTE]
-    > Format must be correct. In case of errors, check the corresponding file in one of the example projects.
+> [!NOTE]
+> Format must be correct. In case of errors, check the corresponding file in one of the example projects.
 
 4. Run the ESP-IDF `menuconfig`:
  
    In VSC with the ESP-IDF plugin, press the small gear in the bottom row or use `View -> Command Palette -> ESP-IDF: SDK Configuration editor (menuconfig)`. This should automatically download the dependencies and show the available configuration options.
    
-   > [!TIP]
-   > When running `menuconfig` again to change settings, it might be necessary to execute this command twice or clear the previous settings by using the `ESP-IDF: Full Clean Project` option.
+> [!TIP]
+> When running `menuconfig` again to change settings, it might be necessary to execute this command twice or clear the previous settings by using the `ESP-IDF: Full Clean Project` option.
 
 5. Configure ESP-IDF to use C++:
     - Change to `main/` directory
@@ -67,19 +67,23 @@ To develop your own application, start from the [Template Project](/examples/Tem
     ```
     to set up a local endpoint with the URI *dtn://node0*. This endpoint can now be used with its `send()` function.
 
-    > [!TIP] Reception Callback 
-    > Add a receive callback function as the second argument to `setup()`, so that the endpoint is notified of received messages addressed to it.
-    > See [Callback Example](/examples/CallbackExample/) for information and examples on callback usage.
-    >
-    > If no callback is specified, received messages must be actively polled with the `poll()` function, 
-    > see the [Basic Usage example's app_main](/examples/BasicUsage/main/main.cpp).
+> [!TIP]
+> **Reception Callback**
+> 
+> Add a receive callback function as the second argument to `setup()`, so that the endpoint is notified of received messages addressed to it.
+> See [Callback Example](/examples/CallbackExample/) for information and examples on callback usage.
+>
+> If no callback is specified, received messages must be actively polled with the `poll()` function, 
+> see the [Basic Usage example's app_main](/examples/BasicUsage/main/main.cpp).
 
 
-    > [!TIP] URI Generation
-    > To get a unique central EID, use `DTN7::uriFromMac()` to generate a unique DTN URI based on the ESP32's MAC address. 
-    > This URI can be used instead of a fixed URI when calling the `setup()` function. 
-    > See [Basic Usage example's app_main](/examples/BasicUsage/main/main.cpp) for a usage example.
-    
+> [!TIP]
+> **URI Generation**
+> 
+> To get a unique central EID, use `DTN7::uriFromMac()` to generate a unique DTN URI based on the ESP32's MAC address. 
+> This URI can be used instead of a fixed URI when calling the `setup()` function. 
+> See [Basic Usage example's app_main](/examples/BasicUsage/main/main.cpp) for a usage example.
+
   
 7. If Flash storage is used, a custom partition table must be created. See [Storage Options](###storage).
 
@@ -122,9 +126,9 @@ Two simple, broadcast-oriented routing strategies are included.
     
     In combination with non-broadcast CLAs, this router attempts to forward a bundle to each known node by consecutive unicasts.
 
-    > [!NOTE]
-    > This router is similar to the [SimpleEpidemicRouter](https://github.com/dtn7/dtn7zero/blob/main/dtn7zero/routers/simple_epidemic_router.py) from dtn7zero with some adaptations. 
-    > A delay between broadcast attempts of each bundle and the ability to declare a transmission success after a set number of broadcasts has been added.
+> [!NOTE]
+> This router is similar to the [SimpleEpidemicRouter](https://github.com/dtn7/dtn7zero/blob/main/dtn7zero/routers/simple_epidemic_router.py) from dtn7zero with some adaptations. 
+> A delay between broadcast attempts of each bundle and the ability to declare a transmission success after a set number of broadcasts has been added.
 
    
 2. **Epidemic Router**
@@ -147,10 +151,10 @@ A comparison of the performance and space efficiency of the different options ca
    Our preferred storage method, because large numbers of bundles can be stored without using the internal ESP memory and the flash can be used as persistent storage between reboots. 
    Access time is increased compared to internal storage options.
 
-   > [!IMPORTANT]
-   > Requires the ESP32 device to have flash memory! 
-   > 
-   > A custom flash partition layout is required to make use of the available flash space.
+> [!IMPORTANT]
+> Requires the ESP32 device to have flash memory! 
+> 
+> A custom flash partition layout is required to make use of the available flash space.
    
 
 2. ESP memory bundle storage.
@@ -158,8 +162,8 @@ A comparison of the performance and space efficiency of the different options ca
     Simply stores a pre-defined maximum number of bundles in the internal memory. 
     Bundles are stored without encoding, so accessing bundles is fast, but the required memory per bundle is the highest.
     
-    > [!IMPORTANT]
-    > When the limit of storable bundles is exceeded, the access performance degrades drastically due to the automatic batch-wise search and deletion of the oldest bundles in memory to make space for new bundles. 
+> [!IMPORTANT]
+> When the limit of storable bundles is exceeded, the access performance degrades drastically due to the automatic batch-wise search and deletion of the oldest bundles in memory to make space for new bundles. 
 
 3. ESP memory, serialized bundle storage. 
 
@@ -167,8 +171,8 @@ A comparison of the performance and space efficiency of the different options ca
 
     Memory usage can be limited dynamically by setting a minimum amount of heap space that needs to remain free, configurable in `menuconfig`. 
 
-    > [!IMPORTANT]
-    > When the memory limit is reached, the access performance degrades drastically due to the automatic search and deletion of the oldest bundles in memory to make space for new bundles. 
+> [!IMPORTANT]
+> When the memory limit is reached, the access performance degrades drastically due to the automatic search and deletion of the oldest bundles in memory to make space for new bundles. 
     
 4. ESP memory, partially serialized bundle storage.
     
@@ -177,8 +181,8 @@ A comparison of the performance and space efficiency of the different options ca
 
     Memory usage can be limited dynamically by setting a minimum amount of heap space that needs to remain free, configurable in `menuconfig`. 
 
-    > [!IMPORTANT]
-    > When the memory limit is reached, the access performance degrades drastically due to the automatic search and deletion of the oldest bundles in memory to make space for new bundles. 
+> [!IMPORTANT]
+> When the memory limit is reached, the access performance degrades drastically due to the automatic search and deletion of the oldest bundles in memory to make space for new bundles. 
 
 
 ### Convergence Layer Adapters (CLAs)
@@ -193,7 +197,8 @@ The LoRa CLA interacts with the LoRa modem to send and receive bundles over it.
 Incoming bundles are directly put into the relevant processing queues after successful decoding.
 The LoRa CLA provides duty cycle limitations compliant with EU regulations.
 
-> [!TIP] We recommend using the LoRa CLA as a reference for implementing your own CLA.
+> [!TIP]
+> We recommend using the LoRa CLA as a reference for implementing your own CLA.
 
 The included LoRa CLA can operate in either of two modes:
 
@@ -201,8 +206,8 @@ The included LoRa CLA can operate in either of two modes:
 
     Bundles are encoded as CBOR, as described in [RFC 9171](https://www.rfc-editor.org/rfc/rfc9171.pdf). 
     
-    > [!NOTE]
-    > Compatible with the LoRa CLA in [dtn7zero](https://github.com/dtn7/dtn7zero). 
+> [!NOTE]
+> Compatible with the LoRa CLA in [dtn7zero](https://github.com/dtn7/dtn7zero). 
     
 
 2. Protobuf-encoded bundle transmission (_BPoL-compatible mode_)
@@ -211,17 +216,21 @@ The included LoRa CLA can operate in either of two modes:
 
     In **BPoL-compatible mode**, the LoRa CLA also features a BPoL-compatible advertisement process for neighborhood discovery. Within a given interval, nodes announce their presence to other nodes nearby through the sending of advertisement messages (ADV).
 
-    > [!IMPORTANT] Experimental Feature: Advertising node position.
-    > With a working GPS module (cf. [extras](#gps)), a node's position can be included in the ADV.
-    > In the current implementation, node position is not read from received advertisements.
+> [!IMPORTANT]
+> **Experimental Feature: Advertising node position.**
+>
+> With a working GPS module (cf. [extras](#gps)), a node's position can be included in the ADV.
+> In the current implementation, node position is not read from received advertisements.
 
-    > [!IMPORTANT] Experimental Feature: Advertise known BundleID hashes
-    > The IDs of all known bundles are hashed and included in the ADV. 
-    > This allows other nodes to determine known and unknown messages in their neighborhood. 
-    >
-    > This feature is very experimental. Can be enabled in `menuconfig` with the option "Use bundle IDs for reception confirmation". 
-    > Only the **Epidemic Router** in combination with the **LoRa CLA** makes use of this feature.
-    > See [extras](#reception-confirmation) for further details. 
+> [!IMPORTANT]
+> **Experimental Feature: Advertise known BundleID hashes**
+> 
+> The IDs of all known bundles are hashed and included in the ADV. 
+> This allows other nodes to determine known and unknown messages in their neighborhood. 
+>
+> This feature is very experimental. Can be enabled in `menuconfig` with the option "Use bundle IDs for reception confirmation". 
+> Only the **Epidemic Router** in combination with the **LoRa CLA** makes use of this feature.
+> See [extras](#reception-confirmation) for further details. 
 
 
 #### Serial CLA
@@ -234,7 +243,7 @@ The serial CLA can be used for testing purposes, e.g., when no LoRa modem is ava
 
 #### BLE CLA
 
-> [!WARNING] Work in progress
+> [!WARNING]
 > The BLE CLA is a work in progress and subject to changes.
 
 A CLA for _Bluetooth Low Energy_, using the ESP's NimBLE host controller.
@@ -315,10 +324,10 @@ Enable in menuconfig via `Notify retry Task`.
     Regarding [Figure 2 in RFC 9171](https://www.rfc-editor.org/rfc/rfc9171.pdf#fig-2), the application agent could be separated into an administrative element and an application-specific element. 
     The lack of separation results in administrative records also being delivered to the application.
 
-- :alert: CRC checks:  
+- Data Integrity — BPSec or CRC:  
     [RFC 9171 Section 4.3.1](https://www.rfc-editor.org/rfc/rfc9171.html#name-primary-bundle-block) requires the primary block to use CRC or a 
     _BPSec Block Integrity_ block targeting the primary block. 
-    At the current state, no CRC checksum is included during bundle encoding, no CRC checking is implemented during bundle decoding, and no BPSec extension blocks are included.
+    At the current state, only CRC checksums are possible; no BPSec extension blocks are included.
 
 - Fragmentation:  
     Fragmented bundles can be processed; however, they cannot be delivered to local endpoints, as no reassembly is implemented.
