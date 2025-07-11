@@ -2,14 +2,11 @@
 
 Implementation of the Bundle Protocol Version 7 according to [RFC 9171](https://www.rfc-editor.org/rfc/rfc9171.pdf) for ESP32 microcontrollers using [ESP-IDF](https://idf.espressif.com/) and FreeRTOS.
 
-Other FreeRTOS-platforms may be usable with adjustments.
-This project was delevoped with the classical ESP32 and has been tested on: ESP32, ESP32-S3, ESP32-C3.
+Other FreeRTOS platforms may be usable with adjustments.
+This project was developed with the classical ESP32 and has been tested on: ESP32, ESP32-S3, ESP32-C3.
 
 
-The implementation of the bundle data structure can be found under [dtn7-bundle](dtn7-bundle/) and the implementation of the Bundle Protocol logic, along with all CLAs, routing, and storage components can be found under [dtn7-esp](dtn7-esp/).
-
-## Overview
-[[_TOC_]]
+The implementation of the bundle data structure can be found under [dtn7-bundle](dtn7-bundle/), and the implementation of the Bundle Protocol logic, along with all CLAs, routing, and storage components, can be found under [dtn7-esp](dtn7-esp/).
 
 ## Installation
 ### Requirements
@@ -28,15 +25,15 @@ To develop your own application, start from the [Template Project](/examples/Tem
 > [!NOTE] Logging
 > The project makes heavy use of the [ESP logging library](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/log.html). 
 > Log levels are defined in menuconfig. 
-> Turning to `debug` might help finding problems. Turn off logging in menuconfig before deploying to reduce overhead.
+> Turning to `debug` might help find problems. Turn off logging in menuconfig before deploying to reduce overhead.
 
 
 ### Full Setup
 1. Create a new ESP-IDF project
 
-2. Create a file ```idf_component.yml``` in folder ```main/```. 
+2. Create a file `idf_component.yml` in folder `main/`. 
 
-3. Add the dependency for DTN7-ESP in ```main/idf_component.yml```:
+3. Add the dependency for DTN7-ESP in `main/idf_component.yml`:
     
     ```
     dependencies:
@@ -48,15 +45,15 @@ To develop your own application, start from the [Template Project](/examples/Tem
     > [!NOTE]
     > Format must be correct. In case of errors, check the corresponding file in one of the example projects.
 
-4. Run the ESP-IDF ```menuconfig```:
+4. Run the ESP-IDF `menuconfig`:
  
-   In VSC with the ESP-IDF plugin, press the small gear in the bottom row or use ```View -> Command Palette -> ESP-IDF: SDK Configuration editor (menuconfig)```. This should automatically download the dependencies and show the available configuration options.
+   In VSC with the ESP-IDF plugin, press the small gear in the bottom row or use `View -> Command Palette -> ESP-IDF: SDK Configuration editor (menuconfig)`. This should automatically download the dependencies and show the available configuration options.
    
    > [!TIP]
-   > When running ```menuconfig``` again to change settings, it might be necessary to execute this command twice or clear the previous settings by using the ```ESP-IDf: Full Clean Project``` option.
+   > When running `menuconfig` again to change settings, it might be necessary to execute this command twice or clear the previous settings by using the `ESP-IDF: Full Clean Project` option.
 
 5. Configure ESP-IDF to use C++:
-    - Change to `main/``` directory
+    - Change to `main/` directory
     - In `CMakeLists.txt`, change `main.c` to `main.cpp`
     - Rename `main.c` file to `main.cpp`
     - In `main.cpp`, change the head of the `app_main` function to `extern "C" void app_main(void)`
@@ -68,10 +65,10 @@ To develop your own application, start from the [Template Project](/examples/Tem
     ```
     Endpoint* localEndpoint = DTN7::setup("dtn://node0");
     ```
-    to setup a local endpoint with the URI *dtn://node0*. This endpoint can now be used with its `send()` function.
+    to set up a local endpoint with the URI *dtn://node0*. This endpoint can now be used with its `send()` function.
 
     > [!TIP] Reception Callback 
-    > Add a receive callback function as second argument to `setup()`, so that the endpoint is notified of received messages addressed to it.
+    > Add a receive callback function as the second argument to `setup()`, so that the endpoint is notified of received messages addressed to it.
     > See [Callback Example](/examples/CallbackExample/) for information and examples on callback usage.
     >
     > If no callback is specified, received messages must be actively polled with the `poll()` function, 
@@ -86,9 +83,9 @@ To develop your own application, start from the [Template Project](/examples/Tem
   
 7. If Flash storage is used, a custom partition table must be created. See [Storage Options](###storage).
 
-8. Use `Build, Flash and Monitor` (flame icon in the bottom row) to build the project, flash the ESP32 device and monitor its output.
+8. Use `Build, Flash and Monitor` (flame icon in the bottom row) to build the project, flash the ESP32 device, and monitor its output.
 
-    These step can also be run individually, see [Running an Example](/examples/README.md#running-an-example).
+    These steps can also be run individually, see [Running an Example](/examples/README.md#running-an-example).
 
 
 ### Basic Usage Example
@@ -102,7 +99,7 @@ nodes running it will receive each other's bundles when using compatible CLAs an
 ## Supported LoRa Hardware
 [RadioLib](https://github.com/jgromes/RadioLib) is used for the interaction with the LoRa modem. 
 Compatibility with **SX1276 LoRa modules** has been tested.
-Other LoRa modules supported by RadioLib should be compatible but were not tested. 
+Other LoRa modules supported by RadioLib should be compatible, but were not tested. 
 
 > [!WARNING]
 > The LoRa CLA is only supported on classical ESP32, as the SPI hardware interaction differs between ESP32 types.
@@ -142,7 +139,8 @@ Two simple, broadcast-oriented routing strategies are included.
 
 ### Storage
 There are different storage options for bundles waiting for transmission.
-A comparison for performance and space efficiency of the different options can be found [here](/evaluation/storage/).
+<!-- Currently not included, link to the paper if published...
+A comparison of the performance and space efficiency of the different options can be found [here](/evaluation/storage/). -->
 
 1. Flash memory bundle storage. 
 
@@ -158,7 +156,7 @@ A comparison for performance and space efficiency of the different options can b
 2. ESP memory bundle storage.
     
     Simply stores a pre-defined maximum number of bundles in the internal memory. 
-    Bundles are stored without encoding, so accessing bundles is fast but the required memory per bundle is highest.
+    Bundles are stored without encoding, so accessing bundles is fast, but the required memory per bundle is the highest.
     
     > [!IMPORTANT]
     > When the limit of storable bundles is exceeded, the access performance degrades drastically due to the automatic batch-wise search and deletion of the oldest bundles in memory to make space for new bundles. 
@@ -175,7 +173,7 @@ A comparison for performance and space efficiency of the different options can b
 4. ESP memory, partially serialized bundle storage.
     
     Bundles are serialized before storing them together with non-serialized information like the receiving time. 
-    in comparison to the fully serialized approach, this slightly reduces bundle access times while slightly increasing memory usage.
+    In comparison to the fully serialized approach, this slightly reduces bundle access times while slightly increasing memory usage.
 
     Memory usage can be limited dynamically by setting a minimum amount of heap space that needs to remain free, configurable in `menuconfig`. 
 
@@ -192,30 +190,30 @@ A comparison for performance and space efficiency of the different options can b
 #### LoRa CLA
 
 The LoRa CLA interacts with the LoRa modem to send and receive bundles over it. 
-Incoming bundles are directly put to the relevant processing queues after successful decoding.
-The LoRa CLA provides duty cycle limitations compliant to EU regulation.
+Incoming bundles are directly put into the relevant processing queues after successful decoding.
+The LoRa CLA provides duty cycle limitations compliant with EU regulations.
 
-> [!TIP] We recommend using the LoRa CLA as reference for implementing your own CLA.
+> [!TIP] We recommend using the LoRa CLA as a reference for implementing your own CLA.
 
-The included LoRa CLA can operate in either two modes:
+The included LoRa CLA can operate in either of two modes:
 
 1. CBOR-encoded bundle transmission (_non-BPoL-compatible mode_):
 
     Bundles are encoded as CBOR, as described in [RFC 9171](https://www.rfc-editor.org/rfc/rfc9171.pdf). 
     
     > [!NOTE]
-    > Compatible to the LoRa CLA in [dtn7zero](https://github.com/dtn7/dtn7zero). 
+    > Compatible with the LoRa CLA in [dtn7zero](https://github.com/dtn7/dtn7zero). 
     
 
 2. Protobuf-encoded bundle transmission (_BPoL-compatible mode_)
     
-    Bundles are encoded as protobuf messages instead of CBOR to be compatible to [BPoL](https://github.com/BigJk/dtn7-rs-lora-ecla/).
+    Bundles are encoded as protobuf messages instead of CBOR to be compatible with [BPoL](https://github.com/BigJk/dtn7-rs-lora-ecla/).
 
-    In **BPoL-compatible mode**, the LoRa CLA also features a BPoL-compatible advertisement process for neighborhood discovery. Within a given interval, nodes announce their presence to other nodes nearby through the sending of advertisment messages (ADV).
+    In **BPoL-compatible mode**, the LoRa CLA also features a BPoL-compatible advertisement process for neighborhood discovery. Within a given interval, nodes announce their presence to other nodes nearby through the sending of advertisement messages (ADV).
 
     > [!IMPORTANT] Experimental Feature: Advertising node position.
     > With a working GPS module (cf. [extras](#gps)), a node's position can be included in the ADV.
-    > In the current implementation, node position is not read from received advertisments.
+    > In the current implementation, node position is not read from received advertisements.
 
     > [!IMPORTANT] Experimental Feature: Advertise known BundleID hashes
     > The IDs of all known bundles are hashed and included in the ADV. 
@@ -230,7 +228,7 @@ The included LoRa CLA can operate in either two modes:
 
 A simple poll-based serial CLA using the ESP's UART peripheral. 
 Received bundles are not sent to queues but must be actively polled.
-Can be used as reference for the design of poll-based CLA mechanisms.
+Can be used as a reference for the design of poll-based CLA mechanisms.
 
 The serial CLA can be used for testing purposes, e.g., when no LoRa modem is available.
 
@@ -255,20 +253,20 @@ This CLA discovers possible neighbors and requires transmissions to be addressed
 
 
 
-Each node is regularly switching between advertising their presence and scanning for peers in configurable intervals with a possible random offset.
+Each node is regularly switching between advertising its presence and scanning for peers in configurable intervals with a possible random offset.
 Each node acts both as GATT server and client.
-In the server role, the node advertises a GATT service and characteristic, to which data can be uploaded.
-In the client role, the node connects to an upload characteristic of another node and writes a CBOR encoded bundle to it.
+In the server role, the node advertises a GATT service and characteristic to which data can be uploaded.
+In the client role, the node connects to an upload characteristic of another node and writes a CBOR-encoded bundle to it.
 
 UUIDs for service and characteristic are defined in `menuconfig`.
-Currently, it is expected that dtn peers use their node ID as BLE device name.
+Currently, it is expected that DTN peers use their node ID as the BLE device name.
 Therefore, peers are determined by checking their name, and it must begin with "dtn:" or "ipn:".
 
 > [!TIP]
 > As NimBLE produces many log outputs, it may be beneficial to reduce its log level by setting "NimBLE Host log verbosity"(BT_NIMBLE_LOG_LEVEL) to "warning" or "error".
 
 > [!NOTE]
-> This CLA uses a lot of memory (~150kB), mostly for the Nimble controller, this can potentially be reduce through optimized menuconfig settings, but should be kept in mind.
+> This CLA uses a lot of memory (~150kB), mostly for the Nimble controller. This can potentially be reduced through optimized menuconfig settings in future work.
 
 
 ## Extras / Experimental Features
@@ -277,7 +275,7 @@ List of additional project features, outside of the scope for basic DTN function
 
 ### GPS Module Support
 Equip the ESP device with a GPS module and activate its use in `menuconfig`.
-With a GPS lock — and in BPoL-compatible mode — the node includes its position in BPoL advertisments.
+With a GPS lock — and in BPoL-compatible mode — the node includes its position in BPoL advertisements.
 Tested with an NMEA GPS connected via serial.
 
 > [!IMPORTANT]
@@ -289,53 +287,53 @@ This allows DTN nodes to send bundles with a non-zero creation timestamp and wit
 
 ### Indirect Reception Confirmation
 The **Epidemic Router** and the **LoRa CLA** provide the option to indirectly confirm whether bundle transmissions were successfully received by a node. 
-For that, the advertisment messages (ADV) are extended with a list of hashes of received bundle IDs, specifically those that were received since the last ADV was sent out. 
+For that, the advertisement messages (ADV) are extended with a list of hashes of received bundle IDs, specifically those that were received since the last ADV was sent out. 
 
 The **Epidemic Router** evaluates incoming hash lists to contain the hashes of recently sent bundles. 
 If those hashes are not contained, the bundle is marked as not transmitted (to that node), which leads to a repeated forwarding attempt. 
-It those hashes are contained, the bundle is marked as having been transmitted to that node. 
+If those hashes are contained, the bundle is marked as having been transmitted to that node. 
 
 > [!IMPORTANT]
-> There are three parameters of interest: (1) the interval between ADV transmissions, (2) the interval in which bundles are evaluated for a successfull transmission, and (3) the time after which nodes are removed from the list of known neighboors when no ADV is received.
+> There are three parameters of interest: (1) the interval between ADV transmissions, (2) the interval in which bundles are evaluated for a successful transmission, and (3) the time after which nodes are removed from the list of known neighbors when no ADV is received.
 > These parameters need adjustment to maximize the benefit of this feature; however, an evaluation has not been done yet.
 
 
 ### Triggering Bundle Retry from CLA (BLE CLA only)
-Normally, the scheduling of bundle retries in the routing mechanism is separated of the CLA. 
-This experimental features adds the option to externally trigger the bundle retry process from the CLA.
-For example, this would allow the CLA to deliberatly forward bundles to a newly discovered neighbor. 
+Normally, the scheduling of bundle retries in the routing mechanism is separated from the CLA. 
+This experimental feature adds the option to externally trigger the bundle retry process from the CLA.
+For example, this would allow the CLA to deliberately forward bundles to a newly discovered neighbor. 
 
 Enable in menuconfig via `Notify retry Task`.
 
 
-## :warning: Missing Features / Known or Possible Compatability Issues
+## :warning: Missing Features / Known or Possible Compatibility Issues
 
 - Status Reports:  
     The generation of Bundle Protocol status reports is not implemented.
 
-- Separation of application agent in administrative and application elements:  
+- Separation of the application agent into administrative and application elements:  
     Regarding [Figure 2 in RFC 9171](https://www.rfc-editor.org/rfc/rfc9171.pdf#fig-2), the application agent could be separated into an administrative element and an application-specific element. 
-    The lack of separation results in administrative records being also delivered to the application.
+    The lack of separation results in administrative records also being delivered to the application.
 
-- :altert: CRC checks:  
+- :alert: CRC checks:  
     [RFC 9171 Section 4.3.1](https://www.rfc-editor.org/rfc/rfc9171.html#name-primary-bundle-block) requires the primary block to use CRC or a 
     _BPSec Block Integrity_ block targeting the primary block. 
     At the current state, no CRC checksum is included during bundle encoding, no CRC checking is implemented during bundle decoding, and no BPSec extension blocks are included.
 
 - Fragmentation:  
-    Fragmented bundles can be processed, however, they cannot be delivered to local endpoints, as no reassembly is implemented.
+    Fragmented bundles can be processed; however, they cannot be delivered to local endpoints, as no reassembly is implemented.
     Similarly, bundles exceeding the maximum bundle size (TODO: define the size?) are not fragmented.
 
 ### BPoL-specific Issues
 + Reading position information from BPoL advertisements or any usage thereof is not implemented.
 + PingPong and config packets defined in BPoL are not implemented.
-+ The reference BPoL implementation lacks a documentation of the format of the BundleID hashes, so compatibility of hashed IDs with BPoL is questionable.
++ The reference BPoL implementation lacks documentation of the format of the BundleID hashes, so compatibility of hashed IDs with BPoL is questionable.
 
 ### Serial Data Transfer Issues
 Some computers have issues with the serial data transfer to the ESP32.
-Formatting errors occuring in log outputs are a strong indicator for that issue.
+Formatting errors occurring in log outputs are a strong indicator of that issue.
 This also affects flashing; if "unexplainable" errors occur, this might be the reason.
-In such cases, only using a different computer for flashing and log output did help.
+In such cases, only using a different computer for flashing and log output helped.
 
 
 
@@ -392,7 +390,6 @@ As an example of how this can be achieved see the following diagram of the LoRa 
 ## To-Do
 
 - Storage implementation documentation (in .cpp files, actual storage operations)
-- Update RadioLib dependency to newer version
-- CRC 
+- Update RadioLib dependency to a newer version
 
 --- 
