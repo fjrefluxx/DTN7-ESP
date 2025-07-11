@@ -1,0 +1,522 @@
+menu "DTN7-ESP Configuration"
+    menu "Basic Settings"
+        choice RouterType
+            prompt "Router type"
+            default RouterType_SimpleBroadcast
+            help
+                Select the type of router to be used
+                Simple Broadcast: Basic broadcast router, works with all CLAs and, if using a broadcast CLA, periodically broadcasts each bundle.
+                Epidemic Router: A more advanced epidemic router, requires information about network peers; therefore, CLAs need to implement an advertisement mechanism.
+                                 If the LoRa CLA is used, it must be in BPoL-compatible mode.
+            config RouterType_SimpleBroadcast
+                bool "Simple Broadcast"
+            config RouterType_SimpleEpidemic
+                bool  "Epidemic Routing"                    
+        endchoice
+
+        config TimeBetweenStorageRetry
+            int "Time interval (seconds) between retransmission attempts for stored bundles."
+            default 400
+
+        config TimeBetweenClaPoll
+            int "Time interval (seconds) between polling any poll-based CLA."
+            default 10
+
+        config  AttachPreviousNodeBlock
+            bool "Attach Previous Node Block"
+            default FALSE
+            help
+                Select whether to attach a previous node block to bundles.
+
+        config AttachHopCountBlock
+            bool "Attach Hop Count Block"
+            default FALSE
+            help
+                Select whether to attach a hop count block to bundles.
+
+        config HopLimit
+            depends on AttachHopCountBlock
+            int "Default Bundle Hop Limit"
+            range 1 255
+            default 5
+            help
+                The hop limit of each locally generated bundle. Default: 5.
+
+        config HasAccurateClock
+            bool "Accurate Clock"
+            default FALSE
+            help 
+                Whether the node has an accurate clock, synchronized to DTN time. If set to false, a bundle age block is added to locally generated bundles.
+
+        config UseGPS
+            bool "Use GPS"
+            default false
+            help 
+                Whether a GPS module should be used for time synchronization and providing the node location. The local clock synchronizes to DTN time, as defined in RFC9171. 
+
+        config GpsUart
+            depends on UseGPS
+            int "GPS UART Number"
+            help 
+                Select which UART hardware to use for GPS
+            default 1
+            range 0 2
+
+        config GpsUartRX
+            depends on UseGPS
+            int "GPS UART RX pin"
+            help 
+                Pin to use as UART RX pin (connect GPS module TX pin to the specified pin)
+            default 16
+
+        config GpsUpdateInterval
+            depends on UseGPS
+            int "GPS Update Interval"
+            default 60
+            help
+                Interval (seconds) in which GPS position is read and updated.
+            
+        config BundleTTL
+            int "Bundle Lifetime (ms)"
+            default 86400000
+            help
+                The bundle lifetime (TTL) in milliseconds. Default: 24h (86400000 ms). Also defines the TTL of locally generated bundles. 
+
+        config SendStatusReport
+            bool "Send Status Report"
+            default FALSE
+            help 
+                Whether the node should send status reports if requested. NOT IMPLEMENTED! This setting has no effect.
+
+        config MaxPeerAge
+            int "Maximum Peer Age"
+            default 600
+            help
+                Maximum time a node is stored in the list of known peers if not seen, in seconds.
+
+        config IgnoreBundleTTL
+            bool "Ignore Bundle Lifetime"
+            default false
+            help
+                If this setting is enabled, the lifetime stored in the Primary Block of bundles is ignored, and a custom value is used instead.
+
+        config OverrideBundleTTL
+            depends on OverrideBundleTTL
+            int "Override Bundle Lifetime (ms)"
+            default 600000
+            help
+                The override bundle lifetime (TTL) for ALL bundles in milliseconds. Default: 10 minutes (600000 ms).
+
+        config useReceivedSet
+            bool "Use bundle ID's for reception confirmation"
+            default useReceivedSet_false
+            help
+                If enabled, the local node stores a set of received bundle ID hashes. The hashes of the IDs of all received bundles are inserted into this set, which is emptied during each BPoL advertisement.
+                Additionally, each node in the forwarded-to list of stored bundles has a set of bundle ID hashes that is used to check if the last transmission of the bundle to the node was successful.
+                Enabling this feature affects the following: EpidemicRouter::checkForwardedTo(), encodeAdvertisePacket(), DTN7::bundleReceiver(), Node (class), Node::serialize(), and BundleProtocolAgent::bundleReception().
+   
+        menu "CRC Selection"
+            config primaryCrcType
+                int "CRC Type for Primary Blocks generated at this Node"
+                default 1
+                range 0 2
+                help
+                    See RFC9172 Section 4.2.1 for details on the different CRC Types, 0 = No CRC, 1 = CRC16, 2 = CRC32C
+            config canonicalCrcType
+                int "CRC Type for Canonical Blocks generated at this Node"
+                default 0
+                range 0 2
+                help
+                    See RFC9172 Section 4.2.1 for details on the different CRC Types, 0 = No CRC, 1 = CRC16, 2 = CRC32C
+        endmenu
+    endmenu
+    menu "Storage Config"
+        choice StorageType
+            prompt "Storage Type"
+            default StorageType_InMemorySerialized
+            help
+                Select the type of storage to be used
+            
+            config StorageType_Flash
+                bool "Flash"
+            config StorageType_InMemory
+                bool "InMemory"
+            config StorageType_InMemorySerialized 
+                bool "InMemory Serialized"
+            config StorageType_InMemorySerializedIA
+                bool "InMemory Serialized with Improved Access"
+            config StorageType_Dummy
+                bool "No Storage"
+            
+        endchoice
+
+        config RetryBatchSize
+            int "Retry Batch Size"
+            default 5
+            help
+                The number of bundles that should be read from storage at a time when retrying delayed bundles.
+        menu "Flash Storage"
+            config KeepBetweenRestart
+            bool "Keep Bundles Between Restarts"
+            default false            
+        endmenu
+        menu "InMemory Storage Config"
+            config MaxStoredBundles
+                int "Max Stored Bundles"
+                default 100
+                help
+                    The number of bundles to be stored by the InMemoryStorage
+        endmenu
+        menu "InMemory Storage Serialized (IA) Config"
+            config TargetFreeHeap
+                int "Minimal Free Heap"
+                default 40000
+                help
+                    The minimal heap that should be be kept free, when this is reached the InMemoryStorageSerialized will no longer store bundles without deleting the oldest until there is enough space
+            config MaxRemovedBundles
+                int "Max Removed Bundles"
+                default 5
+                help
+                    Defines how many bundles are to be removed if there is not enough space to store a bundle
+        endmenu
+        
+    endmenu
+    
+    
+    menu "CLA selection"
+
+    config USE_LORA_CLA
+        bool "Setup LoRa CLA"
+        default false
+        help 
+            Set this to true if the LoRa Cla is to be used   
+
+    config USE_Serial_CLA
+        bool "Setup Serial CLA"
+        default false
+        help 
+            Set this to true if the Serial Cla is to be used   
+
+    config USE_BLE_CLA
+        bool "Setup BLE CLA"
+        default false
+        select BT_ENABLED
+        help 
+            Set this to true if the BLE Cla is to be used
+            
+            Important: to use the BLE CLA Bluetooth must be enabled in menuconfig and the "Host" option must be set to "NimBLE"
+    endmenu
+
+
+    menu "Task/Queue Settings"
+        config ReceiveQueueSize
+            int "Receive Queue Size"
+            default 10
+        config ForwardQueueSize
+            int "Forward Queue Size"
+            default 10
+        config  BundleReceiverStackSize
+            int  "Bundle Receiver Stack Size"
+            default 8000
+            help 
+                Stack size in bytes of the BundleReceiver task. Should be chosen large enough to handle stack needed by callbacks.
+
+        config  BundleRetryStackSize
+            int  "Bundle Retry Stack Size"
+            default 8000
+            help 
+                Stack size in bytes of the BundleRetry task.
+        config  BundleForwarderStackSize
+            int  "Bundle Forwarder Stack Size"
+            default 12000
+            help 
+                Stack size in bytes of the BundleForwarder task.
+
+        config  ClaPollStacksize
+            int  "CLA Poll stack size"
+            default 4000
+            help 
+                Stack size in bytes of the CLA Poll task.
+
+        config  BundleReceiverPriority
+            int  "Bundle Receiver Priority"
+            default 2
+            help 
+                Task priority of the BundleReceiver task
+
+        config  BundleRetryPriority
+            int  "Bundle Retry Priority"
+            default 2
+            help 
+                Task priority of the BundleRetry task
+        config  BundleForwarderPriority
+            int  "Bundle Forwarder Priority"
+            default 2
+            help 
+                Task priority of the BundleForwarder task
+
+        config  ClaPollPriority
+            int  "CLA poll priority"
+            default 2
+            help 
+                Task priority of the CLA Poll task
+
+    endmenu
+
+    menu  "CLA Config"
+        menu "Lora CLA Config"
+            menu "BPoL"
+                config enableBPoL
+                bool "Enable BPoL compatibility"
+                default TRUE
+                help 
+                    Enable BPoL-compatible packets. If set to false, sent packets will be compatible with dtn7zero.                
+                
+                config AdvertiseInterval
+                int "Advertise Interval"
+                default 300
+                help
+                    The time between BPoL advertisements in seconds.
+                
+                config IncludePosition
+                depends on enableBPoL
+                bool "Include Position in BPol Advertisements"
+                default false
+                help
+                    Include node position in BPol advertise message. GPS for positioning MUST be configured.
+            endmenu
+
+            menu "LoRa Hardware"
+                choice Devkit
+                    prompt "Development Board Model"
+                    help
+                        Select either one of the predefined ESP+LoRa development boards or custom if no appropriate option is present
+                    default DevKit_Custom
+
+                    config DevKit_Custom
+                        bool "Custom"
+                    config DevKit_LoRa32V2
+                        bool "Heltec WiFi LoRa 32(V2)"
+                    config DevKit_LoRa32V3
+                        bool "Heltec WiFi LoRa 32(V3)"
+                    config DevKit_LiLygoLoRa32
+                        bool "Lilygo LoRa32"
+                endchoice
+
+                choice RadioModel
+                    prompt "LoRa Chip"
+                    default RadioModel_SX1276
+                    depends on DevKit_Custom
+                    help
+                        Select the type of Lora chip used
+            
+                    config RadioModel_SX1276
+                        bool "SX1276"
+                    config  RadioModel_SX1262
+                        bool "SX1262"
+                    config RadioModel_LLCC68
+                        bool "LLCC68"
+
+                endchoice
+
+                config SCK_PIN
+                    int "SCK pin"
+                    default 5
+                    depends on DevKit_Custom
+
+                config MISO_PIN
+                    int "MISO pin"
+                    default 19
+                    depends on DevKit_Custom
+
+                config MOSI_PIN
+                    int "MOSI pin"
+                    default 27
+                    depends on DevKit_Custom
+
+                config NSS_PIN
+                    int "NSS/CS pin"
+                    default 18
+                    depends on DevKit_Custom
+
+                config DIO0_PIN
+                    int "DIO0 pin"
+                    default 26
+                    depends on DevKit_Custom
+                    help
+                        DIO0 pin when using SX1276, otherwise DIO1
+
+                config NRST_PIN
+                    int "NRST pin"
+                    default 14
+                    depends on DevKit_Custom
+
+                config BUSY_PIN
+                    int "DIO1/BUSY pin"
+                    default 33
+                    depends on DevKit_Custom
+            endmenu
+
+            menu "Lora Coding Settings"
+                config LoRa_Frequency
+                    int "Lora Frequency (kHz)"
+                    default 868100
+                    help
+                       LoRa frequency in kHz
+                config LoRa_Bandwidth
+                    int "Bandwidth (kHz)"
+                    default 125
+                    help
+                        LoRa bandwidth in kHz
+                config LoRa_CodingRate
+                    int "Coding rate"
+                    default 5
+                    help
+                        LoRa coding rate
+                config LoRa_SpreadingFactor
+                    int  "Spreading Factor"
+                    default 7
+                    help 
+                       LoRa spreading factor
+                config LoRa_PreambleLength
+                    int "Preamble Length"
+                    default 8
+                    help 
+                        LoRa preamble length
+                config LoRa_TXPower
+                    int "Tx Power In dBm"
+                    range 2 17
+                    default 13
+                    help
+                    LoRa transmission power in dBm. Default: 13 dBm, the allowed maximum for 868.1 Mhz (EU).
+            endmenu
+            menu "Duty Cycle"
+                config LoRa_DutyCycle
+                    int "Duty Cycle in Percent"
+                    range 1 100
+                    default 1
+                    help
+                        Duty cycle for the LoRa modem. Must be adapted to local regulations w.r.t. the used frequency band.
+                config LoRa_DutyCycleTime
+                    int "Duty Cycle Time (minutes)"
+                    default 60
+                    help
+                        Time span over which the LoRa duty cycle is measured, in minutes.                
+            endmenu
+
+        endmenu
+
+        menu "Serial CLA Config"
+            config UART_PORT_NUM
+                int "UART port number"
+                range 0 2 if IDF_TARGET_ESP32 || IDF_TARGET_ESP32S3
+                default 2 if IDF_TARGET_ESP32 || IDF_TARGET_ESP32S3
+                range 0 1
+                default 1
+                help
+                    UART hardware port number for serial CLA.
+            config UART_BAUD_RATE
+                int "UART baud rate"
+                range 1200 115200
+                default 9600
+                help
+                    UART baud rate for the serial CLA            
+            config UART_RXD
+                int "UART RXD pin number"
+                default 5
+                help
+                    GPIO number for UART RX pin.        
+            config UART_TXD
+                int "UART TXD pin number"
+                default 4
+                help
+                    GPIO number for UART TX pin.
+            config UART_BUF_SIZE
+                int "Size of the UART RX buffer"
+                default 1024
+                help 
+                    Size of the UART RX buffer
+        endmenu
+
+    menu "BLE CLA config"
+        config BLE_SEND_GAP
+            int "Minimum time (ms) between BLE bundle send operations"
+            default 1000
+            help
+                Send operations, which occur with less than the defined time between each other, are delayed 
+
+        config BLE_ADVERTISE_TIME
+            int "Advertise Time (ms)"
+            default 3000
+            help
+                Time in ms the BLE CLA spends in advertise mode. A random offset is added at the beginning of each advertise interval.
+        config BLE_SCAN_TIME
+            int "Scan Time (ms)"
+            default 3000
+            help
+                Time in ms the BLE CLA spends in scan mode. A random offset is added at the beginning of each scan interval.
+        config BLE_MAX_RANDOM_OFFSET
+            int "Maximum scan/advertise random offset (ms)"
+            default 1000
+            help
+                Defines the upper bound of the random length variation of BLE scanning/advertising
+        config BLE_MAX_PEER_AGE
+            int "BLE maximum peer age (ms)"
+            default 60000
+            help
+                BLE peers are removed when not seen for the defined time. This is independent of DTN neighbor management.
+        config BLE_SEND_ATTEMPTS
+            int "max BLE transmission attempts"
+            default 3
+            help
+                Sets the maximal number of BLE transmission attempts to be made for each BLE CLA::send() call
+        config BLE_SERVICE_UUID
+            hex "BLE service UUID"
+            default 0xFEE1
+            range 0x0000 0xFFFF
+            help
+                Defines the UUID of the GATT service used by the BLE CLA        
+        config BLE_WRITE_UUID
+            hex "BLE write UUID"
+            default 0xFEE2
+            help
+                Defines the UUID of the GATT write characteristic used by the BLE CLA
+        endmenu
+    endmenu
+
+    menu "Router Configuration"
+        menu "Simple Broadcast Router Configuration"
+            config NumOfBroadcasts
+                int "Number of broadcast attempts"
+                default 5
+                help
+                    Number of broadcast attempts to be made before a transmissions is considered a success.
+            config BroadcastGap
+                int "Broadcast gap (ms)"
+                default 180000
+                help
+                   Minimal time between two broadcast attempts of the same bundle, in ms. Default: 3 minutes.
+            config MinNodesToForward
+                int "Minimum nodes to forward to"
+                default 5
+                help
+                    For non-broadcast transmissions: the minimal number of nodes a bundle should be forwarded to.
+        endmenu
+        menu "Epidemic Router Configuration"
+            config NumOfForwards
+                int "Number of nodes to forward to"
+                default 5
+                help
+                    Number of nodes each bundle shall be forwarded to before a transmissions is considered a success.
+        endmenu           
+    endmenu
+
+    menu "Experimental Settings"
+        config NOTIFY_RETRY_TASK
+            bool "Trigger transmission retry task on peer discovery"
+            default false
+            help 
+                (BLE CLA only!) Enable an experimental feature that allows the bundle retry task to be triggered independently of its periodic wakeup.
+                When enabled, the BLE CLA wakes up the Retry Task when it discovers a new peer.
+    endmenu
+endmenu

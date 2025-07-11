@@ -1,0 +1,3 @@
+# Template Project using DTN7-ESP.
+This project includes **DTN7-ESP** and is fully setup to begin development of an application using it.
+This template does not include a custom partition table, see the other [examples](/examples/) and/or the information from espressif regarding [partition tables](https://docs.espressif.com/projects/esp-idf/en/v5.4/esp32/api-guides/partition-tables.html) and the [Partition Table Editor](https://docs.espressif.com/projects/vscode-esp-idf-extension/en/latest/additionalfeatures/partition-table-editor.html).

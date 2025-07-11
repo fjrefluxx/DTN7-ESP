@@ -1,0 +1,11 @@
+## IDF Component Manager Manifest File
+version: 0.0.1
+description: "Provides a bundle data structure in compliance with RFC9171"
+url: "https://dev.kom.e-technik.tu-darmstadt.de/gitlab/kom-scheuermann/research/dtn/dtn7-esp/dtn7-esp/-/tree/main/dtn7-esp/dtn7-bundle"
+
+dependencies:
+  espressif/cbor: "^0.6.0~2"
+  ## Required IDF version
+  idf:
+    version: ">=5.2.1"
+

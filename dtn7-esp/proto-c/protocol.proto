@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+option go_package = "bigjk/onp";
+
+package lora.protocol;
+
+//
+// Packet
+//
+
+enum PacketType {
+  TYPE_ADVERTISE = 0;
+  TYPE_BUNDLE_FORWARD = 1;
+  TYPE_PING_PONG = 2;
+}
+
+message Packet {
+  PacketType type = 1;
+  oneof content {
+    Advertise advertise = 2;
+    BundleForward bundle_forward = 3;
+    PingPong ping_pong = 4;
+    SetConfig set_config = 5;
+  }
+}
+
+//
+// Position Types
+//
+
+message LatLngPos {
+  float lat = 1;
+  float lng = 2;
+}
+
+message XYPos {
+  float X = 1;
+  float Y = 2;
+}
+
+message GenericPos {
+  string generic = 1;
+}
+
+message NoPos {
+
+}
+
+//
+// Packet Types
+//
+
+message Advertise {
+  string node_name = 1;
+  oneof position {
+    LatLngPos lat_lng = 2;
+    XYPos xy = 3;
+    GenericPos generic = 4;
+    NoPos no_pos = 5;
+  }
+  map<string, string> data = 6;
+}
+
+message BundleForward {
+  string sender = 1;
+  string destination = 2;
+  string bundle_id = 3;
+  bytes bundle_data = 4;
+  map<string, string> data = 5;
+}
+
+enum PingPongType {
+  TYPE_PING = 0;
+  TYPE_PONG = 1;
+}
+
+message PingPong {
+  PingPongType type = 1;
+  string node_id = 2;
+}
+
+//
+// Config Packets
+//
+
+message SetConfig {
+  string destination = 1;
+  bytes content = 2;
+}
+
+enum ConfigType {
+  TYPE_ECLA = 0;
+  TYPE_DTND = 1;
+  TYPE_LORA = 2;
+}
+
+message SetConfigContent {
+  ConfigType type = 1;
+  bool persist = 2;
+  map<string, string> config = 3;
+}
