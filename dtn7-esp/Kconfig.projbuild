@@ -101,7 +101,7 @@ menu "DTN7-ESP Configuration"
                 If this setting is enabled, the lifetime stored in the Primary Block of bundles is ignored, and a custom value is used instead.
 
         config OverrideBundleTTL
-            depends on OverrideBundleTTL
+            depends on IgnoreBundleTTL
             int "Override Bundle Lifetime (ms)"
             default 600000
             help
