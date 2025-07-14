@@ -1,4 +1,4 @@
 dependencies:
     dtn7-esp:
-        git: "https://dev.kom.e-technik.tu-darmstadt.de/gitlab/kom-scheuermann/research/dtn/dtn7-esp/dtn7-esp.git"
+        git: "https://github.com/fjrefluxx/DTN7-ESP.git"
         path: "dtn7-esp"

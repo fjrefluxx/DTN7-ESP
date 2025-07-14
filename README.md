@@ -38,7 +38,7 @@ To develop your own application, start from the [Template Project](/examples/Tem
     ```
     dependencies:
         dtn7-esp:
-            git: "[insert your path to the folder]/dtn7-esp/dtn7-esp.git"
+            git: "https://github.com/fjrefluxx/DTN7-ESP.git"
             path: "dtn7-esp"
     ```
 

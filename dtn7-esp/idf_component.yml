@@ -1,11 +1,11 @@
 ## IDF Component Manager Manifest File
 version: 0.0.1
 description: "Provides a Bundle Protocol Agent(BPA) in compliance with RFC9171, a BPoL(Bundle Protocol over LoRa)-compatible Lora CLA, storage in NVS flash, basic routing, and more"
-url: "https://dev.kom.e-technik.tu-darmstadt.de/gitlab/kom-scheuermann/research/dtn/dtn7-esp/dtn7-esp/-/tree/main/dtn7-esp"
+url: "https://github.com/fjrefluxx/DTN7-ESP/tree/main/dtn7-esp"
 
 dependencies:
   dtn7-bundle:
-    git: "https://dev.kom.e-technik.tu-darmstadt.de/gitlab/kom-scheuermann/research/dtn/dtn7-esp/dtn7-esp.git"
+    git: "https://github.com/fjrefluxx/DTN7-ESP.git"
     path: "dtn7-bundle"
     
   jgromes/radiolib: "^6.6.0"

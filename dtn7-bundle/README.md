@@ -9,6 +9,6 @@ Add and adapt the following to a project's `idf_component.yml`:
 ```yml
 dependencies:
     dtn7-esp:
-        git: "[your link]/dtn7-esp/dtn7-esp.git"
+        git: "https://github.com/fjrefluxx/DTN7-ESP.git"
         path: "dtn7-bundle"
 ```
