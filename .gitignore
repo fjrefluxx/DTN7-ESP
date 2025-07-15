@@ -6,4 +6,5 @@ sdkconfig
 sdkconfig.old
 examples/*/.devcontainer
 .DS_Store
+doxygen
 
