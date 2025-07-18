@@ -1,6 +1,6 @@
 /**
  * @file gps.h
- * @brief this code is oriented on the example provided with the nmea component, found here: https:// github.com/igrr/libnmea-esp32/tree/main/example
+ * @brief this code is oriented on the example provided with the nmea component, found here: https://github.com/igrr/libnmea-esp32/tree/main/example
  */
 
 #pragma once

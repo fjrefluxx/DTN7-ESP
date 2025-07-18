@@ -3,7 +3,7 @@
 
 /**
  * @file EspHal.h
- * @brief The content of this file is taken from https:// github.com/jgromes/RadioLib/blob/master/examples/NonArduino/ESP-IDF/main/EspHal.h
+ * @brief The content of this file is taken from https://github.com/jgromes/RadioLib/blob/master/examples/NonArduino/ESP-IDF/main/EspHal.h
  */
 
 // include RadioLib

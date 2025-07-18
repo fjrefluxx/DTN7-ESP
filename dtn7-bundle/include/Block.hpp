@@ -4,6 +4,12 @@
 #include "esp_log.h"
 #include "utils.hpp"
 
+/**
+ * @file Block.hpp
+ * @brief This file contains all relevant definitions for the CanonicalBlock and PrimaryBlock classes.
+ */
+
+
 /// @brief calculates the CRC as specified in rfc9171
 /// @param crcType the type of crc To calculate
 /// @param data data to calculate CRC on
