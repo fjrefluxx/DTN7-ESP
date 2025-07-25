@@ -21,7 +21,7 @@ void Bundle::toCbor(uint8_t** cbor, size_t& cborSize) {
     std::vector<size_t> cBlockCborSizes;
 
     for (CanonicalBlock cBlock : (this->extensionBlocks)) {
-        size_t cborSIze = 0;
+        cborSize=0;
         uint8_t* cbor = nullptr;
         cBlock.toCbor(&cbor, cborSize);
         cBlockCbor.push_back(cbor);
