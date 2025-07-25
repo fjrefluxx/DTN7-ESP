@@ -109,7 +109,6 @@ void readNmeaLine(char** out_line_buf, size_t* out_line_len) {
 /// @param param
 void gpsUpdater(void* param) {
     ESP_LOGI("gpsUpdater", "Task Started");
-    time_t lastTime = 0;
 
     while (true) {
         // wait for the configured interval before updating position
