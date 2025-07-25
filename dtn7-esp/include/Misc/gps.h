@@ -3,6 +3,9 @@
  * @brief this code is oriented on the example provided with the nmea component, found here: https://github.com/igrr/libnmea-esp32/tree/main/example
  */
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+
 #pragma once
 #include <sys/time.h>
 #include <time.h>
@@ -262,3 +265,5 @@ void deinitializeGPS() {
 }
 
 #endif
+
+#pragma GCC diagnostic pop
