@@ -8,6 +8,8 @@
 #include <iostream>
 #include <sstream>
 #include "../proto-c/protocol.pb-c.h"
+#include "dtn7-esp.hpp"
+
 
 /// @brief local debugging function, prints an array of bytes as hex
 /// @param array data to print
@@ -148,7 +150,7 @@ void encodeAdvertisePacket(uint8_t** result, size_t* size) {
 
     // if configured in menuconfig, include the position of the node in the advertise message
 #if CONFIG_IncludePosition
-    if (DTN7::localNode->hasPosition) {
+    if (DTN7::localNode->hasPos) {
         // initialize position data structure
         Lora__Protocol__LatLngPos pos = LORA__PROTOCOL__LAT_LNG_POS__INIT;
 
