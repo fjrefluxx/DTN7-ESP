@@ -53,15 +53,15 @@ void initUart() {
 /// @param out_line_buf pointer to the beginning of the read message
 /// @param out_line_len length of nmea message
 void readNmeaLine(char** out_line_buf, size_t* out_line_len) {
-    ESP_LOGI("readNmeaLine", "reading nmea");
+    ESP_LOGI("readNmeaLine", "reading NMEA messages from GPS...");
     *out_line_buf = NULL;
     *out_line_len = 0;
 
     if (last_buf_end != NULL) {
         // if not all data has been read from the buffer previously, move this data to the beginning of the buffer
-        ESP_LOGI("readNmeaLine", "moving previous data");
+        ESP_LOGD("readNmeaLine", "moving previous data");
         size_t len_remaining = total_bytes - (last_buf_end - buf);
-        ESP_LOGI("readNmeaLine", "len remaining:%u", len_remaining);
+        ESP_LOGD("readNmeaLine", "len remaining:%u", len_remaining);
         memmove(buf, last_buf_end, len_remaining);
         last_buf_end = NULL;
         total_bytes = len_remaining;
@@ -69,9 +69,12 @@ void readNmeaLine(char** out_line_buf, size_t* out_line_len) {
 
     int read_bytes = uart_read_bytes(
         UART_NUM, (uint8_t*)buf + total_bytes, UART_RX_BUF_SIZE - total_bytes,
-        pdMS_TO_TICKS(100));  // read only as much data as fits into buffer
+        pdMS_TO_TICKS(1000));  // read only as much data as fits into buffer
     if (read_bytes <= 0) {
         // no data has been read, return
+        ESP_LOGI("readNmeaLine", "No Data From  UART");
+        total_bytes = 0;
+        last_buf_end = NULL;
         return;
     }
     total_bytes += read_bytes;  // length of data in buffer
@@ -105,6 +108,7 @@ void readNmeaLine(char** out_line_buf, size_t* out_line_len) {
     else {
         total_bytes = 0;
     }
+    ESP_LOGI("readNMEALine", "read: %.*s", *out_line_len - 1, *out_line_buf);
     return;
 }
 
@@ -112,40 +116,78 @@ void readNmeaLine(char** out_line_buf, size_t* out_line_len) {
 /// @param param
 void gpsUpdater(void* param) {
     ESP_LOGI("gpsUpdater", "Task Started");
+    bool isFirstAcquisition = true;
 
     while (true) {
-        // wait for the configured interval before updating position
-        vTaskDelay((CONFIG_GpsUpdateInterval * 1000) / portTICK_PERIOD_MS);
-
         // We dont want old GPS messages from the buffer.
         // Remove messages older than 1 second. vTaskDelay allows the scheduler to run other tasks in the meantime.
         uart_flush(UART_NUM);
         vTaskDelay((1 * 1000) / portTICK_PERIOD_MS);
 
         // prepare required data structures
-        char buf[64];
-        nmea_s* data;
-        struct tm time;
-        char* start;
-        size_t length;
+
         int counter = 0;
 
         // read from GPS until required message has been read
         while (true) {
+            nmea_s* data = NULL;
+            struct tm time;
+            char* start;
+            size_t length;
             readNmeaLine(&start, &length);
             // if the line is empty, try again
             if (length == 0) {
+                counter++;
+                vTaskDelay((1 * 1000) / portTICK_PERIOD_MS);
+                if (counter > 10) {
+                    ESP_LOGW("gpsUpdater",
+                             "No NMEA messages read from GPS module! Check the "
+                             "UART connection");
+                    DTN7::localNode->hasPos =
+                        false;  // set the nodes position to be unknown
+                    break;
+                }
                 continue;
             }
-
             data = nmea_parse(start, length, 0);
-            if (data == NULL)
+            if (data == NULL) {
+                counter++;
+                vTaskDelay((1 * 1000) / portTICK_PERIOD_MS);
+                if (counter > 10) {
+                    ESP_LOGW("gpsUpdater",
+                             "Only Empty messages read from GPS module!");
+                    DTN7::localNode->hasPos =
+                        false;  // set the nodes position to be unknown
+                    break;
+                }
                 continue;
+            }
 
             // check if message is a GPRMC message, containing time and position
             if (NMEA_GPRMC == data->type) {
                 nmea_gprmc_s* pos = (nmea_gprmc_s*)data;
-                time = pos->date_time;
+                if (!pos->valid) {
+                    ESP_LOGW("gpsUpdater",
+                             "Received position Invalid, GPS module has not "
+                             "acquired position (yet)");
+                    continue;
+                }
+                if (isFirstAcquisition) {
+                    time = pos->date_time;
+                    strftime(buf, sizeof(buf), "%d %b %T %Y", &pos->date_time);
+                    ESP_LOGI("gpsUpdater", "Setting Node Time:  %s", buf);
+
+                    time_t timeSeconds =
+                        mktime(&time);  // time since 1970 in seconds
+
+                    // DTN time is the time since 2000-01-01, we need to transform this, by adding 946'684'800 seconds
+                    struct timeval timeval;
+                    timeval.tv_sec = timeSeconds + 946684800;
+                    timeval.tv_usec = 0;
+                    settimeofday(&timeval, NULL);
+                    isFirstAcquisition = false;
+                }
+
                 // now set the position of the node, if it is contained in nmea sentence
                 if (pos->latitude.degrees != 0 || pos->latitude.minutes != 0 ||
                     pos->longitude.degrees != 0 ||
@@ -173,78 +215,33 @@ void gpsUpdater(void* param) {
                 break;
             }
             counter++;
-            if (counter > 10)
-                break;  // used to limit number of messages read if no gprmc is received
+            if (counter > 10) {
+                ESP_LOGW(
+                    "gpsUpdater",
+                    "Failed to update position! Node position was set to unknown!\n\
+                    Check if GPS module has acquired a signal!");
+                DTN7::localNode->hasPos =
+                    false;  // set the nodes position to be unknown
+                break;  // used to limit number of messages read if no gprmc is received / only invalid positions are read
+            }
+            // cleanup data
+            nmea_free(data);
         }
-        // cleanup data
-        nmea_free(data);
+
         uart_flush(UART_NUM);
         memset(buf, 0, sizeof(buf));
 
-        // the following would allow to resynchronize time, due to potentially large deviations. because of the way the messages are read from the GPS, this is disabled
-        // time_t timeSeconds =mktime(&time); // time since 1970 in seconds
-        // if(timeSeconds<0||lastTime == timeSeconds)continue;
-        // ESP_LOGI("gpsUpdater" ,"Time: %lli", timeSeconds);
-        // lastTime = timeSeconds;
-        // DTN time is the time since 2000-01-01, we need to transform this, by adding 946 ,684 ,800 seconds
-        // struct timeval timeval;
-        // timeval.tv_sec = timeSeconds+946684800;
-        // timeval.tv_usec = 0;
-        // settimeofday(&timeval ,NULL);
+        // wait for the configured interval before updating position
+        vTaskDelay((CONFIG_GpsUpdateInterval * 1000) / portTICK_PERIOD_MS);
     }
 }
 
 /// @brief Sets up GPS hardware, task to read position and synchronize node clock to DTN time.
 /// Reads NMEA sentences until a position and time is found; therefore, potentially blocks for a long time!
 void initializeGPS() {
-    ESP_LOGI("initializeGPS", "initialising");
+    ESP_LOGI("initializeGPS", "Initialising GPS ...");
     initUart();
     struct tm time;
-    while (true) {
-        // prepare required data structures
-        char buf[32];
-        nmea_s* data;
-
-        char* start;
-        size_t length;
-
-        // if the line is empty, try again
-        readNmeaLine(&start, &length);
-        if (length == 0) {
-            continue;
-        }
-        data = nmea_parse(start, length, 0);
-
-        // check if message is a GPRMC message, containing time and position
-        if (NMEA_GPRMC == data->type) {
-            ESP_LOGI("initializeGPS", "GPRMC sentence");
-            nmea_gprmc_s* pos = (nmea_gprmc_s*)data;
-            time = pos->date_time;
-            strftime(buf, sizeof(buf), "%d %b %T %Y", &pos->date_time);
-            ESP_LOGI("initializeGPS", "Date & Time: %s", buf);
-
-            // now set the position of the node, if it is already contained in nmea sentence
-            if (pos->latitude.degrees != 0 || pos->latitude.minutes != 0 ||
-                pos->longitude.degrees != 0 || pos->longitude.minutes != 0) {
-                DTN7::localNode->hasPos = true;
-                if (pos->latitude.cardinal == 'S')
-                    DTN7::localNode->position.first =
-                        -(pos->latitude.degrees + (pos->latitude.minutes) / 60);
-                else
-                    DTN7::localNode->position.first =
-                        pos->latitude.degrees + (pos->latitude.minutes) / 60;
-                if (pos->longitude.cardinal == 'W')
-                    DTN7::localNode->position.second = -(
-                        pos->longitude.degrees + (pos->longitude.minutes) / 60);
-                else
-                    DTN7::localNode->position.first =
-                        pos->longitude.degrees + (pos->longitude.minutes) / 60;
-            }
-            break;
-        }
-        vTaskDelay(1);  // needed to avoid watchdog
-        nmea_free(data);
-    }
 
     time_t timeSeconds = mktime(&time);  // time since 1970 in seconds
 
@@ -261,6 +258,7 @@ void initializeGPS() {
 /// @brief deletes the GPS position updating Task
 void deinitializeGPS() {
     vTaskDelete(gpsUpdaterHandel);
+    uart_driver_delete(UART_NUM);
     return;
 }
 
