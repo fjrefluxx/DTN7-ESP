@@ -1,4 +1,5 @@
 #include "Endpoint.hpp"
+#include "dtn7-esp.hpp"
 #include "sdkconfig.h"
 
 bool Endpoint::send(uint8_t* data, size_t dataSize, std::string destination,
@@ -15,37 +16,60 @@ bool Endpoint::send(uint8_t* data, size_t dataSize, std::string destination,
         // Create EID Object
         EID dest = EID::fromUri(destination);
 
+        // create bundle age block, only used if no accurate clock configured, or the clock has not been successfully synchronized
+        BundleAgeBlock ageBlock(0, CONFIG_canonicalCrcType);
+
+        //indicates wether the age block must be attached
+        bool attachAgeBlock = false;
+
+        // create creation timestamp
+        CreationTimestamp timestp(0, sequenceNum);
+
         // if node has accurate clock (node is synchronized to dtn time (See RFC 9171 Section 4.2.6), enabled in menuconfig),
         // the current time is included in the creationTimestamp. In this case, no bundle age block is required
 #if CONFIG_HasAccurateClock
         ESP_LOGD("Endpoint send", "Accurate Clock configured!");
-        // get current node time
-        struct timeval tv_now;
-        gettimeofday(&tv_now, NULL);
 
-        // convert to milliseconds
-        uint64_t currentTime =
-            ((int64_t)tv_now.tv_sec * 1000L + (int64_t)tv_now.tv_usec / 1000);
+        //first, check whether node clock is actually synchronized
+        if (DTN7::clockSynced) {
+            // get current node time
+            struct timeval tv_now;
+            gettimeofday(&tv_now, NULL);
 
-        // if in the same millisecond a bundle was already created, increase sequence number of new bundle to allow for differentiation
-        if (lastCreationTime == currentTime)
+            // convert to milliseconds
+            uint64_t currentTime = ((int64_t)tv_now.tv_sec * 1000L +
+                                    (int64_t)tv_now.tv_usec / 1000);
+
+            // if in the same millisecond a bundle was already created, increase sequence number of new bundle to allow for differentiation
+            if (lastCreationTime == currentTime)
+                sequenceNum++;
+
+            // override creation timestamp
+            timestp = CreationTimestamp(currentTime, sequenceNum);
+
+            // update last creation time
+            lastCreationTime = currentTime;
+        }
+        //accurate clock is configured, but not synchronized, act as if no accurate clock was enabled
+        else {
+            ESP_LOGW("Endpoint send",
+                     "Accurate Clock enabled, but not synchronized! "
+                     "Falling back "
+                     "to non accurate clock operation");
+
+            // increase sequence number
             sequenceNum++;
 
-        // create creation timestamp
-        CreationTimestamp timestp(currentTime, sequenceNum);
+            attachAgeBlock = true;
+        }
 
-        // update last creation time
-        lastCreationTime = currentTime;
 #else
         ESP_LOGD("Endpoint send", "No Accurate Clock configured");
-        // create creation timestamp
-        CreationTimestamp timestp(0, sequenceNum);
 
         // increase sequence number
         sequenceNum++;
 
-        // create bundle age block
-        BundleAgeBlock ageBlock(0, CONFIG_canonicalCrcType);
+        attachAgeBlock = true;
 #endif
         // create PrimaryBlock
         PrimaryBlock primary;
@@ -71,10 +95,13 @@ bool Endpoint::send(uint8_t* data, size_t dataSize, std::string destination,
         Bundle* b = new Bundle(&primary, &payload);
 
         // Add configured extension blocks to bundle
-#if !CONFIG_HasAccurateClock
-        ESP_LOGD("Endpoint send", "Adding BundleAgeBlock");
-        b->insertCanonicalBlock(ageBlock);
-#endif
+
+        //if requrired (no accurate clock configured or not yet synchronized) attach bundle age block
+        if (attachAgeBlock) {
+            ESP_LOGD("Endpoint send", "Adding BundleAgeBlock");
+            b->insertCanonicalBlock(ageBlock);
+        }
+
 #if CONFIG_AttachHopCountBlock
         b->insertCanonicalBlock(
             HopCountBlock(hopLimit, 0, CONFIG_canonicalCrcType));

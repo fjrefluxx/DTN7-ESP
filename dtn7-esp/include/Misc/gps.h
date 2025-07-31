@@ -172,6 +172,8 @@ void gpsUpdater(void* param) {
                              "acquired position (yet)");
                     continue;
                 }
+
+                //if this is the first successful GPS acquisition, synchronize node time
                 if (isFirstAcquisition) {
                     time = pos->date_time;
                     strftime(buf, sizeof(buf), "%d %b %T %Y", &pos->date_time);
@@ -186,6 +188,10 @@ void gpsUpdater(void* param) {
                     timeval.tv_usec = 0;
                     settimeofday(&timeval, NULL);
                     isFirstAcquisition = false;
+#if CONFIG_HasAccurateClock
+                    //set indicator than clock is now synchronized
+                    DTN7::clockSynced = true;
+#endif
                 }
 
                 // now set the position of the node, if it is contained in nmea sentence
@@ -241,15 +247,6 @@ void gpsUpdater(void* param) {
 void initializeGPS() {
     ESP_LOGI("initializeGPS", "Initialising GPS ...");
     initUart();
-    struct tm time;
-
-    time_t timeSeconds = mktime(&time);  // time since 1970 in seconds
-
-    // DTN time is the time since 2000-01-01, we need to transform this, by adding 946'684'800 seconds
-    struct timeval timeval;
-    timeval.tv_sec = timeSeconds + 946684800;
-    timeval.tv_usec = 0;
-    settimeofday(&timeval, NULL);
     xTaskCreate(&gpsUpdater, "GpsUpdater", 3000, NULL, 2, &gpsUpdaterHandel);
     uart_flush(UART_NUM);
     return;

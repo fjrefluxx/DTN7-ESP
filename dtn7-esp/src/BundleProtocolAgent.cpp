@@ -170,28 +170,38 @@ bool BundleProtocolAgent::bundleReception(Bundle* bundle,
 
     // if the node is setup with an accurate, synchronized clock, and the bundle has a non zero creation time, the bundle age can be checked against the node clock
 #if CONFIG_HasAccurateClock
-    if (bundle->primaryBlock.timestamp.creationTime != 0) {
-        ESP_LOGD(
-            "Bundle Reception",
-            "Accurate Clock configured, checking bundle age using own clock");
-        // calculate the time by which the bundle must be deleted
-        uint64_t expirationTime =
-            bundle->primaryBlock.timestamp.creationTime + lifetime;
+    //first, check whether node clock is actually synchronized
+    if (DTN7::clockSynced) {
 
-        // get the current time
-        struct timeval tv_now;
-        gettimeofday(&tv_now, NULL);
+        //if the received bundle was also created by a node with an accurate clock, use the nodes local clock to check its age
+        if (bundle->primaryBlock.timestamp.creationTime != 0) {
+            ESP_LOGD("Bundle Reception",
+                     "Accurate Clock configured, checking bundle age using own "
+                     "clock");
+            // calculate the time by which the bundle must be deleted
+            uint64_t expirationTime =
+                bundle->primaryBlock.timestamp.creationTime + lifetime;
 
-        // convert current time to ms
-        uint64_t currentTime =
-            ((int64_t)tv_now.tv_sec * 1000L + (int64_t)tv_now.tv_usec / 1000);
+            // get the current time
+            struct timeval tv_now;
+            gettimeofday(&tv_now, NULL);
 
-        // delete bundle if required
-        if (expirationTime < currentTime) {
-            bundleDeletion(bundle,
-                           BundleStatusReportReasonCodes::LIFETIME_EXPIRED);
-            return false;
+            // convert current time to ms
+            uint64_t currentTime = ((int64_t)tv_now.tv_sec * 1000L +
+                                    (int64_t)tv_now.tv_usec / 1000);
+
+            // delete bundle if required
+            if (expirationTime < currentTime) {
+                bundleDeletion(bundle,
+                               BundleStatusReportReasonCodes::LIFETIME_EXPIRED);
+                return false;
+            }
         }
+    }
+    else {
+        ESP_LOGW("Bundle Reception",
+                 "Accurate Clock enabled, but not synchronized! Falling back "
+                 "to non accurate clock operation");
     }
 #endif
 

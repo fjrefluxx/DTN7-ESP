@@ -37,6 +37,12 @@ LoraCLA* DTN7::loraCLA = NULL;
 BleCLA* DTN7::bleCla = NULL;
 #endif
 
+#if CONFIG_HasAccurateClock
+
+bool DTN7::clockSynced = false;
+
+#endif
+
 HashWrapper* DTN7::hasher = NULL;
 int32_t DTN7::maxPeerAge = CONFIG_MaxPeerAge;
 
@@ -486,27 +492,35 @@ bool DTN7::checkExpiration(BundleInfo* bundle) {
 
     // if the node has an accurate, synchronized clock, the bundles creation time is compared with the current time to determine its age
 #if CONFIG_HasAccurateClock
+    //first, check whether node clock is actually synchronized
+    if (clockSynced) {
 
-    // check whether the creating node had an accurate clock by checking whether the creation time is not 0
-    if (bundle->bundle.primaryBlock.timestamp.creationTime != 0) {
-        // get the time at which the bundle expires
-        uint64_t expirationTime =
-            bundle->bundle.primaryBlock.timestamp.creationTime + ageLimit;
+        // check whether the creating node had an accurate clock by checking whether the creation time is not 0
+        if (bundle->bundle.primaryBlock.timestamp.creationTime != 0) {
+            // get the time at which the bundle expires
+            uint64_t expirationTime =
+                bundle->bundle.primaryBlock.timestamp.creationTime + ageLimit;
 
-        // the current time in order to calculate the time the bundle spent at this node
-        struct timeval tv_now;
-        gettimeofday(&tv_now, NULL);
+            // the current time in order to calculate the time the bundle spent at this node
+            struct timeval tv_now;
+            gettimeofday(&tv_now, NULL);
 
-        // convert current time to miliseconds
-        uint64_t currentTime =
-            ((int64_t)tv_now.tv_sec * 1000L + (int64_t)tv_now.tv_usec / 1000);
+            // convert current time to miliseconds
+            uint64_t currentTime = ((int64_t)tv_now.tv_sec * 1000L +
+                                    (int64_t)tv_now.tv_usec / 1000);
 
-        // check whether the expiration time has be surpassed, if yes delete the bundle with the appropriate reason code
-        if (expirationTime < currentTime) {
-            BPA->bundleDeletion(
-                bundle, BundleStatusReportReasonCodes::LIFETIME_EXPIRED);
-            return false;
+            // check whether the expiration time has be surpassed, if yes delete the bundle with the appropriate reason code
+            if (expirationTime < currentTime) {
+                BPA->bundleDeletion(
+                    bundle, BundleStatusReportReasonCodes::LIFETIME_EXPIRED);
+                return false;
+            }
         }
+    }
+    else {
+        ESP_LOGW("checkExpiration",
+                 "Accurate Clock enabled, but not synchronized! Falling back "
+                 "to non accurate clock operation");
     }
 #endif
     return true;

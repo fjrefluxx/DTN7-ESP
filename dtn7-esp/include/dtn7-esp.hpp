@@ -64,6 +64,15 @@ extern LoraCLA* loraCLA;
 extern BleCLA* bleCla;
 #endif
 
+#if CONFIG_HasAccurateClock
+
+/// @brief indicates whether the nodes clock has successfully been synchronized to DTN time.
+///         Only present if the "Accurate Clock" option is enabled in menuconfig.
+///         Any clock synchronization mechansm which is implemented must set this field to true once the clock is synchronized.
+extern bool clockSynced;
+
+#endif
+
 /// @brief task which takes new Bundles, either received via the router and one of its CLA's or locally generated, from the received queue and processes it accordingly, handles deletion of duplicate bundles and updates list of received Bundles if enabled menuconfig
 void bundleReceiver(void* param);
 
