@@ -68,7 +68,7 @@ class Endpoint {
     /// @brief Function for sending data via the BundleProtocolAgent, the actual Bundle is created here, attaches BundleAgeBlock if Node does not have accurate Clock, if CONFIG_AttachHopCountBlock is true the hop count block is added here
     /// @param data the Payload to send, stored in a byte Vector
     /// @param destination destination EID of the Bundle
-    /// @param anonymous optional ,whether to send the bundle anonymously, i.e. with dtn:// none as sender id, defaults to false
+    /// @param anonymous optional ,whether to send the bundle anonymously, i.e. with dtn:none as sender id, defaults to false
     /// @param lifetime lifetime assigned to the generated bundle in ms, defaults to the value set in menuconfig
     /// @return whether the sending was successful
     bool send(std::vector<uint8_t> data, std::string destination,
@@ -78,7 +78,7 @@ class Endpoint {
     /// @param data the Payload to send, should be a pointer to a array of uint8_t with the size passed in dataSize
     /// @param dataSize size of the Payload
     /// @param destination destination EID of the Bundle
-    /// @param anonymous optional ,whether to send the bundle anonymously, i.e. with dtn:// none as sender id, defaults to false
+    /// @param anonymous optional ,whether to send the bundle anonymously, i.e. with dtn:none as sender id, defaults to false
     /// @param lifetime lifetime assigned to the generated bundle in ms, defaults to the value set in menuconfig
     /// @return whether the sending was successful
     bool send(uint8_t* data, size_t dataSize, std::string destination,
@@ -87,7 +87,7 @@ class Endpoint {
     /// @brief Function for sending text via the BundleProtocolAgent, the actual Bundle is created here, attaches BundleAgeBlock if Node does not have accurate Clock, if CONFIG_AttachHopCountBlock is true the hop count block is added here
     /// @param text text to send
     /// @param destination  destination EID of the Bundle
-    /// @param anonymous optional ,whether to send the bundle anonymously, i.e. with dtn:// none as sender id, defaults to false
+    /// @param anonymous optional ,whether to send the bundle anonymously, i.e. with dtn:none as sender id, defaults to false
     /// @param lifetime lifetime assigned to the generated bundle in ms, defaults to the value set in menuconfig
     /// @return whether the sending was successful
     bool sendText(std::string text, std::string destination,

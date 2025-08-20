@@ -554,8 +554,8 @@ std::string DTN7::uriFromMac() {
     // convert the bytes of the mac address into a string
     std::string macString = Node::idFromBytes(macAddr, 6);
 
-    // addent "dtn:// " before the mac address and return
-    return std::string("dtn:// ").append(macString);
+    // append "dtn://" before the mac address, "/" after and return
+    return std::string("dtn://").append(macString).append("/");
 }
 
 void DTN7::addStaticPeer(Node node) {

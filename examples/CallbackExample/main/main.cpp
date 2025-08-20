@@ -62,8 +62,8 @@ extern "C" void app_main(void) {
     // now setup the BPA with the generated URI and store the returned pointer to the node central endpoint, setup the central endpoint with callback1().
     Endpoint* centralEndpoint = DTN7::setup(uri, callback1);
 
-    // we can register additional endpoints with the following. Here, we add an Endpoint called "dtn://callback2", which uses the "callback2" function as its callback
-    Endpoint* c2 = DTN7::registerEndpoint("dtn://callback2", callback2);
+    // we can register additional endpoints with the following. Here, we add an Endpoint called "dtn://callback2/", which uses the "callback2" function as its callback
+    Endpoint* c2 = DTN7::registerEndpoint("dtn://callback2/", callback2);
 
     // send message via node central endpoint to callback2 endpoint, not anonymous and with default lifetime
 
@@ -72,7 +72,7 @@ extern "C" void app_main(void) {
 
     // for message transmission we have do have data as uint8_t array, we take c string from std string and cast it to unit8_t
     centralEndpoint->send((uint8_t*)message.c_str(), message.size(),
-                          "dtn://callback2");
+                          "dtn://callback2/");
 
     // now we send the same message to the node central endpoint() (the central endpoint sends itself a message, this will trigger its callback)
     centralEndpoint->send((uint8_t*)message.c_str(), message.size(), uri);
@@ -88,16 +88,16 @@ extern "C" void app_main(void) {
 
     // we create additional Endpoint with replyingCallback
     Endpoint* replyingEndpoint =
-        DTN7::registerEndpoint("dtn://replyingEndpoint", replyingCallback);
+        DTN7::registerEndpoint("dtn://replyingEndpoint/", replyingCallback);
 
     // now send a message from the central endpoint to both endpoints using the replyingCallback. They will both result in an answer message beeing send to the central endpoint, which will trigger its callback
     // both answer messages will have the same payload, but a different source URI, which will be visible in the output created by the central endpoints callback upon reception of the replies.
 
     // for message transmission we have do have data as uint8_t array, we take c string from std string and cast it to unit8_t
     centralEndpoint->send((uint8_t*)message.c_str(), message.size(),
-                          "dtn://callback2");
+                          "dtn://callback2/");
 
     // now we send the same message to the node central endpoint() (the central endpoint sends itself a message, this will trigger its callback)
     centralEndpoint->send((uint8_t*)message.c_str(), message.size(),
-                          "dtn://replyingEndpoint");
+                          "dtn://replyingEndpoint/");
 }

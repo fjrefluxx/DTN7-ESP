@@ -63,9 +63,9 @@ To develop your own application, start from the [Template Project](/examples/Tem
     
     In the ```app_main``` function in ```main.cpp``` add
     ```
-    Endpoint* localEndpoint = DTN7::setup("dtn://node0");
+    Endpoint* localEndpoint = DTN7::setup("dtn://node0/");
     ```
-    to set up a local endpoint with the URI *dtn://node0*. This endpoint can now be used with its `send()` function.
+    to set up a local endpoint with the URI *dtn://node0/*. This endpoint can now be used with its `send()` function.
 
 > [!TIP]
 > **Reception Callback**

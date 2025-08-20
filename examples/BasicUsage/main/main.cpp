@@ -29,16 +29,16 @@ extern "C" void app_main(void) {
     Endpoint* centralEndpoint = DTN7::setup(uri);
 
     // we can register additional endpoints with the following. Here, we add a callback to the endpoint with a function pointer to the "callback" function defined above
-    Endpoint* target = DTN7::registerEndpoint("dtn://target", callback);
+    Endpoint* target = DTN7::registerEndpoint("dtn://target/", callback);
 
-    // send message via node central endpoint to other endpoint, here "dtn://target", not anonymous and with default lifetime
+    // send message via node central endpoint to other endpoint, here "dtn://target/", not anonymous and with default lifetime
 
     // message as string
     std::string message = "Test";
 
     // for message transmission we have do have data as uint8_t array, we take c string from std string and cast it to unit8_t
     centralEndpoint->send((uint8_t*)message.c_str(), message.size(),
-                          "dtn://target");
+                          "dtn://target/");
 
     // in the following can be seen how to remove a callback from an endpoint, this is equivalent to switching the Endpoint to a passive state, see RFC9171
     target->clearCallback();
@@ -47,7 +47,7 @@ extern "C" void app_main(void) {
 
     // send message again
     centralEndpoint->send((uint8_t*)message.c_str(), message.size(),
-                          "dtn://target");
+                          "dtn://target/");
 
     // poll endpoint for message
     while (true) {

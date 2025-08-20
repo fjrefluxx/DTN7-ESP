@@ -128,7 +128,7 @@ bool checkExpiration(BundleInfo* bundle);
 void deinitializeBPA();
 
 /// @brief creates a URI for the current node from its MAC address, useful for easily giving nodes unique node ID's
-/// @return string containing URI, format: "dtn:// xx.xx.xx.xx"
+/// @return string containing URI, format: "dtn://xx.xx.xx.xx/"
 std::string uriFromMac();
 
 /// @brief adds the Node to the list of known Peers, with UINT64MAX as last seen value
