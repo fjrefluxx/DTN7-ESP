@@ -1,0 +1,32 @@
+menu "Console Example Settings"
+    config PreSetup
+        bool "Setup Bundle Protocol Agent on Startup"
+        default False
+
+    config UseCustomNodeURI
+        bool "Use Custom Node URI"
+        default False
+        help 
+            Select whether to use a custom Node URI, otherwise the Node URI is generated from the device's MAC address
+        depends on PreSetup
+
+    config NodeURI
+        depends on UseCustomNodeURI
+        string "Node URI"
+        default "dtn://node1/"
+
+    config RegisterAdditionalEndpoint
+        bool "Register Additional Endpoint"
+        default False
+        help 
+            Select whether to register an additional Endpoint upon boot
+        depends on PreSetup
+    
+    config AdditionalEndpoint
+        depends on RegisterAdditionalEndpoint
+        string "Additional Endpoint"
+        default "dtn://demo/~group"
+        help
+            URI of the additional Endpoint to register
+    
+endmenu
