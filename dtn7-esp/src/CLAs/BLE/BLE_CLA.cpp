@@ -247,6 +247,7 @@ void BleCLA::discoveredPeer(const uint type, const uint8_t val[6], char* name,
         peer.addr[i] = val[i];
     peer.last_seen = currentTime;
     peer.name = peerName;
+    currentPeers.erase(peer); //remove old entry of peer, if it exists, in order to update its last seen time
     this->currentPeers.insert(peer);
     Node dtnNode = DTN7::BPA->storage->getNode(peerName);
     if (dtnNode.identifier == "empty")
