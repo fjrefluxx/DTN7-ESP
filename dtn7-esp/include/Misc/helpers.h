@@ -12,7 +12,7 @@
  */
 
 /// @brief reads an std::string from a CborValue containing a CBOR Text string. The given CborValue is advanced to the next element after the String
-/// @param value the CborValue to read string from. Will be advanced to next element after the string
+/// @param value the CborValue to read string from. Will NOT be advanced to next element after the string, as this leads to decoding errors if the next element is a CBOR primitive type
 /// @return the String Stored in the CborValue, or a string containing "error" if no string was stored
 inline std::string stringFromCbor(CborValue* value) {
     // check if passed value is a CBOR text string
@@ -24,9 +24,6 @@ inline std::string stringFromCbor(CborValue* value) {
 
         // copy string into char array
         cbor_value_copy_text_string(value, idChars, &idLength, value);
-
-        // advance value to next element
-        cbor_value_advance(value);
 
         // return read string
         return std::string(idChars, idLength);
