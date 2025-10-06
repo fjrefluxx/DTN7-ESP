@@ -1,5 +1,6 @@
 #include "Data.hpp"
 #include "cbor.h"
+#include "esp_log.h"
 #include "helpers.h"
 
 BundleInfo::BundleInfo(std::vector<uint8_t> serialized) {
@@ -146,7 +147,18 @@ Node::Node(std::vector<uint8_t> serialized) {
 
         // decode the individual elements using custom functions
         identifier = stringFromCbor(&ArrayValue);
-        Eids = decodeEidArray(&ArrayValue);
+        size_t arraySize=0;
+
+        //if the EID array is empty, just advance the value pointer
+        cbor_value_get_array_length(&ArrayValue, &arraySize); 
+        if(arraySize==0) {
+            cbor_value_advance(&ArrayValue);
+        }
+        else { 
+            Eids=decodeEidArray(&ArrayValue);
+            cbor_value_advance(&ArrayValue);
+        }
+        
         URI = stringFromCbor(&ArrayValue);
 
         // read the simple parameters using simple get value methods of the cbor libary
