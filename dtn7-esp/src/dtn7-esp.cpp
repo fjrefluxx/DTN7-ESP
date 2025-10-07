@@ -373,8 +373,14 @@ void DTN7::retryBundles(void* param) {
     while (true) {
 #if CONFIG_NOTIFY_RETRY_TASK  // if the experimental feature to allow the retry task to be triggered externally is enabled, we need to wait for notification instead of just sleeping
         // wait for notification to wake up retry task. If this notification does not appear, the original behavior is kept by the timeout
-        ulTaskNotifyTake(pdTRUE, (CONFIG_TimeBetweenStorageRetry * 1000) /
-                                     portTICK_PERIOD_MS);
+        uint32_t numOfNotifies =
+            ulTaskNotifyTake(pdTRUE, (CONFIG_TimeBetweenStorageRetry * 1000) /
+                                         portTICK_PERIOD_MS);
+        if (numOfNotifies > 0)
+            ESP_LOGI("bundleRetrier", "woken up by notification");
+        else {
+            ESP_LOGI("bundleRetrier", "woken up by timeout");
+        }
 #else
         // begin by waiting the time between retries as configured in menuconfig. This is done in the beginning of the Loop in order to not start by retrying directly after setup of the task
         vTaskDelay((CONFIG_TimeBetweenStorageRetry * 1000) /

@@ -247,16 +247,20 @@ void BleCLA::discoveredPeer(const uint type, const uint8_t val[6], char* name,
         peer.addr[i] = val[i];
     peer.last_seen = currentTime;
     peer.name = peerName;
+    currentPeers.erase(peer);  //remove old entry of peer, if it exists, in order to update its last seen time
     this->currentPeers.insert(peer);
     Node dtnNode = DTN7::BPA->storage->getNode(peerName);
-    if (dtnNode.identifier == "empty")
+    if (dtnNode.identifier == "empty") {
 
 #if CONFIG_NOTIFY_RETRY_TASK
-        // the discovered node is new, notify the bundle retry task in order to check if we have bundles which should be delivered to it
+        //the discovered node is new, notify the bundle retry task in order to check if we have bundles which should be delivered to it
         xTaskNotifyGive(DTN7::storageRetryHandle);
 #endif
-
-    dtnNode.identifier = std::string(val, val + 6);
+        dtnNode.identifier = peerName.substr(
+            6);  //set the identifier of the node to its URI, minus the dtn7 scheme part
+        ESP_LOGI("BLE peer Discovery", "Discovered new node, identifier: %s",
+                 dtnNode.identifier.c_str());
+    }
     if (dtnNode.URI == "none")
         dtnNode.URI = peerName;
     dtnNode.setLastSeen();
