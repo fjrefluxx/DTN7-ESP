@@ -1,0 +1,8 @@
+var searchData=
+[
+  ['handleforwarding_0',['handleforwarding',['../classSimpleBroadcastRouter.html#aeb6031ef6df3cfefe029193bf3cda3c6',1,'SimpleBroadcastRouter::handleForwarding()'],['../classEpidemicRouter.html#a98c1f3abf9c18ef396b2519aa1201546',1,'EpidemicRouter::handleForwarding()'],['../classRouter.html#a27233c55a9fabdf72cfe4c6b720efd2f',1,'Router::handleForwarding()']]],
+  ['hasbundlestoretry_1',['hasbundlestoretry',['../classFlashStorage.html#aef2fd426f4d3a56b47c573d67453c4da',1,'FlashStorage::hasBundlesToRetry()'],['../classInMemoryStorage.html#a25e1f9e999974c2a18569070b7d68a33',1,'InMemoryStorage::hasBundlesToRetry()'],['../classInMemoryStorageSerialized.html#a097e94758787d8412b0cb95d22aae9cd',1,'InMemoryStorageSerialized::hasBundlesToRetry()'],['../classInMemoryStorageSerializedIA.html#a91a145fc83296c8f80e085f27c007887',1,'InMemoryStorageSerializedIA::hasBundlesToRetry()'],['../classStorage.html#adc8cb8985cc11c7da9b199f46cd22eab',1,'Storage::hasBundlesToRetry()'],['../classDummyStorage.html#a65302da0922ca84f4e490d3aa7e9ece0',1,'DummyStorage::hasBundlesToRetry()']]],
+  ['hasdata_2',['hasData',['../classEndpoint.html#a850c730f3347aeeb2c5b5c8e3b956397',1,'Endpoint']]],
+  ['hash_3',['hash',['../classHashWrapper.html#abda7e85e261298b29fdb0c19e0ce95ed',1,'HashWrapper::hash()'],['../classStdHasher.html#ace2750c65c05e2333ecd3185edeb8e66',1,'StdHasher::hash()']]],
+  ['hopcountblock_4',['hopcountblock',['../classHopCountBlock.html#a960adceeaf342a96ce0cd712888d0602',1,'HopCountBlock::HopCountBlock(uint64_t hopLimit, uint64_t hopCount=0, uint8_t crcType=CRC_TYPE_NOCRC, uint64_t blockNumber=0)'],['../classHopCountBlock.html#ab0a26f7d89084c453cbd6e80d5c12b1a',1,'HopCountBlock::HopCountBlock()']]]
+];
