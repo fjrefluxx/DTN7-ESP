@@ -9,7 +9,7 @@
 
 class BundleProtocolAgent;
 
-/// @brief this class represents an DTN endpoint
+/// @brief This Class represents an DTN endpoint
 class Endpoint {
    private:
     /// @brief last time a bundle was created from this endpoint, in ms

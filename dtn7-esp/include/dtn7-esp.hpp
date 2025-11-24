@@ -17,7 +17,7 @@
  * Most relevant documentation can be found in the DTN7 namespace. \n
  * The BundleProtocolAgent as well as the Endpoint documentation may also be of interest.
  * For details on CBOR encoding and the representation of the bundle view the Bundle class and Block.hpp.
- * For details on usage and features read the readme of the Project
+ * For details on usage and features read the readme of the Project.
  * @file dtn7-esp.hpp
  * @brief Defines the DTN7 namespace containing most vital functionality.
  */

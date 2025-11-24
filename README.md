@@ -20,7 +20,7 @@ The implementation of the bundle data structure can be found under [dtn7-bundle]
 ### Getting Started
 The easiest starting point is to modify an [example](/examples/). In Visual Studio Code, open the folder of the desired example and run the ```Build Project``` command of the ESP-IDF extension.
 
-To develop your own application, start from the [Template Project](/examples/TemplateProject/).
+To develop your own application, start from the [Template Project](/examples/TemplateProject/). The doxygen documentation of the Project can be found [here](https://fjrefluxx.github.io/DTN7-ESP/) and the available `menuconfig ` options are described [here](/dtn7-esp/menuconfig.md).
 
 > [!NOTE] 
 > The project makes heavy use of the [ESP logging library](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/log.html). 
