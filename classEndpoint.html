@@ -78,7 +78,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>this class represents an DTN endpoint  
+<p>This Class represents an DTN endpoint.  
  <a href="classEndpoint.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Endpoint_8hpp_source.html">Endpoint.hpp</a>&gt;</code></p>
@@ -87,7 +87,7 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a09fbae9c5b20bb0ab27ebe42c7b64b75" id="r_a09fbae9c5b20bb0ab27ebe42c7b64b75"><td class="memItemLeft" align="right" valign="top"><a id="a09fbae9c5b20bb0ab27ebe42c7b64b75" name="a09fbae9c5b20bb0ab27ebe42c7b64b75"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Endpoint</b> ()</td></tr>
-<tr class="memdesc:a09fbae9c5b20bb0ab27ebe42c7b64b75"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructs an empty <a class="el" href="classEndpoint.html" title="this class represents an DTN endpoint">Endpoint</a> object <br /></td></tr>
+<tr class="memdesc:a09fbae9c5b20bb0ab27ebe42c7b64b75"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructs an empty <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> object <br /></td></tr>
 <tr class="separator:a09fbae9c5b20bb0ab27ebe42c7b64b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad854dfd9ebe13d5308d72dd00c4b131" id="r_aad854dfd9ebe13d5308d72dd00c4b131"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEndpoint.html#aad854dfd9ebe13d5308d72dd00c4b131">Endpoint</a> (std::string address, void(*onReceive)(std::vector&lt; uint8_t &gt;, std::string, std::string, <a class="el" href="classPrimaryBlock.html">PrimaryBlock</a>))</td></tr>
 <tr class="memdesc:aad854dfd9ebe13d5308d72dd00c4b131"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates an endpoint with a specified address and the specified callback  <br /></td></tr>
@@ -96,7 +96,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a18dd0ddc421c3d51a1c5ef4d8e3b5943"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates an endpoint with a specified address without a callback  <br /></td></tr>
 <tr class="separator:a18dd0ddc421c3d51a1c5ef4d8e3b5943"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab153d6858477d6d6b669f7100666eb3e" id="r_ab153d6858477d6d6b669f7100666eb3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEndpoint.html#ab153d6858477d6d6b669f7100666eb3e">setCallback</a> (void(*onReceive)(std::vector&lt; uint8_t &gt;, std::string, std::string, <a class="el" href="classPrimaryBlock.html">PrimaryBlock</a>))</td></tr>
-<tr class="memdesc:ab153d6858477d6d6b669f7100666eb3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds a callback to the <a class="el" href="classEndpoint.html" title="this class represents an DTN endpoint">Endpoint</a>, if it has none, otherwise overrides the Callback, if there are still received bundles stored which hve not been read using poll, these will be lost!  <br /></td></tr>
+<tr class="memdesc:ab153d6858477d6d6b669f7100666eb3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds a callback to the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a>, if it has none, otherwise overrides the Callback, if there are still received bundles stored which hve not been read using poll, these will be lost!  <br /></td></tr>
 <tr class="separator:ab153d6858477d6d6b669f7100666eb3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b5bb25cfed86df2b8525d05027e7126" id="r_a6b5bb25cfed86df2b8525d05027e7126"><td class="memItemLeft" align="right" valign="top"><a id="a6b5bb25cfed86df2b8525d05027e7126" name="a6b5bb25cfed86df2b8525d05027e7126"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clearCallback</b> ()</td></tr>
@@ -143,7 +143,7 @@ uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>sequenceNum</b></
 <tr class="separator:a21852c11da8f1d9d4c3477c2915a037a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>this class represents an DTN endpoint </p>
+<div class="textblock"><p>This Class represents an DTN endpoint. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aad854dfd9ebe13d5308d72dd00c4b131" name="aad854dfd9ebe13d5308d72dd00c4b131"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aad854dfd9ebe13d5308d72dd00c4b131">&#9670;&#160;</a></span>Endpoint() <span class="overload">[1/2]</span></h2>
@@ -175,7 +175,7 @@ uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>sequenceNum</b></
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">address</td><td>URI of the new endpoint </td></tr>
-    <tr><td class="paramname">onReceive</td><td>callback for the <a class="el" href="classEndpoint.html" title="this class represents an DTN endpoint">Endpoint</a> first argument of callback is bundle Payload as a byte vector, second is the destination endpoint URI, third is the Source <a class="el" href="classEndpoint.html" title="this class represents an DTN endpoint">Endpoint</a> URI, forth is the Primary Block of the corresponding bundle, WARNING: Callback is called from a different task! I must be thread safe! </td></tr>
+    <tr><td class="paramname">onReceive</td><td>callback for the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> first argument of callback is bundle Payload as a byte vector, second is the destination endpoint URI, third is the Source <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> URI, forth is the Primary Block of the corresponding bundle, WARNING: Callback is called from a different task! I must be thread safe! </td></tr>
   </table>
   </dd>
 </dl>
@@ -533,10 +533,10 @@ uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>sequenceNum</b></
       </table>
 </div><div class="memdoc">
 
-<p>adds a callback to the <a class="el" href="classEndpoint.html" title="this class represents an DTN endpoint">Endpoint</a>, if it has none, otherwise overrides the Callback, if there are still received bundles stored which hve not been read using poll, these will be lost! </p>
+<p>adds a callback to the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a>, if it has none, otherwise overrides the Callback, if there are still received bundles stored which hve not been read using poll, these will be lost! </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">onReceive</td><td>new callback for the <a class="el" href="classEndpoint.html" title="this class represents an DTN endpoint">Endpoint</a> first argument of callback is bundle Payload as a byte vector, second is the destination endpoint URI, third is the Source <a class="el" href="classEndpoint.html" title="this class represents an DTN endpoint">Endpoint</a> URI, forth is the Primary Block of the corresponding bundle, WARNING: Callback is called from a different task! I must be thread safe! </td></tr>
+    <tr><td class="paramname">onReceive</td><td>new callback for the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> first argument of callback is bundle Payload as a byte vector, second is the destination endpoint URI, third is the Source <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> URI, forth is the Primary Block of the corresponding bundle, WARNING: Callback is called from a different task! I must be thread safe! </td></tr>
   </table>
   </dd>
 </dl>
