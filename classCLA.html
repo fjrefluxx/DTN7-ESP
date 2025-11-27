@@ -77,7 +77,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>generic bas class for all <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a>'s  
+<p>generic base class for all <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a>'s  
  <a href="classCLA.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="CLA_8hpp_source.html">CLA.hpp</a>&gt;</code></p>
@@ -96,20 +96,20 @@ Inheritance diagram for CLA:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a786b4453e42beb4caac40042ceaf6bba" id="r_a786b4453e42beb4caac40042ceaf6bba"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCLA.html#a786b4453e42beb4caac40042ceaf6bba">getName</a> ()=0</td></tr>
-<tr class="memdesc:a786b4453e42beb4caac40042ceaf6bba"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the name of the <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a>  <br /></td></tr>
+<tr class="memdesc:a786b4453e42beb4caac40042ceaf6bba"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the name of the <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a>  <br /></td></tr>
 <tr class="separator:a786b4453e42beb4caac40042ceaf6bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16113cb9a513317a500988b7a392739d" id="r_a16113cb9a513317a500988b7a392739d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCLA.html#a16113cb9a513317a500988b7a392739d">checkCanAddress</a> ()=0</td></tr>
-<tr class="memdesc:a16113cb9a513317a500988b7a392739d"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a whether a <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> is able to send message to a specific, singular node. Returns False if the <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> broadcasts messages  <br /></td></tr>
+<tr class="memdesc:a16113cb9a513317a500988b7a392739d"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a whether a <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> is able to send message to a specific, singular node. Returns False if the <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> broadcasts messages  <br /></td></tr>
 <tr class="separator:a16113cb9a513317a500988b7a392739d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf44291f41e9cfa98e9c8b0a7fa39809" id="r_abf44291f41e9cfa98e9c8b0a7fa39809"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="classReceivedBundle.html">ReceivedBundle</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCLA.html#abf44291f41e9cfa98e9c8b0a7fa39809">getNewBundles</a> ()=0</td></tr>
-<tr class="memdesc:abf44291f41e9cfa98e9c8b0a7fa39809"><td class="mdescLeft">&#160;</td><td class="mdescRight">if the <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> is not setup to use the received queue, this function can be used to get the bundles received since the last time it was called, must be safe to call from a different thread than <a class="el" href="classCLA.html#a9972f5935f9b199734f8830f33020f40" title="send a bundle to a target node via the CLA, must be safe to call from a different thread than getNewB...">send()</a>  <br /></td></tr>
+<tr class="memdesc:abf44291f41e9cfa98e9c8b0a7fa39809"><td class="mdescLeft">&#160;</td><td class="mdescRight">if the <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> is not setup to use the received queue, this function can be used to get the bundles received since the last time it was called, must be safe to call from a different thread than <a class="el" href="classCLA.html#a9972f5935f9b199734f8830f33020f40" title="send a bundle to a target node via the CLA, must be safe to call from a different thread than getNewB...">send()</a>  <br /></td></tr>
 <tr class="separator:abf44291f41e9cfa98e9c8b0a7fa39809"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9972f5935f9b199734f8830f33020f40" id="r_a9972f5935f9b199734f8830f33020f40"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCLA.html#a9972f5935f9b199734f8830f33020f40">send</a> (<a class="el" href="classBundle.html">Bundle</a> *bundle, <a class="el" href="classNode.html">Node</a> *destination=nullptr)=0</td></tr>
-<tr class="memdesc:a9972f5935f9b199734f8830f33020f40"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a bundle to a target node via the <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a>, must be safe to call from a different thread than <a class="el" href="classCLA.html#abf44291f41e9cfa98e9c8b0a7fa39809" title="if the CLA is not setup to use the received queue, this function can be used to get the bundles recei...">getNewBundles()</a> / if the queue system is used thread safety to the thread receiving bundles has to be kept in mind  <br /></td></tr>
+<tr class="memdesc:a9972f5935f9b199734f8830f33020f40"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a bundle to a target node via the <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a>, must be safe to call from a different thread than <a class="el" href="classCLA.html#abf44291f41e9cfa98e9c8b0a7fa39809" title="if the CLA is not setup to use the received queue, this function can be used to get the bundles recei...">getNewBundles()</a> / if the queue system is used thread safety to the thread receiving bundles has to be kept in mind  <br /></td></tr>
 <tr class="separator:a9972f5935f9b199734f8830f33020f40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>generic bas class for all <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a>'s </p>
+<div class="textblock"><p>generic base class for all <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a>'s </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a16113cb9a513317a500988b7a392739d" name="a16113cb9a513317a500988b7a392739d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a16113cb9a513317a500988b7a392739d">&#9670;&#160;</a></span>checkCanAddress()</h2>
@@ -134,8 +134,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>returns a whether a <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> is able to send message to a specific, singular node. Returns False if the <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> broadcasts messages </p>
-<dl class="section return"><dt>Returns</dt><dd>whether a <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> can address specific nodes(true) or only broadcast messages(false) </dd></dl>
+<p>returns a whether a <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> is able to send message to a specific, singular node. Returns False if the <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> broadcasts messages </p>
+<dl class="section return"><dt>Returns</dt><dd>whether a <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> can address specific nodes(true) or only broadcast messages(false) </dd></dl>
 
 <p>Implemented in <a class="el" href="classBleCLA.html#a05ecf78e36fb083a5ad3af9eb5fdca00">BleCLA</a>, <a class="el" href="classLoraCLA.html#a4b0d2575f76e9aad796b70404736d4e6">LoraCLA</a>, and <a class="el" href="classSerialCLA.html#a3583faa2c5bdbd9de66846570c23f305">SerialCLA</a>.</p>
 
@@ -164,8 +164,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>returns the name of the <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> </p>
-<dl class="section return"><dt>Returns</dt><dd>std::string with the name of the <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> </dd></dl>
+<p>returns the name of the <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> </p>
+<dl class="section return"><dt>Returns</dt><dd>std::string with the name of the <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> </dd></dl>
 
 <p>Implemented in <a class="el" href="classBleCLA.html#a6e649a905f269a48f67085b8616de5a7">BleCLA</a>, <a class="el" href="classLoraCLA.html#af9fdab4680efe41737d18b0af744f594">LoraCLA</a>, and <a class="el" href="classSerialCLA.html#a28906f40f7bb04d44d03164c6a3da1b4">SerialCLA</a>.</p>
 
@@ -194,7 +194,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>if the <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> is not setup to use the received queue, this function can be used to get the bundles received since the last time it was called, must be safe to call from a different thread than <a class="el" href="classCLA.html#a9972f5935f9b199734f8830f33020f40" title="send a bundle to a target node via the CLA, must be safe to call from a different thread than getNewB...">send()</a> </p>
+<p>if the <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> is not setup to use the received queue, this function can be used to get the bundles received since the last time it was called, must be safe to call from a different thread than <a class="el" href="classCLA.html#a9972f5935f9b199734f8830f33020f40" title="send a bundle to a target node via the CLA, must be safe to call from a different thread than getNewB...">send()</a> </p>
 <dl class="section return"><dt>Returns</dt><dd>new received bundles since this function was last called </dd></dl>
 
 <p>Implemented in <a class="el" href="classBleCLA.html#a95ddd94cff3bd8065dd6013a3340fee5">BleCLA</a>, <a class="el" href="classLoraCLA.html#a75bd691f61b08a00730845eff1f0423e">LoraCLA</a>, and <a class="el" href="classSerialCLA.html#aeab33efb9568f5d0e95b5a1168d9eef8">SerialCLA</a>.</p>
@@ -235,11 +235,11 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>send a bundle to a target node via the <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a>, must be safe to call from a different thread than <a class="el" href="classCLA.html#abf44291f41e9cfa98e9c8b0a7fa39809" title="if the CLA is not setup to use the received queue, this function can be used to get the bundles recei...">getNewBundles()</a> / if the queue system is used thread safety to the thread receiving bundles has to be kept in mind </p>
+<p>send a bundle to a target node via the <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a>, must be safe to call from a different thread than <a class="el" href="classCLA.html#abf44291f41e9cfa98e9c8b0a7fa39809" title="if the CLA is not setup to use the received queue, this function can be used to get the bundles recei...">getNewBundles()</a> / if the queue system is used thread safety to the thread receiving bundles has to be kept in mind </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">bundle</td><td>the <a class="el" href="classBundle.html" title="Representation of a DTN7 bundle in accordance to RFC9171.">Bundle</a> to send </td></tr>
-    <tr><td class="paramname">destination</td><td>destination node, if the <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> can send to specific addresses, the nodes identifier is used to send only to this address </td></tr>
+    <tr><td class="paramname">destination</td><td>destination node, if the <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> can send to specific addresses, the nodes identifier is used to send only to this address </td></tr>
   </table>
   </dd>
 </dl>

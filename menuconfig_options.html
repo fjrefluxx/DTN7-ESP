@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>dtn7-esp: Overview</title>
+<title>dtn7-esp: DTN7-esp Config</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,154 +70,152 @@ $(function() {
 
 </div><!-- top -->
 <div><div class="header">
-  <div class="headertitle"><div class="title">Overview</div></div>
+  <div class="headertitle"><div class="title">DTN7-esp Config</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>[[<em>TOC</em>]]</p>
-<h1>DTN7-esp Config</h1>
-<h2>Basic Settings</h2>
-<h3><a class="el" href="classRouter.html">Router</a> Type</h3>
+<div class="textblock"><h1>Basic Settings</h1>
+<h2><a class="el" href="classRouter.html">Router</a> Type</h2>
 <p><br  />
 <b>default</b> Simple Broadcast</p>
 <p>Select the type of router to be used</p>
 <p>Options:<br  />
  <b>Simple Broadcast</b>: Basic epidemic style router, works with all CLAs and, if ones that broadcasts bundles are present, periodically broadcasts each bundle. See <a href="/README.md#routing">main readme "Routing"</a> for more information.</p>
 <p><b>Epidemic <a class="el" href="classRouter.html">Router</a></b>: more advanced epidemic router, requires information about network peers; therefore, CLAs need to implement an advertisement mechanism. See <a href="/README.md#routing">main readme "Routing"</a> for more information.</p>
-<h3>Time Interval in seconds in which to retry stored bundles</h3>
+<h2>Time Interval in seconds in which to retry stored bundles</h2>
 <p><br  />
 <b>default</b> 400</p>
-<h3>Time Interval in seconds in which CLAs not using the queue system are polled</h3>
+<h2>Time Interval in seconds in which CLAs not using the queue system are polled</h2>
 <p><br  />
 <b>default</b> 10</p>
-<h3>Attach Previous <a class="el" href="classNode.html" title="This class represents a DTN node.">Node</a> Block</h3>
+<h2>Attach Previous <a class="el" href="classNode.html" title="This class represents a DTN node.">Node</a> Block</h2>
 <p>Select whether to attach a previous node block to bundles. <br  />
 <b>default</b> FALSE</p>
-<h3>Attach Hop Count Block</h3>
+<h2>Attach Hop Count Block</h2>
 <p>Select whether to attach a hop count block to bundles. <br  />
 <b>default</b> FALSE</p>
-<h3>Default HopLimit</h3>
+<h2>Default HopLimit</h2>
 <p>If <em>Attach Hop Count Block</em> is enabled (only then is this option visible), what hop limit should be set?</p>
 <p><br  />
  <b>range</b> 1-255 <br  />
 <b>default</b> 5</p>
-<h3>Accurate Clock</h3>
+<h2>Accurate Clock</h2>
 <p>Select whether the node has an accurate Clock, synchronized to DTN time, if set to false, a bundle age block will be added to locally generated bundles <br  />
 <b>default</b> FALSE</p>
-<h3>Use GPS</h3>
+<h2>Use GPS</h2>
 <p>Choose if GPS is to be used for time synchronization (the local clock will be synchronized to DTN time, as defined in RFC9171). Additionally, GPS is used to track the position of the local node. <br  />
 <b>default</b> FALSE</p>
-<h3>GPS UART Number</h3>
+<h2>GPS UART Number</h2>
 <p>If <em>Use GPS</em> is enabled (only then is this option visible), choose the UART peripheral to use. <br  />
 <b>default</b> 1 <br  />
  <b>range</b> 0-2</p>
-<h3>GPS UART RX pin</h3>
+<h2>GPS UART RX pin</h2>
 <p>If <em>Use GPS</em> is enabled (only then is this option visible), select the pin used as UART RX (connect GPS module TX pin to the specified pin). <br  />
 <b>default</b> 16</p>
-<h3>GPS Update Interval</h3>
+<h2>GPS Update Interval</h2>
 <p>If <em>Use GPS</em> is enabled (only then is this option visible), select the interval in seconds in which GPS position is read and updated. <br  />
 <b>default</b> 600</p>
-<h3>LifeTime</h3>
+<h2>LifeTime</h2>
 <p>The <a class="el" href="classBundle.html" title="Representation of a DTN7 bundle in accordance to RFC9171.">Bundle</a> Lifetime to be set by default for locally generated bundles, in ms. <br  />
 <b>default</b> 86400000</p>
-<h3>Send Status Report</h3>
+<h2>Send Status Report</h2>
 <p>Whether the node should send status reports if requested, NOT IMPLEMENTED! This setting as no effect. <br  />
 <b>default</b> FALSE</p>
-<h3>Maximum Peer Age</h3>
+<h2>Maximum Peer Age</h2>
 <p>Maximum Time a node is stored in the list of known Peers after not being seen, in seconds. <br  />
 <b>default</b> 600</p>
-<h3>Override <a class="el" href="classBundle.html" title="Representation of a DTN7 bundle in accordance to RFC9171.">Bundle</a> Lifetime</h3>
+<h2>Override <a class="el" href="classBundle.html" title="Representation of a DTN7 bundle in accordance to RFC9171.">Bundle</a> Lifetime</h2>
 <p>If this setting is enabled, the lifetime stored in the Primary Block of bundles is ignored, and a custom value is used instead. <br  />
 <b>default</b> false</p>
-<h3>Lifetime in Seconds</h3>
+<h2>Lifetime in Seconds</h2>
 <p>If <em>Override <a class="el" href="classBundle.html" title="Representation of a DTN7 bundle in accordance to RFC9171.">Bundle</a> Lifetime</em> is enabled (only then is this option visible), this setting determines which lifetime, in seconds, is used. <br  />
 <b>default</b> 600</p>
-<h3>Use <a class="el" href="classBundle.html" title="Representation of a DTN7 bundle in accordance to RFC9171.">Bundle</a> ID's for reception Confirmation</h3>
-<p>If enabled, the local node stores a set of received bundle ID hashes. The hashes of the IDs of all received bundles are inserted into this set, which is emptied during each BPoL advertisement. Additionally, each node in the forwarded-to list of stored bundles has a set of bundle ID hashes that is used to check if the last transmission of the bundle to the node was successful. Enabling this affects: <a class="el" href="classEpidemicRouter.html#a6d6559e1c9da43bf2b28cbf112ee510b" title="checks whether a node is in a vector of forwarded to nodes and, if enabled in menuconfig: checks whet...">EpidemicRouter::checkForwardedTo()</a>, <a class="el" href="bpolProtobuf_8h.html#a5e6acde31e83030d2156782624a12636" title="encodes a BPoL advertise Packet containing the current node information">encodeAdvertisePacket()</a>, <a class="el" href="namespaceDTN7.html#ac37810cd62fc7fd6c891210ad73f7b97" title="task which takes new Bundles, either received via the router and one of its CLA&#39;s or locally generate...">DTN7::bundleReceiver()</a>, <a class="el" href="classNode.html" title="This class represents a DTN node.">Node</a> (Class), <a class="el" href="classNode.html#a4638a93e7ed124ed88c9f5998599f4ee" title="serializes a node object useful for storing node objects">Node::serialize()</a>, <a class="el" href="classBundleProtocolAgent.html#a929fa0ee4ec6bf0f7518f703a9c8dd0b" title="Handles the reception procedure described in RFC 9171 Section 5.6.">BundleProtocolAgent::bundleReception()</a>. Only compatible with <b><a class="el" href="classEpidemicRouter.html" title="Epidemic router functionality. The epidemic router checks whether any nodes are in range,...">EpidemicRouter</a></b> and <b>BPoL compatible LoRa <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a></b>. For more information see <a href="/README.md#extras--experimental-features">main readme "experimental features"</a>.</p>
+<h2>Use <a class="el" href="classBundle.html" title="Representation of a DTN7 bundle in accordance to RFC9171.">Bundle</a> ID's for reception Confirmation</h2>
+<p>If enabled, the local node stores a set of received bundle ID hashes. The hashes of the IDs of all received bundles are inserted into this set, which is emptied during each BPoL advertisement. Additionally, each node in the forwarded-to list of stored bundles has a set of bundle ID hashes that is used to check if the last transmission of the bundle to the node was successful. Enabling this affects: <a class="el" href="classEpidemicRouter.html#a6d6559e1c9da43bf2b28cbf112ee510b" title="checks whether a node is in a vector of forwarded to nodes and, if enabled in menuconfig: checks whet...">EpidemicRouter::checkForwardedTo()</a>, <a class="el" href="bpolProtobuf_8h.html#a5e6acde31e83030d2156782624a12636" title="encodes a BPoL advertise Packet containing the current node information">encodeAdvertisePacket()</a>, <a class="el" href="namespaceDTN7.html#ac37810cd62fc7fd6c891210ad73f7b97" title="task which takes new Bundles, either received via the router and one of its CLA&#39;s or locally generate...">DTN7::bundleReceiver()</a>, <a class="el" href="classNode.html" title="This class represents a DTN node.">Node</a> (Class), <a class="el" href="classNode.html#a4638a93e7ed124ed88c9f5998599f4ee" title="serializes a node object useful for storing node objects">Node::serialize()</a>, <a class="el" href="classBundleProtocolAgent.html#a929fa0ee4ec6bf0f7518f703a9c8dd0b" title="Handles the reception procedure described in RFC 9171 Section 5.6.">BundleProtocolAgent::bundleReception()</a>. Only compatible with <b><a class="el" href="classEpidemicRouter.html" title="Epidemic router functionality. The epidemic router checks whether any nodes are in range,...">EpidemicRouter</a></b> and <b>BPoL compatible LoRa <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a></b>. For more information see <a href="/README.md#extras--experimental-features">main readme "experimental features"</a>.</p>
 <p><br  />
 <b>default</b> False</p>
-<h3>CRC Selection</h3>
-<h4>CRC Type for Primary Blocks generated at this <a class="el" href="classNode.html" title="This class represents a DTN node.">Node</a></h4>
+<h2>CRC Selection</h2>
+<h3>CRC Type for Primary Blocks generated at this <a class="el" href="classNode.html" title="This class represents a DTN node.">Node</a></h3>
 <p>See RFC9172 Section 4.2.1 for details on the different CRC Types, 0 = No CRC, 1 = CRC16, 2 = CRC32C. <br  />
 <b>default</b> 1 <br  />
 <b>range</b> 0 2</p>
-<h4>CRC Type for Canonical Blocks generated at this <a class="el" href="classNode.html" title="This class represents a DTN node.">Node</a></h4>
+<h3>CRC Type for Canonical Blocks generated at this <a class="el" href="classNode.html" title="This class represents a DTN node.">Node</a></h3>
 <p>See RFC9172 Section 4.2.1 for details on the different CRC Types, 0 = No CRC, 1 = CRC16, 2 = CRC32C. <br  />
 <b>default</b> 0 <br  />
 <b>range</b> 0 2</p>
-<h2><a class="el" href="classStorage.html" title="base class for storage implementations, access to derived classes needs to be thread safe!">Storage</a> Config</h2>
-<h3><a class="el" href="classStorage.html" title="base class for storage implementations, access to derived classes needs to be thread safe!">Storage</a> Type</h3>
+<h1><a class="el" href="classStorage.html" title="base class for storage implementations, access to derived classes needs to be thread safe!">Storage</a> Config</h1>
+<h2><a class="el" href="classStorage.html" title="base class for storage implementations, access to derived classes needs to be thread safe!">Storage</a> Type</h2>
 <p>Select the storage implementation to be used. For more information regarding each storage type see <a href="/README.md#storage">main readme "storage"</a>.</p>
 <p><br  />
 <b>default</b> InMemory Serialized</p>
-<h4>Flash</h4>
+<h3>Flash</h3>
 <p>Choose this to use flash storage. To use flash storage a custom flash partition table should be used, otherwise it is not reasonably usable.</p>
-<h4>InMemory</h4>
-<p>Choose this to use In memory storage with class objects. </p><h4>InMemory Serialized</h4>
-<p>Choose this to use In memory storage with serialized objects. </p><h4>InMemory Serialized Improved Access</h4>
+<h3>InMemory</h3>
+<p>Choose this to use In memory storage with class objects. </p><h3>InMemory Serialized</h3>
+<p>Choose this to use In memory storage with serialized objects. </p><h3>InMemory Serialized Improved Access</h3>
 <p>Choose this to use In memory storage with serialized objects and replacement speed improvement.</p>
-<h4>No <a class="el" href="classStorage.html" title="base class for storage implementations, access to derived classes needs to be thread safe!">Storage</a>,</h4>
+<h3>No <a class="el" href="classStorage.html" title="base class for storage implementations, access to derived classes needs to be thread safe!">Storage</a>,</h3>
 <p>Use a dummy storage which does not actually stores bundles, useful for testing without influence from storage performance.</p>
-<h3>Retry Batch Size</h3>
+<h2>Retry Batch Size</h2>
 <p>The amount of bundles that should be read from storage at a time when retrying delayed bundles. <br  />
 <b>default</b> 5</p>
-<h3>Flash <a class="el" href="classStorage.html" title="base class for storage implementations, access to derived classes needs to be thread safe!">Storage</a></h3>
-<h4>Keep Bundles Between Restarts</h4>
+<h2>Flash <a class="el" href="classStorage.html" title="base class for storage implementations, access to derived classes needs to be thread safe!">Storage</a></h2>
+<h3>Keep Bundles Between Restarts</h3>
 <p>Whether stored bundles are persistent between restarts of the ESP. If this feature is enabled, the flash storage stores additional information, such as the start and end indices of its stored bundles in flash. These are then read on boot and the data partition is not erased. <br  />
 <b>default</b> FALSE</p>
-<h3>InMemory <a class="el" href="classStorage.html" title="base class for storage implementations, access to derived classes needs to be thread safe!">Storage</a> Config</h3>
-<h4>Max Stored Bundles</h4>
+<h2>InMemory <a class="el" href="classStorage.html" title="base class for storage implementations, access to derived classes needs to be thread safe!">Storage</a> Config</h2>
+<h3>Max Stored Bundles</h3>
 <p>The amount of Bundles to be stored locally when using InMemory <a class="el" href="classStorage.html" title="base class for storage implementations, access to derived classes needs to be thread safe!">Storage</a> with class objects. <br  />
 <b>default</b> 100</p>
-<h3>InMemory <a class="el" href="classStorage.html" title="base class for storage implementations, access to derived classes needs to be thread safe!">Storage</a> Serialized (Improved Access) Config</h3>
-<h4>Minimal Free Heap</h4>
+<h2>InMemory <a class="el" href="classStorage.html" title="base class for storage implementations, access to derived classes needs to be thread safe!">Storage</a> Serialized (Improved Access) Config</h2>
+<h3>Minimal Free Heap</h3>
 <p>The Minimal Heap in bytes that should be be kept free, when this is reached the <a class="el" href="classInMemoryStorageSerialized.html" title="Stores bundles, nodes and bundle IDs in memory. Bundles and nodes are serialized for storage....">InMemoryStorageSerialized</a> will delete the oldest bundles. The number of deleted bundles is set with <em>MaxRemovedBundles</em> <br  />
 <b>default</b> 40000</p>
-<h4>Max Removed Bundles</h4>
+<h3>Max Removed Bundles</h3>
 <p>Defines how many bundles are to be removed if there is not enough space to delay a bundle <br  />
 <b>default</b> 5</p>
-<h2><a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> selection</h2>
-<h3>Setup LoRa <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a></h3>
-<p>Whether to setup the LoRa <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> when setting up the <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> <br  />
+<h1><a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> selection</h1>
+<h2>Setup LoRa <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a></h2>
+<p>Whether to setup the LoRa <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> when setting up the <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> <br  />
 <b>default</b> false</p>
-<h3>Setup Serial <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a></h3>
-<p>Whether to setup the Serial <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> when setting up the <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> <br  />
+<h2>Setup Serial <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a></h2>
+<p>Whether to setup the Serial <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> when setting up the <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> <br  />
 <b>default</b> false</p>
-<h3>Setup BLE <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a></h3>
-<p>Whether to setup the BLE <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> when setting up the <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> <b>Important:</b> to use the BLE <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> Bluetooth must be enabled in menuconfig and the "Host" option must be set to "NimBLE" <br  />
+<h2>Setup BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a></h2>
+<p>Whether to setup the BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> when setting up the <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> <b>Important:</b> to use the BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> Bluetooth must be enabled in menuconfig and the "Host" option must be set to "NimBLE" <br  />
 <b>default</b> false</p>
-<h2>Task/Queue Settings</h2>
-<h3>Receive Queue Size</h3>
+<h1>Task/Queue Settings</h1>
+<h2>Receive Queue Size</h2>
 <p>Size (amount of elements which can be in the queue at each time) of the ReceiveQueue <br  />
 <b>default</b> 10</p>
-<h3>Forward Queue Size</h3>
+<h2>Forward Queue Size</h2>
 <p>Size (amount of elements which can be in the queue at each time) of the ForwardQueue <br  />
 <b>default</b> 10</p>
-<h3>BundleReceiverStackSize</h3>
+<h2>BundleReceiverStackSize</h2>
 <p>Stack size in bytes of the BundleReceiver task. Should be chosen large enough to handle stack needed by callbacks. <br  />
 <b>default</b> 8000</p>
-<h3>BundleRetryStackSize</h3>
+<h2>BundleRetryStackSize</h2>
 <p>Stack size in bytes of the BundleRetry task. <br  />
 <b>default</b> 8000</p>
-<h3>BundleForwarderStackSize</h3>
+<h2>BundleForwarderStackSize</h2>
 <p>Stack size in bytes of the BundleForwarder task. <br  />
 <b>default</b> 12000</p>
-<h3>ClaPollStacksize</h3>
-<p>Stack size in Bytes of the <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> Poll Task. <br  />
+<h2>ClaPollStacksize</h2>
+<p>Stack size in Bytes of the <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> Poll Task. <br  />
 <b>default</b> 4000</p>
-<h3>BundleReceiverPriority</h3>
+<h2>BundleReceiverPriority</h2>
 <p>Task priority of the BundleReceiver task <br  />
 <b>default</b> 2</p>
-<h3>BundleRetryPriority</h3>
+<h2>BundleRetryPriority</h2>
 <p>Task priority of the BundlePoll Task <br  />
 <b>default</b> 2</p>
-<h3>BundleForwarderPriority</h3>
+<h2>BundleForwarderPriority</h2>
 <p>Task priority of the BundleForwarder Task <br  />
 <b>default</b> 2</p>
-<h3>ClaPollPriority</h3>
-<p>Task priority of the <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> Poll Task <br  />
+<h2>ClaPollPriority</h2>
+<p>Task priority of the <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> Poll Task <br  />
 <b>default</b> 2</p>
-<h1><a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> Config</h1>
-<h2>Lora <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> Config</h2>
+<h1><a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> Config</h1>
+<h2>Lora <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> Config</h2>
 <h3>BPoL</h3>
 <h4>enableBPoL</h4>
 <p>Set whether to send BPoL-compatible packets. If set to false, sent packets will be compatible with dtn7zero. <br  />
@@ -294,9 +292,9 @@ $(function() {
 <b>default</b> 13</p>
 <h2>Serial Cla Config</h2>
 <h3>UART port number</h3>
-<p>UART hardware port number for serial <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a>. The available choices depend on the model of ESP32 used.</p>
+<p>UART hardware port number for serial <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a>. The available choices depend on the model of ESP32 used.</p>
 <h3>UART baud Rate</h3>
-<p>UART baud rate for the serial <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> <br  />
+<p>UART baud rate for the serial <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> <br  />
 <b>range</b> 1200 115200 <br  />
 <b>default</b> 9600 help</p>
 <h3>UART RXD pin number</h3>
@@ -308,15 +306,15 @@ $(function() {
 <h3>Size Of the Uart RX Buffer</h3>
 <p>The size of the UART RX buffer <br  />
 <b>default</b> 1024</p>
-<h2>BLE <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> config</h2>
+<h2>BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> config</h2>
 <h3>Minimum time in MS between BLE bundle send operations</h3>
 <p>send() operations which occur with less time in between each other than defined here are delayed until the gap between messages reaches the time defined here <br  />
 <b>default</b> 1000</p>
 <h3>Advertise time</h3>
-<p>Time in ms the BLE <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> spends in advertise mode. To this time a random offset is added at the beginning of each advertise interval. <br  />
+<p>Time in ms the BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> spends in advertise mode. To this time a random offset is added at the beginning of each advertise interval. <br  />
 <b>default</b> 3000</p>
 <h3>Scan time</h3>
-<p>Time in ms the BLE <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> spends in scan mode. To this time a random offset is added at the beginning of each scan interval. <br  />
+<p>Time in ms the BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> spends in scan mode. To this time a random offset is added at the beginning of each scan interval. <br  />
 <b>default</b> 3000</p>
 <h3>Max scan/advertise offset</h3>
 <p>This defines the upper bound of the random length variation of BLE scanning/advertising <br  />
@@ -328,11 +326,11 @@ $(function() {
 <p>Sets the maximal number of BLE transmission attempts to be made for each BLE <a class="el" href="classCLA.html#a9972f5935f9b199734f8830f33020f40" title="send a bundle to a target node via the CLA, must be safe to call from a different thread than getNewB...">CLA::send()</a> call. <br  />
 <b>default</b> 3</p>
 <h3>BLE service UUID</h3>
-<p>This defines the UUID of the GATT service used by the BLE <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> <br  />
+<p>This defines the UUID of the GATT service used by the BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> <br  />
 <b>range</b> 0x0000 0xFFFF <br  />
 <b>default</b> 0xFEE1</p>
 <h3>BLE write UUID</h3>
-<p>This defines the UUID of the GATT write characteristic used by the BLE <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> <br  />
+<p>This defines the UUID of the GATT write characteristic used by the BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> <br  />
 <b>range</b> 0x0000 0xFFFF <br  />
 <b>default</b> 0xFEE2</p>
 <h1><a class="el" href="classRouter.html">Router</a> Config</h1>
@@ -352,7 +350,7 @@ $(function() {
 <b>default</b> 5</p>
 <h1>Experimental Settings</h1>
 <h2>Notify retry Task</h2>
-<p>Set this to true to enable an experimental feature that allows the bundle retry task to be triggered independently of its periodic wakeup. When enabled, the BLE <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> wakes up the retry task when it discovers a new peer. <br  />
+<p>Set this to true to enable an experimental feature that allows the bundle retry task to be triggered independently of its periodic wakeup. When enabled, the BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> wakes up the retry task when it discovers a new peer. <br  />
 <b>default</b> false </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

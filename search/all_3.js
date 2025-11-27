@@ -15,10 +15,11 @@ var searchData=
   ['dtn7_12',['DTN7',['../namespaceDTN7.html',1,'']]],
   ['dtn7_20bundle_13',['dtn7-bundle',['../md_dtn7-bundle_2README.html',1,'']]],
   ['dtn7_20esp_14',['dtn7 esp',['../md_dtn7-esp_2README.html',1,'dtn7-esp'],['../index.html',1,'dtn7-esp']]],
-  ['dtn7_2dbundle_2ecpp_15',['dtn7-bundle.cpp',['../dtn7-bundle_8cpp.html',1,'']]],
-  ['dtn7_2dbundle_2ehpp_16',['dtn7-bundle.hpp',['../dtn7-bundle_8hpp.html',1,'']]],
-  ['dtn7_2desp_2ecpp_17',['dtn7-esp.cpp',['../dtn7-esp_8cpp.html',1,'']]],
-  ['dtn7_2desp_2ehpp_18',['dtn7-esp.hpp',['../dtn7-esp_8hpp.html',1,'']]],
-  ['dummystorage_19',['dummystorage',['../classDummyStorage.html#ab22eb1bb2b8bb59ebaaa60ebf356f610',1,'DummyStorage::DummyStorage()'],['../classDummyStorage.html',1,'DummyStorage']]],
-  ['dutycyclepercent_20',['dutyCyclePercent',['../classLoraCLA.html#a231e00c93b0f1b6cb81d145f1da0e441',1,'LoraCLA']]]
+  ['dtn7_20esp_20config_15',['DTN7-esp Config',['../menuconfig_options.html',1,'']]],
+  ['dtn7_2dbundle_2ecpp_16',['dtn7-bundle.cpp',['../dtn7-bundle_8cpp.html',1,'']]],
+  ['dtn7_2dbundle_2ehpp_17',['dtn7-bundle.hpp',['../dtn7-bundle_8hpp.html',1,'']]],
+  ['dtn7_2desp_2ecpp_18',['dtn7-esp.cpp',['../dtn7-esp_8cpp.html',1,'']]],
+  ['dtn7_2desp_2ehpp_19',['dtn7-esp.hpp',['../dtn7-esp_8hpp.html',1,'']]],
+  ['dummystorage_20',['dummystorage',['../classDummyStorage.html#ab22eb1bb2b8bb59ebaaa60ebf356f610',1,'DummyStorage::DummyStorage()'],['../classDummyStorage.html',1,'DummyStorage']]],
+  ['dutycyclepercent_21',['dutyCyclePercent',['../classLoraCLA.html#a231e00c93b0f1b6cb81d145f1da0e441',1,'LoraCLA']]]
 ];

@@ -84,7 +84,7 @@ $(function() {
 Functions</h2></td></tr>
 <tr class="memitem:ac37810cd62fc7fd6c891210ad73f7b97" id="r_ac37810cd62fc7fd6c891210ad73f7b97"><td class="memItemLeft" align="right" valign="top"><a id="ac37810cd62fc7fd6c891210ad73f7b97" name="ac37810cd62fc7fd6c891210ad73f7b97"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>bundleReceiver</b> (void *param)</td></tr>
-<tr class="memdesc:ac37810cd62fc7fd6c891210ad73f7b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">task which takes new Bundles, either received via the router and one of its <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a>'s or locally generated, from the received queue and processes it accordingly, handles deletion of duplicate bundles and updates list of received Bundles if enabled menuconfig <br /></td></tr>
+<tr class="memdesc:ac37810cd62fc7fd6c891210ad73f7b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">task which takes new Bundles, either received via the router and one of its <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a>'s or locally generated, from the received queue and processes it accordingly, handles deletion of duplicate bundles and updates list of received Bundles if enabled menuconfig <br /></td></tr>
 <tr class="separator:ac37810cd62fc7fd6c891210ad73f7b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d9d7e99e1f616e83098299cd7e82e21" id="r_a9d9d7e99e1f616e83098299cd7e82e21"><td class="memItemLeft" align="right" valign="top"><a id="a9d9d7e99e1f616e83098299cd7e82e21" name="a9d9d7e99e1f616e83098299cd7e82e21"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>bundleForwarder</b> (void *param)</td></tr>
@@ -96,13 +96,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>retryBundles</b> (voi
 <tr class="separator:a4be5a662228a18750f0ac2d1185237a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6952f430533b709b2503ffdc2e8a143a" id="r_a6952f430533b709b2503ffdc2e8a143a"><td class="memItemLeft" align="right" valign="top"><a id="a6952f430533b709b2503ffdc2e8a143a" name="a6952f430533b709b2503ffdc2e8a143a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>pollClas</b> (void *param)</td></tr>
-<tr class="memdesc:a6952f430533b709b2503ffdc2e8a143a"><td class="mdescLeft">&#160;</td><td class="mdescRight">task which periodically polls <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a>'s not using the queue system <br /></td></tr>
+<tr class="memdesc:a6952f430533b709b2503ffdc2e8a143a"><td class="mdescLeft">&#160;</td><td class="mdescRight">task which periodically polls <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a>'s not using the queue system <br /></td></tr>
 <tr class="separator:a6952f430533b709b2503ffdc2e8a143a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16f82f09b53a70546f51d4cafaedeac3" id="r_a16f82f09b53a70546f51d4cafaedeac3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEndpoint.html">Endpoint</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDTN7.html#a16f82f09b53a70546f51d4cafaedeac3">setup</a> (std::string URI, void(*onReceive)(std::vector&lt; uint8_t &gt;, std::string, std::string, <a class="el" href="classPrimaryBlock.html">PrimaryBlock</a>))</td></tr>
-<tr class="memdesc:a16f82f09b53a70546f51d4cafaedeac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> with the given URI as the local nodes URI, returns the central <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> of this node.  <br /></td></tr>
+<tr class="memdesc:a16f82f09b53a70546f51d4cafaedeac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> with the given URI as the local nodes URI, returns the central <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> of this node.  <br /></td></tr>
 <tr class="separator:a16f82f09b53a70546f51d4cafaedeac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af55411f35a9f8b0ef7f1ec783aad5697" id="r_af55411f35a9f8b0ef7f1ec783aad5697"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEndpoint.html">Endpoint</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDTN7.html#af55411f35a9f8b0ef7f1ec783aad5697">setup</a> (std::string URI)</td></tr>
-<tr class="memdesc:af55411f35a9f8b0ef7f1ec783aad5697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> with the given URI as the local nodes URI, returns the central <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> of this node, this function does not set up a callback.  <br /></td></tr>
+<tr class="memdesc:af55411f35a9f8b0ef7f1ec783aad5697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> with the given URI as the local nodes URI, returns the central <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> of this node, this function does not set up a callback.  <br /></td></tr>
 <tr class="separator:af55411f35a9f8b0ef7f1ec783aad5697"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e4a08864373519fe64718fa5165878f" id="r_a8e4a08864373519fe64718fa5165878f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEndpoint.html">Endpoint</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDTN7.html#a8e4a08864373519fe64718fa5165878f">registerEndpoint</a> (std::string URI, void(*onReceive)(std::vector&lt; uint8_t &gt;, std::string, std::string, <a class="el" href="classPrimaryBlock.html">PrimaryBlock</a>)=NULL)</td></tr>
 <tr class="memdesc:a8e4a08864373519fe64718fa5165878f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an endpoint to the <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> with the given URI, this function allocates memory, remember to delete the created endpoint, after unregistering it!!  <br /></td></tr>
@@ -143,7 +143,7 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>storageRetryH
 <tr class="separator:a7660b889ce0369c115a4909d7e5855bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68d9eca36274ced782915a2a27a35fd5" id="r_a68d9eca36274ced782915a2a27a35fd5"><td class="memItemLeft" align="right" valign="top"><a id="a68d9eca36274ced782915a2a27a35fd5" name="a68d9eca36274ced782915a2a27a35fd5"></a>
 TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>claPollHandle</b> = NULL</td></tr>
-<tr class="memdesc:a68d9eca36274ced782915a2a27a35fd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">stores the task handle of the <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a> Poll Task <br /></td></tr>
+<tr class="memdesc:a68d9eca36274ced782915a2a27a35fd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">stores the task handle of the <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> Poll Task <br /></td></tr>
 <tr class="separator:a68d9eca36274ced782915a2a27a35fd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a692d62280c79ecb96e4c57501ac4e5cd" id="r_a692d62280c79ecb96e4c57501ac4e5cd"><td class="memItemLeft" align="right" valign="top"><a id="a692d62280c79ecb96e4c57501ac4e5cd" name="a692d62280c79ecb96e4c57501ac4e5cd"></a>
 TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>bundleForwardHandel</b> = NULL</td></tr>
@@ -166,11 +166,11 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>maxPeerAge</b> = C
 <tr class="separator:a63b77d8916d26dfdda6a5b6fa2098749"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5537d9b98c5eb038c05a5fbe63ccc4bf" id="r_a5537d9b98c5eb038c05a5fbe63ccc4bf"><td class="memItemLeft" align="right" valign="top"><a id="a5537d9b98c5eb038c05a5fbe63ccc4bf" name="a5537d9b98c5eb038c05a5fbe63ccc4bf"></a>
 <a class="el" href="classLoraCLA.html">LoraCLA</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>loraCLA</b> = NULL</td></tr>
-<tr class="memdesc:a5537d9b98c5eb038c05a5fbe63ccc4bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the LoRa <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a>, used to ensure that there is always at most one and for easy access from receive task <br /></td></tr>
+<tr class="memdesc:a5537d9b98c5eb038c05a5fbe63ccc4bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the LoRa <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a>, used to ensure that there is always at most one and for easy access from receive task <br /></td></tr>
 <tr class="separator:a5537d9b98c5eb038c05a5fbe63ccc4bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6c1194406894b4bb521ef9d6158a653" id="r_af6c1194406894b4bb521ef9d6158a653"><td class="memItemLeft" align="right" valign="top"><a id="af6c1194406894b4bb521ef9d6158a653" name="af6c1194406894b4bb521ef9d6158a653"></a>
 <a class="el" href="classBleCLA.html">BleCLA</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>bleCla</b> = NULL</td></tr>
-<tr class="memdesc:af6c1194406894b4bb521ef9d6158a653"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the BLE <a class="el" href="classCLA.html" title="generic bas class for all CLA&#39;s">CLA</a>, used to ensure that there is always at most one and for easy access from bluethooth stack <br /></td></tr>
+<tr class="memdesc:af6c1194406894b4bb521ef9d6158a653"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a>, used to ensure that there is always at most one and for easy access from bluethooth stack <br /></td></tr>
 <tr class="separator:af6c1194406894b4bb521ef9d6158a653"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a000e2786c07d7e25c1082ce3f2db4624" id="r_a000e2786c07d7e25c1082ce3f2db4624"><td class="memItemLeft" align="right" valign="top"><a id="a000e2786c07d7e25c1082ce3f2db4624" name="a000e2786c07d7e25c1082ce3f2db4624"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>clockSynced</b> = false</td></tr>
@@ -263,11 +263,11 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>clockSynced</b> = fal
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">URI</td><td>URI to be set as the endpoint URI </td></tr>
-    <tr><td class="paramname">onReceive</td><td>Function Pointer to the function to be called when data for the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> is received, WARNING: Callback is called from a different task! It must be thread safe! </td></tr>
+    <tr><td class="paramname">onReceive</td><td>Function Pointer to the function to be called when data for the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> is received, WARNING: Callback is called from a different task! It must be thread safe! </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> object that was created </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> object that was created </dd></dl>
 
 </div>
 </div>
@@ -287,14 +287,14 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>clockSynced</b> = fal
       </table>
 </div><div class="memdoc">
 
-<p>Initialise <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> with the given URI as the local nodes URI, returns the central <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> of this node, this function does not set up a callback. </p>
+<p>Initialise <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> with the given URI as the local nodes URI, returns the central <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> of this node, this function does not set up a callback. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">URI</td><td>URI to be set as the local nodes URI </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> object of the local node </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> object of the local node </dd></dl>
 
 </div>
 </div>
@@ -324,15 +324,15 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>clockSynced</b> = fal
       </table>
 </div><div class="memdoc">
 
-<p>Initialise <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> with the given URI as the local nodes URI, returns the central <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> of this node. </p>
+<p>Initialise <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> with the given URI as the local nodes URI, returns the central <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> of this node. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">URI</td><td>URI to be set as the local nodes URI </td></tr>
-    <tr><td class="paramname">onReceive</td><td>Function Pointer to the function to be called when data for the local <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> is received, first argument of callback is bundle Payload as a byte vector, second is the destination endpoint URI, third is the Source <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> URI, forth is the Primary Block of the corresponding bundle, WARNING: Callback is called from a different task! I must be thread safe! </td></tr>
+    <tr><td class="paramname">onReceive</td><td>Function Pointer to the function to be called when data for the local <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> is received, first argument of callback is bundle Payload as a byte vector, second is the destination endpoint URI, third is the Source <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> URI, forth is the Primary Block of the corresponding bundle, WARNING: Callback is called from a different task! I must be thread safe! </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> object of the local node </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> object of the local node </dd></dl>
 
 </div>
 </div>
@@ -355,7 +355,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>clockSynced</b> = fal
 <p>unregisters an endpoint from the <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">endpoint</td><td>pointer to the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> object which shall be unregistered </td></tr>
+    <tr><td class="paramname">endpoint</td><td>pointer to the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> object which shall be unregistered </td></tr>
   </table>
   </dd>
 </dl>
@@ -382,7 +382,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>clockSynced</b> = fal
 <p>unregisters an endpoint from the BUndleProtocolAgent </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">URI</td><td>URI of the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> to unregister </td></tr>
+    <tr><td class="paramname">URI</td><td>URI of the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> to unregister </td></tr>
   </table>
   </dd>
 </dl>

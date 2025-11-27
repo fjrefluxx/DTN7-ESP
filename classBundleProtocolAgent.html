@@ -130,7 +130,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af8d6df91dd1356f46a37385f3496323d"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks whether a <a class="el" href="structEID.html" title="Struct representing the EID.">EID</a> belongs to a locally registered endpoint  <br /></td></tr>
 <tr class="separator:af8d6df91dd1356f46a37385f3496323d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb7dabc4383ffdf69357455271d84673" id="r_aeb7dabc4383ffdf69357455271d84673"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEndpoint.html">Endpoint</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBundleProtocolAgent.html#aeb7dabc4383ffdf69357455271d84673">getLocalEndpoint</a> (std::string URI)</td></tr>
-<tr class="memdesc:aeb7dabc4383ffdf69357455271d84673"><td class="mdescLeft">&#160;</td><td class="mdescRight">if the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> with the given URI is registered with the BPA, this function returns a pointer to the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> object. This function returns an nullpointer if the endpoint was not registered.  <br /></td></tr>
+<tr class="memdesc:aeb7dabc4383ffdf69357455271d84673"><td class="mdescLeft">&#160;</td><td class="mdescRight">if the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> with the given URI is registered with the BPA, this function returns a pointer to the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> object. This function returns an nullpointer if the endpoint was not registered.  <br /></td></tr>
 <tr class="separator:aeb7dabc4383ffdf69357455271d84673"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -153,7 +153,7 @@ QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>receiveQueue
 <tr class="separator:ae84a4dfd54f2fd65f067246b88969a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a300ba8e54443ee072583e8b2c3242dfa" id="r_a300ba8e54443ee072583e8b2c3242dfa"><td class="memItemLeft" align="right" valign="top"><a id="a300ba8e54443ee072583e8b2c3242dfa" name="a300ba8e54443ee072583e8b2c3242dfa"></a>
 <a class="el" href="classEndpoint.html">Endpoint</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>localEndpoint</b> = nullptr</td></tr>
-<tr class="memdesc:a300ba8e54443ee072583e8b2c3242dfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the local <a class="el" href="classNode.html" title="This class represents a DTN node.">Node</a> Central <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> This is instantiated in the setup() method from the <a class="el" href="namespaceDTN7.html" title="This is the main dtn7 namespace. It contains all functionality regarding setup and basic operation of...">DTN7</a> namespace <br /></td></tr>
+<tr class="memdesc:a300ba8e54443ee072583e8b2c3242dfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the local <a class="el" href="classNode.html" title="This class represents a DTN node.">Node</a> Central <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> This is instantiated in the setup() method from the <a class="el" href="namespaceDTN7.html" title="This is the main dtn7 namespace. It contains all functionality regarding setup and basic operation of...">DTN7</a> namespace <br /></td></tr>
 <tr class="separator:a300ba8e54443ee072583e8b2c3242dfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86a186aded988273ce1d655b8c14c100" id="r_a86a186aded988273ce1d655b8c14c100"><td class="memItemLeft" align="right" valign="top"><a id="a86a186aded988273ce1d655b8c14c100" name="a86a186aded988273ce1d655b8c14c100"></a>
 std::vector&lt; <a class="el" href="classEndpoint.html">Endpoint</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>registeredEndpoints</b></td></tr>
@@ -446,14 +446,14 @@ std::vector&lt; <a class="el" href="classEndpoint.html">Endpoint</a> * &gt;&#160
       </table>
 </div><div class="memdoc">
 
-<p>if the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> with the given URI is registered with the BPA, this function returns a pointer to the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> object. This function returns an nullpointer if the endpoint was not registered. </p>
+<p>if the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> with the given URI is registered with the BPA, this function returns a pointer to the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> object. This function returns an nullpointer if the endpoint was not registered. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">URI</td><td>of the requested endpoint </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>pointer to the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> object, NULL pointer if it is not registered with the BPA </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> object, NULL pointer if it is not registered with the BPA </dd></dl>
 
 </div>
 </div>
@@ -530,7 +530,7 @@ std::vector&lt; <a class="el" href="classEndpoint.html">Endpoint</a> * &gt;&#160
 <p>registers the given endpoint with the <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">endpoint</td><td><a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> object to be registered </td></tr>
+    <tr><td class="paramname">endpoint</td><td><a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> object to be registered </td></tr>
   </table>
   </dd>
 </dl>
@@ -556,11 +556,11 @@ std::vector&lt; <a class="el" href="classEndpoint.html">Endpoint</a> * &gt;&#160
 <p>removes an endpoint from the locally registered endpoints </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">endpoint</td><td>the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> to unregister </td></tr>
+    <tr><td class="paramname">endpoint</td><td>the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> to unregister </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>whether the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint.">Endpoint</a> was registered </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>whether the <a class="el" href="classEndpoint.html" title="This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.">Endpoint</a> was registered </dd></dl>
 
 </div>
 </div>
