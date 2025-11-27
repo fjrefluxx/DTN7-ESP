@@ -1,7 +1,7 @@
 var searchData=
 [
   ['schemecode_0',['schemeCode',['../structEID.html#a4624ba8c59b0db2839cba5f8cfba629e',1,'EID']]],
-  ['send_1',['send',['../classBleCLA.html#a760cd5c1660ea361aaac0d1df96f1720',1,'BleCLA::send()'],['../classCLA.html#a9972f5935f9b199734f8830f33020f40',1,'CLA::send()'],['../classLoraCLA.html#a9ef6b8e23e5acaa97aab37f6fdb21521',1,'LoraCLA::send()'],['../classSerialCLA.html#af1a6ffdb1a3d905c1e6412f3502d865b',1,'SerialCLA::send()'],['../classEndpoint.html#a0183bdca155f5d28a3853e88d7497faa',1,'Endpoint::send(std::vector&lt; uint8_t &gt; data, std::string destination, bool anonymous=false, uint64_t lifetime=CONFIG_BundleTTL)'],['../classEndpoint.html#a69ef5674fb3ef283508428488a8f6eb6',1,'Endpoint::send(uint8_t *data, size_t dataSize, std::string destination, bool anonymous=false, uint64_t lifetime=CONFIG_BundleTTL)']]],
+  ['send_1',['send',['../classEndpoint.html#a69ef5674fb3ef283508428488a8f6eb6',1,'Endpoint::send()'],['../classBleCLA.html#a760cd5c1660ea361aaac0d1df96f1720',1,'BleCLA::send()'],['../classCLA.html#a9972f5935f9b199734f8830f33020f40',1,'CLA::send()'],['../classLoraCLA.html#a9ef6b8e23e5acaa97aab37f6fdb21521',1,'LoraCLA::send()'],['../classSerialCLA.html#af1a6ffdb1a3d905c1e6412f3502d865b',1,'SerialCLA::send()'],['../classEndpoint.html#a0183bdca155f5d28a3853e88d7497faa',1,'Endpoint::send()']]],
   ['sendadvertise_2',['sendAdvertise',['../classLoraCLA.html#aa0103fcc83b021543819175a6435a849',1,'LoraCLA']]],
   ['sendtext_3',['sendText',['../classEndpoint.html#a42ae4536d9697d420f21ec8620aa7c87',1,'Endpoint']]],
   ['sendtopreviousnode_4',['sendToPreviousNode',['../classRouter.html#a969cd7ff6001bb7444a9383a03c6160a',1,'Router']]],
@@ -12,8 +12,8 @@ var searchData=
   ['setbundleid_9',['setBundleID',['../classBundle.html#ae20e7e3bbcf188c5f5022d9f7c63d478',1,'Bundle']]],
   ['setcallback_10',['setCallback',['../classEndpoint.html#ab153d6858477d6d6b669f7100666eb3e',1,'Endpoint']]],
   ['setdest_11',['setDest',['../classBundle.html#a424ff4e6e010cca9b66be5074390aa52',1,'Bundle']]],
-  ['setflag_12',['setflag',['../classCanonicalBlock.html#aab5f9f3e27bd4b0d20c255dcb0086f25',1,'CanonicalBlock::setFlag()'],['../classPrimaryBlock.html#a8d0a736c9812d489ad44edde680c0943',1,'PrimaryBlock::setFlag(int flag)']]],
-  ['setflags_13',['setflags',['../classPrimaryBlock.html#a3ac68d6bf779cf5085bb09495e565813',1,'PrimaryBlock::setFlags()'],['../classCanonicalBlock.html#ae20a3e07a3633b6dfb2a8f0075e08d77',1,'CanonicalBlock::setFlags()']]],
+  ['setflag_12',['setflag',['../classCanonicalBlock.html#aab5f9f3e27bd4b0d20c255dcb0086f25',1,'CanonicalBlock::setFlag()'],['../classPrimaryBlock.html#a8d0a736c9812d489ad44edde680c0943',1,'PrimaryBlock::setFlag()']]],
+  ['setflags_13',['setflags',['../classCanonicalBlock.html#ae20a3e07a3633b6dfb2a8f0075e08d77',1,'CanonicalBlock::setFlags()'],['../classPrimaryBlock.html#a3ac68d6bf779cf5085bb09495e565813',1,'PrimaryBlock::setFlags()']]],
   ['setlastseen_14',['setLastSeen',['../classNode.html#a56edba9bd509d0a222106e0f5c9efd90',1,'Node']]],
   ['setposition_15',['setPosition',['../classNode.html#a30507329036b1d361f8eb727f6e023aa',1,'Node']]],
   ['setreceivedtime_16',['setReceivedTime',['../classBundle.html#a75656a8372fcc57427dd17929fbaf3a5',1,'Bundle']]],
@@ -31,11 +31,14 @@ var searchData=
   ['spitransfer_28',['spiTransfer',['../classEspHal2.html#a301bc0e86812bedce6784ecbe6970ebc',1,'EspHal2']]],
   ['ssp_29',['SSP',['../structEID.html#ab4a5fcc411def62e831ee333787fbce4',1,'EID']]],
   ['sspsize_30',['sspSize',['../structEID.html#ad6d98f376fc74851b307d7bf411e388e',1,'EID']]],
-  ['startofdutycycletime_31',['startOfDutyCycleTime',['../classLoraCLA.html#a5a168056842c656a43ca42da731405c3',1,'LoraCLA']]],
-  ['stdhasher_32',['StdHasher',['../classStdHasher.html',1,'']]],
-  ['storage_33',['storage',['../classStorage.html#a80ef6af5e4c9fd4424ae16e808d05291',1,'Storage::Storage()'],['../classStorage.html',1,'Storage'],['../classBundleProtocolAgent.html#ad1910ea2aa8386f73e2b1c47d92ca994',1,'BundleProtocolAgent::storage']]],
-  ['storageretryhandle_34',['storageRetryHandle',['../namespaceDTN7.html#a7660b889ce0369c115a4909d7e5855bb',1,'DTN7']]],
-  ['storeseen_35',['storeseen',['../classFlashStorage.html#aea1c5bcc14f1e49b0e52b79e0b756a66',1,'FlashStorage::storeSeen()'],['../classInMemoryStorage.html#ac43bf9f46036daddef208b7107d5ea88',1,'InMemoryStorage::storeSeen()'],['../classInMemoryStorageSerialized.html#a6abfa3e5fe0a5be502764122ae21cc84',1,'InMemoryStorageSerialized::storeSeen()'],['../classStorage.html#a51c48f513db9ee772e7210da7d88b638',1,'Storage::storeSeen()'],['../classDummyStorage.html#ae2875680d9ac4f6fa204ed89e48d24ff',1,'DummyStorage::storeSeen()']]],
-  ['stringfromcbor_36',['stringFromCbor',['../helpers_8h.html#ae622e76ceddf80a00f7a43e3dc3cf1da',1,'helpers.h']]],
-  ['stringtocbor_37',['stringToCbor',['../helpers_8h.html#a39262bc3dc1bd972a7cbdb5e6c2e08d6',1,'helpers.h']]]
+  ['start_5fble_5fscan_31',['start_ble_scan',['../BLEhandling_8hpp.html#afdc912ac0fe14be62efa9fe0612917f4',1,'BLEhandling.cpp']]],
+  ['startofdutycycletime_32',['startOfDutyCycleTime',['../classLoraCLA.html#a5a168056842c656a43ca42da731405c3',1,'LoraCLA']]],
+  ['stdhasher_33',['StdHasher',['../classStdHasher.html',1,'']]],
+  ['storage_34',['storage',['../classBundleProtocolAgent.html#ad1910ea2aa8386f73e2b1c47d92ca994',1,'BundleProtocolAgent::storage'],['../classStorage.html#a80ef6af5e4c9fd4424ae16e808d05291',1,'Storage::Storage()'],['../classStorage.html',1,'Storage']]],
+  ['storage_2ehpp_35',['Storage.hpp',['../Storage_8hpp.html',1,'']]],
+  ['storageretryhandle_36',['storageRetryHandle',['../namespaceDTN7.html#a7660b889ce0369c115a4909d7e5855bb',1,'DTN7']]],
+  ['storeseen_37',['storeseen',['../classFlashStorage.html#aea1c5bcc14f1e49b0e52b79e0b756a66',1,'FlashStorage::storeSeen()'],['../classDummyStorage.html#ae2875680d9ac4f6fa204ed89e48d24ff',1,'DummyStorage::storeSeen()'],['../classStorage.html#a51c48f513db9ee772e7210da7d88b638',1,'Storage::storeSeen()'],['../classInMemoryStorageSerialized.html#a6abfa3e5fe0a5be502764122ae21cc84',1,'InMemoryStorageSerialized::storeSeen()'],['../classInMemoryStorage.html#ac43bf9f46036daddef208b7107d5ea88',1,'InMemoryStorage::storeSeen()']]],
+  ['stringfromcbor_38',['stringFromCbor',['../helpers_8h.html#ae622e76ceddf80a00f7a43e3dc3cf1da',1,'helpers.h']]],
+  ['stringtocbor_39',['stringToCbor',['../helpers_8h.html#a39262bc3dc1bd972a7cbdb5e6c2e08d6',1,'helpers.h']]],
+  ['switchscanadvertisetask_40',['switchScanAdvertiseTask',['../BLEhandling_8hpp.html#a6ff1d7220944fa940afa432f986669ee',1,'BLEhandling.cpp']]]
 ];

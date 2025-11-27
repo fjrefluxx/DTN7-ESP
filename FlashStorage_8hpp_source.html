@@ -88,7 +88,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Data.hpp&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Storage.hpp&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="Storage_8hpp.html">Storage.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="dtn7-bundle_8hpp.html">dtn7-bundle.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;freertos/task.h&quot;</span></div>
@@ -97,100 +97,101 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define BUNDLE_STORAGE_NAMESPACE &quot;bundles&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classFlashStorage.html">   17</a></span><span class="keyword">class </span><a class="code hl_class" href="classFlashStorage.html">FlashStorage</a> : <span class="keyword">public</span> <a class="code hl_class" href="classStorage.html">Storage</a> {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    std::unordered_map&lt;std::string, Node&gt; nodes;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    std::set&lt;std::string&gt; bundle_ids;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    nvs_handle_t flashHandle;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    uint32_t oldestKey = 0;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    uint64_t oldestReceivedTime = 0;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    uint32_t highestUsedKey = 0;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    uint32_t lowestUsedKey = 0;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    SemaphoreHandle_t bundlesMutex;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    SemaphoreHandle_t nodesMutex;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    SemaphoreHandle_t bundleIdMutex;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>   <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_class" href="classFlashStorage.html">FlashStorage</a>() {</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        ESP_LOGI(<span class="stringliteral">&quot;FlashStorage Setup&quot;</span>,</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                 <span class="stringliteral">&quot;Setup FlashStorage\n It is strongly recommended to use &quot;</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                 <span class="stringliteral">&quot;Custom Partition Table with Flash Storage!&quot;</span>);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="comment">// create the required mutexes for each type of stored data</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        bundlesMutex = xSemaphoreCreateMutex();</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        nodesMutex = xSemaphoreCreateMutex();</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        bundleIdMutex = xSemaphoreCreateMutex();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="comment">// initialize the flash</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        esp_err_t err = nvs_flash_init();</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordflow">if</span> (err == ESP_ERR_NVS_NO_FREE_PAGES ||</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            err == ESP_ERR_NVS_NEW_VERSION_FOUND) {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="comment">// NVS partition was truncated and needs to be erased</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="comment">// Retry nvs_flash_init</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            ESP_ERROR_CHECK(nvs_flash_erase());</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            err = nvs_flash_init();</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        }</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="comment">// If configured in menuconfig, the flash storage is able to keep its information between restarts.</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="comment">// In this case we need to find the key range in which the bundles are stored. This information is also stored in the flash and is read in the following.</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="comment">// The same goes for the information about which key belongs to the oldest stored bundle.</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#if CONFIG_KeepBetweenRestart</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        err = nvs_get_u32(flashHandle, <span class="stringliteral">&quot;HighestKey&quot;</span>, &amp;highestUsedKey);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keywordflow">if</span> (err == ESP_ERR_NVS_NOT_FOUND)</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            highestUsedKey = 0;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        err = nvs_get_u32(flashHandle, <span class="stringliteral">&quot;LowestKey&quot;</span>, &amp;lowestUsedKey);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">if</span> (err == ESP_ERR_NVS_NOT_FOUND)</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            lowestUsedKey = 0;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        err = nvs_get_u32(flashHandle, <span class="stringliteral">&quot;OldestKey&quot;</span>, &amp;oldestKey);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">if</span> (err == ESP_ERR_NVS_NOT_FOUND)</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            oldestKey = 0;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="comment">// if no information is to be kept in between restarts, we erase the flash</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        nvs_flash_erase();</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        err = nvs_flash_init();</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        ESP_ERROR_CHECK(err);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        nvs_open(BUNDLE_STORAGE_NAMESPACE, NVS_READWRITE, &amp;flashHandle);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    }</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <a class="code hl_class" href="classFlashStorage.html">~FlashStorage</a>() { nvs_close(flashHandle); }</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classFlashStorage.html#a0645539e7b1e67e651ce55526d210cab">addNode</a>(<a class="code hl_class" href="classNode.html">Node</a> node) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classFlashStorage.html#a947b124d030e50aaf48942e9cbb5ac43">removeNode</a>(std::string address) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <a class="code hl_class" href="classNode.html">Node</a> <a class="code hl_function" href="classFlashStorage.html#a5e9788477edbcfa828b090e4e2e9c925">getNode</a>(std::string address) <span class="keyword">override</span>;</div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classFlashStorage.html">   22</a></span><span class="keyword">class </span><a class="code hl_class" href="classFlashStorage.html">FlashStorage</a> : <span class="keyword">public</span> <a class="code hl_class" href="classStorage.html">Storage</a> {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    std::unordered_map&lt;std::string, Node&gt; nodes;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    std::set&lt;std::string&gt; bundle_ids;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    nvs_handle_t flashHandle;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    uint32_t oldestKey = 0;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    uint64_t oldestReceivedTime = 0;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    uint32_t highestUsedKey = 0;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    uint32_t lowestUsedKey = 0;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    SemaphoreHandle_t bundlesMutex;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    SemaphoreHandle_t nodesMutex;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    SemaphoreHandle_t bundleIdMutex;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>   <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_class" href="classFlashStorage.html">FlashStorage</a>() {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        ESP_LOGI(<span class="stringliteral">&quot;FlashStorage Setup&quot;</span>,</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                 <span class="stringliteral">&quot;Setup FlashStorage\n It is strongly recommended to use &quot;</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                 <span class="stringliteral">&quot;Custom Partition Table with Flash Storage!&quot;</span>);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="comment">// create the required mutexes for each type of stored data</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        bundlesMutex = xSemaphoreCreateMutex();</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        nodesMutex = xSemaphoreCreateMutex();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        bundleIdMutex = xSemaphoreCreateMutex();</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="comment">// initialize the flash</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        esp_err_t err = nvs_flash_init();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordflow">if</span> (err == ESP_ERR_NVS_NO_FREE_PAGES ||</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            err == ESP_ERR_NVS_NEW_VERSION_FOUND) {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="comment">// NVS partition was truncated and needs to be erased</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="comment">// Retry nvs_flash_init</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            ESP_ERROR_CHECK(nvs_flash_erase());</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            err = nvs_flash_init();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        }</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="comment">// If configured in menuconfig, the flash storage is able to keep its information between restarts.</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="comment">// In this case we need to find the key range in which the bundles are stored. This information is also stored in the flash and is read in the following.</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="comment">// The same goes for the information about which key belongs to the oldest stored bundle.</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">#if CONFIG_KeepBetweenRestart</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        err = nvs_get_u32(flashHandle, <span class="stringliteral">&quot;HighestKey&quot;</span>, &amp;highestUsedKey);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">if</span> (err == ESP_ERR_NVS_NOT_FOUND)</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            highestUsedKey = 0;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        err = nvs_get_u32(flashHandle, <span class="stringliteral">&quot;LowestKey&quot;</span>, &amp;lowestUsedKey);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">if</span> (err == ESP_ERR_NVS_NOT_FOUND)</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            lowestUsedKey = 0;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        err = nvs_get_u32(flashHandle, <span class="stringliteral">&quot;OldestKey&quot;</span>, &amp;oldestKey);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">if</span> (err == ESP_ERR_NVS_NOT_FOUND)</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            oldestKey = 0;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="comment">// if no information is to be kept in between restarts, we erase the flash</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        nvs_flash_erase();</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        err = nvs_flash_init();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        ESP_ERROR_CHECK(err);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        nvs_open(BUNDLE_STORAGE_NAMESPACE, NVS_READWRITE, &amp;flashHandle);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    }</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <a class="code hl_class" href="classFlashStorage.html">~FlashStorage</a>() { nvs_close(flashHandle); }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classFlashStorage.html#a0645539e7b1e67e651ce55526d210cab">addNode</a>(<a class="code hl_class" href="classNode.html">Node</a> node) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classFlashStorage.html#a947b124d030e50aaf48942e9cbb5ac43">removeNode</a>(std::string address) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    std::vector&lt;Node&gt; <a class="code hl_function" href="classFlashStorage.html#a7fdc7e859b46766a930a2948bc956b50">getNodes</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classFlashStorage.html#adce10d8a83254cd32845100f902f9e8d">checkSeen</a>(std::string bundleID) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <a class="code hl_class" href="classNode.html">Node</a> <a class="code hl_function" href="classFlashStorage.html#a5e9788477edbcfa828b090e4e2e9c925">getNode</a>(std::string address) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    std::vector&lt;Node&gt; <a class="code hl_function" href="classFlashStorage.html#a7fdc7e859b46766a930a2948bc956b50">getNodes</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classFlashStorage.html#aea1c5bcc14f1e49b0e52b79e0b756a66">storeSeen</a>(std::string bundleID) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classFlashStorage.html#adce10d8a83254cd32845100f902f9e8d">checkSeen</a>(std::string bundleID) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classFlashStorage.html#a5ef44ce25033a820c44a3f95fb6ac9c6">removeBundle</a>(std::string bundleID) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classFlashStorage.html#aea1c5bcc14f1e49b0e52b79e0b756a66">storeSeen</a>(std::string bundleID) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    std::vector&lt;BundleInfo&gt; <a class="code hl_function" href="classFlashStorage.html#ab0c14c818fcf2f2ae77a19d8579523b1">delayBundle</a>(<a class="code hl_class" href="classBundleInfo.html">BundleInfo</a>* bundle) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classFlashStorage.html#a5ef44ce25033a820c44a3f95fb6ac9c6">removeBundle</a>(std::string bundleID) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    std::vector&lt;BundleInfo&gt; <a class="code hl_function" href="classFlashStorage.html#a4f08acd6df8a07620ae96b5a09d30455">getBundlesRetry</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <a class="code hl_class" href="classBundleInfo.html">BundleInfo</a> <a class="code hl_function" href="classFlashStorage.html#a2e05534ee015aeacce6a1833b111957c">deleteOldest</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classFlashStorage.html#a5777971e7b1009fee37e3780dee49eda">beginRetryCycle</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classFlashStorage.html#aef2fd426f4d3a56b47c573d67453c4da">hasBundlesToRetry</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>};</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    std::vector&lt;BundleInfo&gt; <a class="code hl_function" href="classFlashStorage.html#ab0c14c818fcf2f2ae77a19d8579523b1">delayBundle</a>(<a class="code hl_class" href="classBundleInfo.html">BundleInfo</a>* bundle) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    std::vector&lt;BundleInfo&gt; <a class="code hl_function" href="classFlashStorage.html#a4f08acd6df8a07620ae96b5a09d30455">getBundlesRetry</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <a class="code hl_class" href="classBundleInfo.html">BundleInfo</a> <a class="code hl_function" href="classFlashStorage.html#a2e05534ee015aeacce6a1833b111957c">deleteOldest</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classFlashStorage.html#a5777971e7b1009fee37e3780dee49eda">beginRetryCycle</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classFlashStorage.html#aef2fd426f4d3a56b47c573d67453c4da">hasBundlesToRetry</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>};</div>
 </div>
+<div class="ttc" id="aStorage_8hpp_html"><div class="ttname"><a href="Storage_8hpp.html">Storage.hpp</a></div><div class="ttdoc">This file contains the definitions for the FlashStorage.</div></div>
 <div class="ttc" id="aclassBundleInfo_html"><div class="ttname"><a href="classBundleInfo.html">BundleInfo</a></div><div class="ttdoc">this class stores additional info to bundles and the corresponding Bundle</div><div class="ttdef"><b>Definition</b> Data.hpp:104</div></div>
-<div class="ttc" id="aclassFlashStorage_html"><div class="ttname"><a href="classFlashStorage.html">FlashStorage</a></div><div class="ttdoc">class which stores bundles in the ESP32's flash, a custom partition table is to be used</div><div class="ttdef"><b>Definition</b> FlashStorage.hpp:17</div></div>
+<div class="ttc" id="aclassFlashStorage_html"><div class="ttname"><a href="classFlashStorage.html">FlashStorage</a></div><div class="ttdoc">class which stores bundles in the ESP32's flash, a custom partition table is to be used</div><div class="ttdef"><b>Definition</b> FlashStorage.hpp:22</div></div>
 <div class="ttc" id="aclassFlashStorage_html_a0645539e7b1e67e651ce55526d210cab"><div class="ttname"><a href="classFlashStorage.html#a0645539e7b1e67e651ce55526d210cab">FlashStorage::addNode</a></div><div class="ttdeci">void addNode(Node node) override</div><div class="ttdoc">adds a node to the known nodes, if it is already present, it is overwritten</div><div class="ttdef"><b>Definition</b> FlashStorage.cpp:10</div></div>
 <div class="ttc" id="aclassFlashStorage_html_a2e05534ee015aeacce6a1833b111957c"><div class="ttname"><a href="classFlashStorage.html#a2e05534ee015aeacce6a1833b111957c">FlashStorage::deleteOldest</a></div><div class="ttdeci">BundleInfo deleteOldest() override</div><div class="ttdoc">deletes the oldest stored Bundle</div><div class="ttdef"><b>Definition</b> FlashStorage.cpp:247</div></div>
 <div class="ttc" id="aclassFlashStorage_html_a4f08acd6df8a07620ae96b5a09d30455"><div class="ttname"><a href="classFlashStorage.html#a4f08acd6df8a07620ae96b5a09d30455">FlashStorage::getBundlesRetry</a></div><div class="ttdeci">std::vector&lt; BundleInfo &gt; getBundlesRetry() override</div><div class="ttdoc">returns a portion previously delayed bundles, exact size can be configured in menuconfig,...</div><div class="ttdef"><b>Definition</b> FlashStorage.cpp:157</div></div>
@@ -204,7 +205,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aclassFlashStorage_html_aea1c5bcc14f1e49b0e52b79e0b756a66"><div class="ttname"><a href="classFlashStorage.html#aea1c5bcc14f1e49b0e52b79e0b756a66">FlashStorage::storeSeen</a></div><div class="ttdeci">void storeSeen(std::string bundleID) override</div><div class="ttdoc">adds a BundleId to the known BundleIDs, if it is not already known, if it is already stored it is ove...</div><div class="ttdef"><b>Definition</b> FlashStorage.cpp:67</div></div>
 <div class="ttc" id="aclassFlashStorage_html_aef2fd426f4d3a56b47c573d67453c4da"><div class="ttname"><a href="classFlashStorage.html#aef2fd426f4d3a56b47c573d67453c4da">FlashStorage::hasBundlesToRetry</a></div><div class="ttdeci">bool hasBundlesToRetry() override</div><div class="ttdoc">returns whether there are still bundles to be returned in this retry</div><div class="ttdef"><b>Definition</b> FlashStorage.cpp:293</div></div>
 <div class="ttc" id="aclassNode_html"><div class="ttname"><a href="classNode.html">Node</a></div><div class="ttdoc">This class represents a DTN node.</div><div class="ttdef"><b>Definition</b> Data.hpp:19</div></div>
-<div class="ttc" id="aclassStorage_html"><div class="ttname"><a href="classStorage.html">Storage</a></div><div class="ttdoc">base class for storage implementations, access to derived classes needs to be thread safe!</div><div class="ttdef"><b>Definition</b> Storage.hpp:14</div></div>
+<div class="ttc" id="aclassStorage_html"><div class="ttname"><a href="classStorage.html">Storage</a></div><div class="ttdoc">base class for storage implementations, access to derived classes needs to be thread safe!</div><div class="ttdef"><b>Definition</b> Storage.hpp:19</div></div>
 <div class="ttc" id="adtn7-bundle_8hpp_html"><div class="ttname"><a href="dtn7-bundle_8hpp.html">dtn7-bundle.hpp</a></div><div class="ttdoc">This file contains the definition of the DTN7 bundle in accordance to RFC9171.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

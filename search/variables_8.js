@@ -8,5 +8,6 @@ var searchData=
   ['localendpoint_5',['localEndpoint',['../classBundleProtocolAgent.html#a300ba8e54443ee072583e8b2c3242dfa',1,'BundleProtocolAgent']]],
   ['locallydelivered_6',['locallyDelivered',['../classBundleInfo.html#a48e2d4833cef5047a6b01259a2d1c540',1,'BundleInfo']]],
   ['localnode_7',['localNode',['../namespaceDTN7.html#a63b77d8916d26dfdda6a5b6fa2098749',1,'DTN7']]],
-  ['loracla_8',['loraCLA',['../namespaceDTN7.html#a5537d9b98c5eb038c05a5fbe63ccc4bf',1,'DTN7']]]
+  ['loracla_8',['loraCLA',['../namespaceDTN7.html#a5537d9b98c5eb038c05a5fbe63ccc4bf',1,'DTN7']]],
+  ['lorarechandle_9',['loraRecHandle',['../LoRaCLA_8hpp.html#a3228ef724c15cd4a2f1ef3255f85aaa3',1,'LoRaCLA.cpp']]]
 ];

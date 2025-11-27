@@ -7,10 +7,13 @@ var searchData=
   ['checkcrc_4',['checkcrc',['../Block_8hpp.html#ad309963b9ad7b0276fe39ee373ee0dfe',1,'checkCRC(uint8_t crcType, const uint8_t *data, size_t dataSize):&#160;Block.cpp'],['../Block_8cpp.html#ad309963b9ad7b0276fe39ee373ee0dfe',1,'checkCRC(uint8_t crcType, const uint8_t *data, size_t dataSize):&#160;Block.cpp']]],
   ['checkexpiration_5',['checkExpiration',['../namespaceDTN7.html#ac3347f95585ec8808271e4b9b8e6f5df',1,'DTN7']]],
   ['checkforwardedto_6',['checkForwardedTo',['../classEpidemicRouter.html#a6d6559e1c9da43bf2b28cbf112ee510b',1,'EpidemicRouter']]],
-  ['checkseen_7',['checkseen',['../classInMemoryStorageSerialized.html#a8307602c803d757235a1691928904168',1,'InMemoryStorageSerialized::checkSeen()'],['../classDummyStorage.html#aa4eb858d7b8804ade1e74392c2150bc2',1,'DummyStorage::checkSeen()'],['../classStorage.html#a18eed947d16a67c6834e46aa4a9fc56a',1,'Storage::checkSeen()'],['../classInMemoryStorage.html#a710de61fc566a9dc95e14c1c3d8072ae',1,'InMemoryStorage::checkSeen()'],['../classFlashStorage.html#adce10d8a83254cd32845100f902f9e8d',1,'FlashStorage::checkSeen()']]],
-  ['cleanupblepeers_8',['cleanUpBlePeers',['../classBleCLA.html#a6b64eb33a7f7f465f93d690ff3ce81bc',1,'BleCLA']]],
-  ['clearcallback_9',['clearCallback',['../classEndpoint.html#a6b5bb25cfed86df2b8525d05027e7126',1,'Endpoint']]],
-  ['clearflag_10',['clearflag',['../classCanonicalBlock.html#aa4f4c0571625703151760c1546436af8',1,'CanonicalBlock::clearFlag()'],['../classPrimaryBlock.html#ae81929b528bee78b48bd5249269f415f',1,'PrimaryBlock::clearFlag()']]],
-  ['clearoldpeers_11',['clearOldPeers',['../namespaceDTN7.html#a0bb289baa90be45fba61a84b69750cd4',1,'DTN7']]],
-  ['creationtimestamp_12',['creationtimestamp',['../structCreationTimestamp.html#ab2f2c8a0a8e95aab59bd07a8aae83c76',1,'CreationTimestamp::CreationTimestamp(uint64_t time, uint64_t sequence)'],['../structCreationTimestamp.html#ad6e7eb6b52983e6eea73e1ff6b8ba85b',1,'CreationTimestamp::CreationTimestamp()']]]
+  ['checkseen_7',['checkseen',['../classDummyStorage.html#aa4eb858d7b8804ade1e74392c2150bc2',1,'DummyStorage::checkSeen()'],['../classStorage.html#a18eed947d16a67c6834e46aa4a9fc56a',1,'Storage::checkSeen()'],['../classInMemoryStorageSerialized.html#a8307602c803d757235a1691928904168',1,'InMemoryStorageSerialized::checkSeen()'],['../classInMemoryStorage.html#a710de61fc566a9dc95e14c1c3d8072ae',1,'InMemoryStorage::checkSeen()'],['../classFlashStorage.html#adce10d8a83254cd32845100f902f9e8d',1,'FlashStorage::checkSeen()']]],
+  ['cleanpeerstask_8',['cleanPeersTask',['../BLEhandling_8hpp.html#aa6c0c42e7c5824f5900e05227a13b27a',1,'BLEhandling.cpp']]],
+  ['cleanupblepeers_9',['cleanUpBlePeers',['../classBleCLA.html#a6b64eb33a7f7f465f93d690ff3ce81bc',1,'BleCLA']]],
+  ['clearcallback_10',['clearCallback',['../classEndpoint.html#a6b5bb25cfed86df2b8525d05027e7126',1,'Endpoint']]],
+  ['clearflag_11',['clearflag',['../classCanonicalBlock.html#aa4f4c0571625703151760c1546436af8',1,'CanonicalBlock::clearFlag()'],['../classPrimaryBlock.html#ae81929b528bee78b48bd5249269f415f',1,'PrimaryBlock::clearFlag()']]],
+  ['clearoldpeers_12',['clearOldPeers',['../namespaceDTN7.html#a0bb289baa90be45fba61a84b69750cd4',1,'DTN7']]],
+  ['connect_5fto_5fpeer_13',['connect_to_peer',['../BLEhandling_8hpp.html#a4bdf161689b30461dde5e79bfabe4715',1,'BLEhandling.cpp']]],
+  ['cpeerdiscovery_14',['cPeerDiscovery',['../BLEhandling_8hpp.html#acac54c6a63500d20ec2280e6c06e7c93',1,'BLEhandling.cpp']]],
+  ['creationtimestamp_15',['creationtimestamp',['../structCreationTimestamp.html#ab2f2c8a0a8e95aab59bd07a8aae83c76',1,'CreationTimestamp::CreationTimestamp(uint64_t time, uint64_t sequence)'],['../structCreationTimestamp.html#ad6e7eb6b52983e6eea73e1ff6b8ba85b',1,'CreationTimestamp::CreationTimestamp()']]]
 ];

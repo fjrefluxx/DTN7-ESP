@@ -82,7 +82,7 @@ $(document).ready(function() { init_codefold(0); });
   <div class="headertitle"><div class="title">LoRaCLA.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<a href="LoRaCLA_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;sdkconfig.h&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#if CONFIG_USE_LORA_CLA  </span><span class="comment">//only compile if LoRa CLA is enabled, this allows the overall project to be installed on platforms which do not have the required spi resources for the lora CLA (ESP32-C3)</span></div>
@@ -131,80 +131,83 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#define LORA_BUSY CONFIG_BUSY_PIN</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">extern</span> TaskHandle_t loraRecHandle;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#if CONFIG_enableBPoL</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">extern</span> TaskHandle_t advertiseTaskHandle;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">extern</span> uint32_t BPoLAdvertiseInterval;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#endif</span></div>
-<div class="foldopen" id="foldopen00061" data-start="{" data-end="};">
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classLoraCLA.html">   61</a></span><span class="keyword">class </span><a class="code hl_class" href="classLoraCLA.html">LoraCLA</a> : <span class="keyword">public</span> <a class="code hl_class" href="classCLA.html">CLA</a> {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>   <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    RadioLibHal* hal;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#if CONFIG_RadioModel_SX1276 || CONFIG_DevKit_LoRa32V2 || \</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">    CONFIG_DevKit_LiLygoLoRa32</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    SX1276 radio = NULL;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#elif CONFIG_RadioModel_SX1262 || CONFIG_DevKit_LoRa32V3</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    SX1262 radio = NULL;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#elif CONFIG_RadioModel_LLCC68</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    LLCC68 radio = NULL;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    std::string name = <span class="stringliteral">&quot;LoRa CLA&quot;</span>;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">bool</span> canAddress = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    SemaphoreHandle_t radioMutex;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>   <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classLoraCLA.html#a5a168056842c656a43ca42da731405c3">   80</a></span>    uint64_t <a class="code hl_variable" href="classLoraCLA.html#a5a168056842c656a43ca42da731405c3">startOfDutyCycleTime</a> = 0;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classLoraCLA.html#a0f441187e2f83307b039a4b2696ff2fd">   83</a></span>    uint64_t <a class="code hl_variable" href="classLoraCLA.html#a0f441187e2f83307b039a4b2696ff2fd">usedAirtimeInTime</a> = 0;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classLoraCLA.html#a231e00c93b0f1b6cb81d145f1da0e441">   86</a></span>    uint <a class="code hl_variable" href="classLoraCLA.html#a231e00c93b0f1b6cb81d145f1da0e441">dutyCyclePercent</a> = 0;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">extern</span> TaskHandle_t <a class="code hl_variable" href="LoRaCLA_8hpp.html#a3228ef724c15cd4a2f1ef3255f85aaa3">loraRecHandle</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#if CONFIG_enableBPoL</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">extern</span> TaskHandle_t <a class="code hl_variable" href="LoRaCLA_8hpp.html#ac05a607decc2989cfc5747c4980f6548">advertiseTaskHandle</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">extern</span> uint32_t <a class="code hl_variable" href="LoRaCLA_8hpp.html#a56fd25420b3207c9167c3b9b89c2c08f">BPoLAdvertiseInterval</a>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#endif</span></div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="};">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classLoraCLA.html">   67</a></span><span class="keyword">class </span><a class="code hl_class" href="classLoraCLA.html">LoraCLA</a> : <span class="keyword">public</span> <a class="code hl_class" href="classCLA.html">CLA</a> {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>   <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    RadioLibHal* hal;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#if CONFIG_RadioModel_SX1276 || CONFIG_DevKit_LoRa32V2 || \</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">    CONFIG_DevKit_LiLygoLoRa32</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    SX1276 radio = NULL;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#elif CONFIG_RadioModel_SX1262 || CONFIG_DevKit_LoRa32V3</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    SX1262 radio = NULL;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#elif CONFIG_RadioModel_LLCC68</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    LLCC68 radio = NULL;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    std::string name = <span class="stringliteral">&quot;LoRa CLA&quot;</span>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">bool</span> canAddress = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    SemaphoreHandle_t radioMutex;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>   <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classLoraCLA.html#a5a168056842c656a43ca42da731405c3">   86</a></span>    uint64_t <a class="code hl_variable" href="classLoraCLA.html#a5a168056842c656a43ca42da731405c3">startOfDutyCycleTime</a> = 0;</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    std::string <a class="code hl_function" href="classLoraCLA.html#af9fdab4680efe41737d18b0af744f594">getName</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classLoraCLA.html#a4b0d2575f76e9aad796b70404736d4e6">checkCanAddress</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <a class="code hl_class" href="classLoraCLA.html">LoraCLA</a>(int8_t sck = LORA_SCK, int8_t miso = LORA_MISO,</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            int8_t mosi = LORA_MOSI, int8_t nss = LORA_NSS,</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            int8_t dio0 = LORA_DIO0, int8_t nrst = LORA_NRST,</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            int8_t busy = LORA_BUSY);</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <a class="code hl_function" href="classLoraCLA.html#a63b190d4448e9041e59c1609e1e63a7f">~LoraCLA</a>();</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    std::vector&lt;ReceivedBundle*&gt; <a class="code hl_function" href="classLoraCLA.html#a75bd691f61b08a00730845eff1f0423e">getNewBundles</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classLoraCLA.html#a9ef6b8e23e5acaa97aab37f6fdb21521">send</a>(<a class="code hl_class" href="classBundle.html">Bundle</a>* bundle, <a class="code hl_class" href="classNode.html">Node</a>* destination = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classLoraCLA.html#a0f441187e2f83307b039a4b2696ff2fd">   89</a></span>    uint64_t <a class="code hl_variable" href="classLoraCLA.html#a0f441187e2f83307b039a4b2696ff2fd">usedAirtimeInTime</a> = 0;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classLoraCLA.html#a231e00c93b0f1b6cb81d145f1da0e441">   92</a></span>    uint <a class="code hl_variable" href="classLoraCLA.html#a231e00c93b0f1b6cb81d145f1da0e441">dutyCyclePercent</a> = 0;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    std::string <a class="code hl_function" href="classLoraCLA.html#af9fdab4680efe41737d18b0af744f594">getName</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classLoraCLA.html#a4b0d2575f76e9aad796b70404736d4e6">checkCanAddress</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <a class="code hl_class" href="classLoraCLA.html">LoraCLA</a>(int8_t sck = LORA_SCK, int8_t miso = LORA_MISO,</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            int8_t mosi = LORA_MOSI, int8_t nss = LORA_NSS,</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            int8_t dio0 = LORA_DIO0, int8_t nrst = LORA_NRST,</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            int8_t busy = LORA_BUSY);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <a class="code hl_function" href="classLoraCLA.html#a63b190d4448e9041e59c1609e1e63a7f">~LoraCLA</a>();</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    std::vector&lt;ReceivedBundle*&gt; <a class="code hl_function" href="classLoraCLA.html#a75bd691f61b08a00730845eff1f0423e">getNewBundles</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLoraCLA.html#ae20beb66ff51715214a5d663ddb58ae2">setupIsr</a>();</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classLoraCLA.html#a06d4a182951747f8722541f6830c75f1">receivedHandler</a>();</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classLoraCLA.html#a9ef6b8e23e5acaa97aab37f6fdb21521">send</a>(<a class="code hl_class" href="classBundle.html">Bundle</a>* bundle, <a class="code hl_class" href="classNode.html">Node</a>* destination = <span class="keyword">nullptr</span>);</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLoraCLA.html#a9fe2811ae4700b064b98bb18a50bbd86">readData</a>(uint8_t** data, <span class="keywordtype">size_t</span>&amp; dataSize);</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classLoraCLA.html#a40d317ca1b23320ab6df1e82e1d3f9ff">loraRecTask</a>(<span class="keywordtype">void</span>* param);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classLoraCLA.html#ad03ec7eb0a9e43e9b3e93bc80b3922c5">transmitData</a>(uint8_t* bundleData, <span class="keywordtype">size_t</span> dataSize);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLoraCLA.html#ae20beb66ff51715214a5d663ddb58ae2">setupIsr</a>();</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classLoraCLA.html#a06d4a182951747f8722541f6830c75f1">receivedHandler</a>();</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classLoraCLA.html#a9fe2811ae4700b064b98bb18a50bbd86">readData</a>(uint8_t** data, <span class="keywordtype">size_t</span>&amp; dataSize);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classLoraCLA.html#a40d317ca1b23320ab6df1e82e1d3f9ff">loraRecTask</a>(<span class="keywordtype">void</span>* param);</div>
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classLoraCLA.html#a0e81cd8bb059d301d822cca1cacbf982">advertiseTask</a>(<span class="keywordtype">void</span>* param);</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classLoraCLA.html#aa0103fcc83b021543819175a6435a849">sendAdvertise</a>();</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>};</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classLoraCLA.html#ad03ec7eb0a9e43e9b3e93bc80b3922c5">transmitData</a>(uint8_t* bundleData, <span class="keywordtype">size_t</span> dataSize);</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classLoraCLA.html#a0e81cd8bb059d301d822cca1cacbf982">advertiseTask</a>(<span class="keywordtype">void</span>* param);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classLoraCLA.html#aa0103fcc83b021543819175a6435a849">sendAdvertise</a>();</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>};</div>
 </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aCLA_8hpp_html"><div class="ttname"><a href="CLA_8hpp.html">CLA.hpp</a></div><div class="ttdoc">This file contains the base CLA class.</div></div>
+<div class="ttc" id="aLoRaCLA_8hpp_html_a3228ef724c15cd4a2f1ef3255f85aaa3"><div class="ttname"><a href="LoRaCLA_8hpp.html#a3228ef724c15cd4a2f1ef3255f85aaa3">loraRecHandle</a></div><div class="ttdeci">TaskHandle_t loraRecHandle</div><div class="ttdoc">the task handle of the loraReceiver Handler</div><div class="ttdef"><b>Definition</b> LoRaCLA.cpp:17</div></div>
+<div class="ttc" id="aLoRaCLA_8hpp_html_a56fd25420b3207c9167c3b9b89c2c08f"><div class="ttname"><a href="LoRaCLA_8hpp.html#a56fd25420b3207c9167c3b9b89c2c08f">BPoLAdvertiseInterval</a></div><div class="ttdeci">uint32_t BPoLAdvertiseInterval</div><div class="ttdoc">the BPoL advertise Interval, can in theory be changed at runtime</div><div class="ttdef"><b>Definition</b> LoRaCLA.cpp:14</div></div>
+<div class="ttc" id="aLoRaCLA_8hpp_html_ac05a607decc2989cfc5747c4980f6548"><div class="ttname"><a href="LoRaCLA_8hpp.html#ac05a607decc2989cfc5747c4980f6548">advertiseTaskHandle</a></div><div class="ttdeci">TaskHandle_t advertiseTaskHandle</div><div class="ttdoc">the task handle of the BPoL advertise Task</div><div class="ttdef"><b>Definition</b> LoRaCLA.cpp:19</div></div>
 <div class="ttc" id="aclassBundle_html"><div class="ttname"><a href="classBundle.html">Bundle</a></div><div class="ttdoc">Representation of a DTN7 bundle in accordance to RFC9171.</div><div class="ttdef"><b>Definition</b> dtn7-bundle.hpp:18</div></div>
 <div class="ttc" id="aclassCLA_html"><div class="ttname"><a href="classCLA.html">CLA</a></div><div class="ttdoc">generic base class for all CLA's</div><div class="ttdef"><b>Definition</b> CLA.hpp:15</div></div>
-<div class="ttc" id="aclassLoraCLA_html"><div class="ttname"><a href="classLoraCLA.html">LoraCLA</a></div><div class="ttdoc">class representing the LoRa CLA</div><div class="ttdef"><b>Definition</b> LoRaCLA.hpp:61</div></div>
+<div class="ttc" id="aclassLoraCLA_html"><div class="ttname"><a href="classLoraCLA.html">LoraCLA</a></div><div class="ttdoc">class representing the LoRa CLA</div><div class="ttdef"><b>Definition</b> LoRaCLA.hpp:67</div></div>
 <div class="ttc" id="aclassLoraCLA_html_a06d4a182951747f8722541f6830c75f1"><div class="ttname"><a href="classLoraCLA.html#a06d4a182951747f8722541f6830c75f1">LoraCLA::receivedHandler</a></div><div class="ttdeci">static void receivedHandler()</div><div class="ttdoc">the ISR which notifies the reception tasks of incoming LoRa messages</div><div class="ttdef"><b>Definition</b> LoRaCLA.cpp:166</div></div>
 <div class="ttc" id="aclassLoraCLA_html_a0e81cd8bb059d301d822cca1cacbf982"><div class="ttname"><a href="classLoraCLA.html#a0e81cd8bb059d301d822cca1cacbf982">LoraCLA::advertiseTask</a></div><div class="ttdeci">static void advertiseTask(void *param)</div><div class="ttdoc">task which handles BPoL advertising</div><div class="ttdef"><b>Definition</b> LoRaCLA.cpp:349</div></div>
-<div class="ttc" id="aclassLoraCLA_html_a0f441187e2f83307b039a4b2696ff2fd"><div class="ttname"><a href="classLoraCLA.html#a0f441187e2f83307b039a4b2696ff2fd">LoraCLA::usedAirtimeInTime</a></div><div class="ttdeci">uint64_t usedAirtimeInTime</div><div class="ttdoc">the Amount of Airtime, in uS used in the current duty cycle period</div><div class="ttdef"><b>Definition</b> LoRaCLA.hpp:83</div></div>
-<div class="ttc" id="aclassLoraCLA_html_a231e00c93b0f1b6cb81d145f1da0e441"><div class="ttname"><a href="classLoraCLA.html#a231e00c93b0f1b6cb81d145f1da0e441">LoraCLA::dutyCyclePercent</a></div><div class="ttdeci">uint dutyCyclePercent</div><div class="ttdoc">the configured duty cycle, in percent</div><div class="ttdef"><b>Definition</b> LoRaCLA.hpp:86</div></div>
+<div class="ttc" id="aclassLoraCLA_html_a0f441187e2f83307b039a4b2696ff2fd"><div class="ttname"><a href="classLoraCLA.html#a0f441187e2f83307b039a4b2696ff2fd">LoraCLA::usedAirtimeInTime</a></div><div class="ttdeci">uint64_t usedAirtimeInTime</div><div class="ttdoc">the Amount of Airtime, in uS used in the current duty cycle period</div><div class="ttdef"><b>Definition</b> LoRaCLA.hpp:89</div></div>
+<div class="ttc" id="aclassLoraCLA_html_a231e00c93b0f1b6cb81d145f1da0e441"><div class="ttname"><a href="classLoraCLA.html#a231e00c93b0f1b6cb81d145f1da0e441">LoraCLA::dutyCyclePercent</a></div><div class="ttdeci">uint dutyCyclePercent</div><div class="ttdoc">the configured duty cycle, in percent</div><div class="ttdef"><b>Definition</b> LoRaCLA.hpp:92</div></div>
 <div class="ttc" id="aclassLoraCLA_html_a40d317ca1b23320ab6df1e82e1d3f9ff"><div class="ttname"><a href="classLoraCLA.html#a40d317ca1b23320ab6df1e82e1d3f9ff">LoraCLA::loraRecTask</a></div><div class="ttdeci">static void loraRecTask(void *param)</div><div class="ttdoc">the task which does the actual LoRa packet reception, blocks until it is notified by the receiveHandl...</div><div class="ttdef"><b>Definition</b> LoRaCLA.cpp:194</div></div>
 <div class="ttc" id="aclassLoraCLA_html_a4b0d2575f76e9aad796b70404736d4e6"><div class="ttname"><a href="classLoraCLA.html#a4b0d2575f76e9aad796b70404736d4e6">LoraCLA::checkCanAddress</a></div><div class="ttdeci">bool checkCanAddress() override</div><div class="ttdoc">returns a whether a CLA is able to send message to a specific, singular node. Returns False if the CL...</div><div class="ttdef"><b>Definition</b> LoRaCLA.cpp:26</div></div>
-<div class="ttc" id="aclassLoraCLA_html_a5a168056842c656a43ca42da731405c3"><div class="ttname"><a href="classLoraCLA.html#a5a168056842c656a43ca42da731405c3">LoraCLA::startOfDutyCycleTime</a></div><div class="ttdeci">uint64_t startOfDutyCycleTime</div><div class="ttdoc">used to store the system time at which the current duty cycle period began in us</div><div class="ttdef"><b>Definition</b> LoRaCLA.hpp:80</div></div>
+<div class="ttc" id="aclassLoraCLA_html_a5a168056842c656a43ca42da731405c3"><div class="ttname"><a href="classLoraCLA.html#a5a168056842c656a43ca42da731405c3">LoraCLA::startOfDutyCycleTime</a></div><div class="ttdeci">uint64_t startOfDutyCycleTime</div><div class="ttdoc">used to store the system time at which the current duty cycle period began in us</div><div class="ttdef"><b>Definition</b> LoRaCLA.hpp:86</div></div>
 <div class="ttc" id="aclassLoraCLA_html_a63b190d4448e9041e59c1609e1e63a7f"><div class="ttname"><a href="classLoraCLA.html#a63b190d4448e9041e59c1609e1e63a7f">LoraCLA::~LoraCLA</a></div><div class="ttdeci">~LoraCLA()</div><div class="ttdoc">destruct LoraCLA, stops receive task, resets radio</div><div class="ttdef"><b>Definition</b> LoRaCLA.cpp:107</div></div>
 <div class="ttc" id="aclassLoraCLA_html_a75bd691f61b08a00730845eff1f0423e"><div class="ttname"><a href="classLoraCLA.html#a75bd691f61b08a00730845eff1f0423e">LoraCLA::getNewBundles</a></div><div class="ttdeci">std::vector&lt; ReceivedBundle * &gt; getNewBundles() override</div><div class="ttdoc">this function is not implemented for the LoRa CLA, as all bundles are handled via the received queue</div><div class="ttdef"><b>Definition</b> LoRaCLA.cpp:120</div></div>
 <div class="ttc" id="aclassLoraCLA_html_a9ef6b8e23e5acaa97aab37f6fdb21521"><div class="ttname"><a href="classLoraCLA.html#a9ef6b8e23e5acaa97aab37f6fdb21521">LoraCLA::send</a></div><div class="ttdeci">virtual bool send(Bundle *bundle, Node *destination=nullptr)</div><div class="ttdoc">sends a Bundle using the LoRa CLA, is thread safe</div><div class="ttdef"><b>Definition</b> LoRaCLA.cpp:125</div></div>

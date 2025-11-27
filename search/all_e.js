@@ -17,5 +17,6 @@ var searchData=
   ['reporttoeid_14',['reportToEID',['../classPrimaryBlock.html#a455918acc53c8ed06033208e44bdc5c5',1,'PrimaryBlock']]],
   ['retentionconstraint_15',['retentionConstraint',['../classBundle.html#a63360db87bc78adfb6a1ec23918c02b4',1,'Bundle']]],
   ['retrybundles_16',['retryBundles',['../namespaceDTN7.html#a4be5a662228a18750f0ac2d1185237a9',1,'DTN7']]],
-  ['router_17',['router',['../classBundleProtocolAgent.html#ae84a4dfd54f2fd65f067246b88969a42',1,'BundleProtocolAgent::router'],['../classRouter.html',1,'Router']]]
+  ['router_17',['router',['../classRouter.html#a555428efbf07e22776889b8d9b88027f',1,'Router::Router()'],['../classBundleProtocolAgent.html#ae84a4dfd54f2fd65f067246b88969a42',1,'BundleProtocolAgent::router'],['../classRouter.html',1,'Router']]],
+  ['router_2ehpp_18',['Router.hpp',['../Router_8hpp.html',1,'']]]
 ];

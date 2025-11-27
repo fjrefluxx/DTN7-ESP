@@ -74,13 +74,13 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1>Basic Settings</h1>
-<h2><a class="el" href="classRouter.html">Router</a> Type</h2>
+<h2><a class="el" href="classRouter.html" title="generic base class for all Routers, all actual routing implementations must be derived from this.">Router</a> Type</h2>
 <p><br  />
 <b>default</b> Simple Broadcast</p>
 <p>Select the type of router to be used</p>
 <p>Options:<br  />
  <b>Simple Broadcast</b>: Basic epidemic style router, works with all CLAs and, if ones that broadcasts bundles are present, periodically broadcasts each bundle. See <a href="/README.md#routing">main readme "Routing"</a> for more information.</p>
-<p><b>Epidemic <a class="el" href="classRouter.html">Router</a></b>: more advanced epidemic router, requires information about network peers; therefore, CLAs need to implement an advertisement mechanism. See <a href="/README.md#routing">main readme "Routing"</a> for more information.</p>
+<p><b>Epidemic <a class="el" href="classRouter.html" title="generic base class for all Routers, all actual routing implementations must be derived from this.">Router</a></b>: more advanced epidemic router, requires information about network peers; therefore, CLAs need to implement an advertisement mechanism. See <a href="/README.md#routing">main readme "Routing"</a> for more information.</p>
 <h2>Time Interval in seconds in which to retry stored bundles</h2>
 <p><br  />
 <b>default</b> 400</p>
@@ -175,13 +175,13 @@ $(function() {
 <b>default</b> 5</p>
 <h1><a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> selection</h1>
 <h2>Setup LoRa <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a></h2>
-<p>Whether to setup the LoRa <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> when setting up the <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> <br  />
+<p>Whether to setup the LoRa <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> when setting up the <a class="el" href="classBundleProtocolAgent.html" title="The main BundleProtocolAgent class, may only be initialized via the setup() method from the DTN7 name...">BundleProtocolAgent</a> <br  />
 <b>default</b> false</p>
 <h2>Setup Serial <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a></h2>
-<p>Whether to setup the Serial <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> when setting up the <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> <br  />
+<p>Whether to setup the Serial <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> when setting up the <a class="el" href="classBundleProtocolAgent.html" title="The main BundleProtocolAgent class, may only be initialized via the setup() method from the DTN7 name...">BundleProtocolAgent</a> <br  />
 <b>default</b> false</p>
 <h2>Setup BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a></h2>
-<p>Whether to setup the BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> when setting up the <a class="el" href="classBundleProtocolAgent.html" title="The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 na...">BundleProtocolAgent</a> <b>Important:</b> to use the BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> Bluetooth must be enabled in menuconfig and the "Host" option must be set to "NimBLE" <br  />
+<p>Whether to setup the BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> when setting up the <a class="el" href="classBundleProtocolAgent.html" title="The main BundleProtocolAgent class, may only be initialized via the setup() method from the DTN7 name...">BundleProtocolAgent</a> <b>Important:</b> to use the BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> Bluetooth must be enabled in menuconfig and the "Host" option must be set to "NimBLE" <br  />
 <b>default</b> false</p>
 <h1>Task/Queue Settings</h1>
 <h2>Receive Queue Size</h2>
@@ -333,8 +333,8 @@ $(function() {
 <p>This defines the UUID of the GATT write characteristic used by the BLE <a class="el" href="classCLA.html" title="generic base class for all CLA&#39;s">CLA</a> <br  />
 <b>range</b> 0x0000 0xFFFF <br  />
 <b>default</b> 0xFEE2</p>
-<h1><a class="el" href="classRouter.html">Router</a> Config</h1>
-<h2>Simple Broadcast <a class="el" href="classRouter.html">Router</a> Config</h2>
+<h1><a class="el" href="classRouter.html" title="generic base class for all Routers, all actual routing implementations must be derived from this.">Router</a> Config</h1>
+<h2>Simple Broadcast <a class="el" href="classRouter.html" title="generic base class for all Routers, all actual routing implementations must be derived from this.">Router</a> Config</h2>
 <h3>NumOfBroadcasts</h3>
 <p>Number of Broadcast attempts to be made before a transmissions is considered a success. <br  />
 <b>default</b> 5</p>
@@ -344,7 +344,7 @@ $(function() {
 <h3>MinNodesToForward</h3>
 <p>Sets the minimal Number of Nodes a bundle should be forwarded to, only non broadcast transmissions count toward this number. <br  />
 <b>default</b> 5</p>
-<h2>Epidemic <a class="el" href="classRouter.html">Router</a> Config</h2>
+<h2>Epidemic <a class="el" href="classRouter.html" title="generic base class for all Routers, all actual routing implementations must be derived from this.">Router</a> Config</h2>
 <h3>NumOfForwards</h3>
 <p>Number of nodes each bundle shall be forwarded to before a transmissions is considered a success. <br  />
 <b>default</b> 5</p>

@@ -82,42 +82,44 @@ $(document).ready(function() { init_codefold(0); });
   <div class="headertitle"><div class="title">Router.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<a href="Router_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="CLA_8hpp.html">CLA.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;Storage.hpp&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="Storage_8hpp.html">Storage.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="dtn7-bundle_8hpp.html">dtn7-bundle.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="foldopen" id="foldopen00006" data-start="{" data-end="};">
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="classRouter.html">    6</a></span><span class="keyword">class </span><a class="code hl_class" href="classRouter.html">Router</a> {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>   <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <a class="code hl_class" href="classStorage.html">Storage</a>* storage;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>   <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <a class="code hl_class" href="classRouter.html">Router</a>();</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classRouter.html#a437b6e514e6b7fe57a4428d62d006889">   14</a></span>    std::vector&lt;CLA*&gt; <a class="code hl_variable" href="classRouter.html#a437b6e514e6b7fe57a4428d62d006889">clas</a>;</div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classRouter.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="classRouter.html">Router</a> {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>   <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <a class="code hl_class" href="classStorage.html">Storage</a>* storage;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="classRouter.html">~Router</a>();</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_class" href="classBundle.html">Bundle</a>* <a class="code hl_function" href="classRouter.html#a08b26e7f6b763934113eff22f8217892">prepareForSend</a>(<a class="code hl_class" href="classBundle.html">Bundle</a>* bundle);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>   <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_function" href="classRouter.html#a555428efbf07e22776889b8d9b88027f">Router</a>();</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classRouter.html#a437b6e514e6b7fe57a4428d62d006889">   21</a></span>    std::vector&lt;CLA*&gt; <a class="code hl_variable" href="classRouter.html#a437b6e514e6b7fe57a4428d62d006889">clas</a>;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    std::vector&lt;ReceivedBundle*&gt; <a class="code hl_function" href="classRouter.html#aa4234fa1da0f6d68051324d8ed1e6a51">getNewBundles</a>();</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classRouter.html#a27233c55a9fabdf72cfe4c6b720efd2f">   33</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classRouter.html#a27233c55a9fabdf72cfe4c6b720efd2f">handleForwarding</a>(<a class="code hl_class" href="classBundleInfo.html">BundleInfo</a>* bundle, uint&amp; reasonCode) = 0;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classRouter.html#a969cd7ff6001bb7444a9383a03c6160a">sendToPreviousNode</a>(<a class="code hl_class" href="classBundle.html">Bundle</a>* bundle);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>};</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="classRouter.html">~Router</a>();</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_class" href="classBundle.html">Bundle</a>* <a class="code hl_function" href="classRouter.html#a08b26e7f6b763934113eff22f8217892">prepareForSend</a>(<a class="code hl_class" href="classBundle.html">Bundle</a>* bundle);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    std::vector&lt;ReceivedBundle*&gt; <a class="code hl_function" href="classRouter.html#aa4234fa1da0f6d68051324d8ed1e6a51">getNewBundles</a>();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classRouter.html#a27233c55a9fabdf72cfe4c6b720efd2f">   40</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classRouter.html#a27233c55a9fabdf72cfe4c6b720efd2f">handleForwarding</a>(<a class="code hl_class" href="classBundleInfo.html">BundleInfo</a>* bundle, uint&amp; reasonCode) = 0;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classRouter.html#a969cd7ff6001bb7444a9383a03c6160a">sendToPreviousNode</a>(<a class="code hl_class" href="classBundle.html">Bundle</a>* bundle);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
 </div>
 <div class="ttc" id="aCLA_8hpp_html"><div class="ttname"><a href="CLA_8hpp.html">CLA.hpp</a></div><div class="ttdoc">This file contains the base CLA class.</div></div>
+<div class="ttc" id="aStorage_8hpp_html"><div class="ttname"><a href="Storage_8hpp.html">Storage.hpp</a></div><div class="ttdoc">This file contains the definitions for the FlashStorage.</div></div>
 <div class="ttc" id="aclassBundleInfo_html"><div class="ttname"><a href="classBundleInfo.html">BundleInfo</a></div><div class="ttdoc">this class stores additional info to bundles and the corresponding Bundle</div><div class="ttdef"><b>Definition</b> Data.hpp:104</div></div>
 <div class="ttc" id="aclassBundle_html"><div class="ttname"><a href="classBundle.html">Bundle</a></div><div class="ttdoc">Representation of a DTN7 bundle in accordance to RFC9171.</div><div class="ttdef"><b>Definition</b> dtn7-bundle.hpp:18</div></div>
-<div class="ttc" id="aclassRouter_html"><div class="ttname"><a href="classRouter.html">Router</a></div><div class="ttdef"><b>Definition</b> Router.hpp:6</div></div>
+<div class="ttc" id="aclassRouter_html"><div class="ttname"><a href="classRouter.html">Router</a></div><div class="ttdoc">generic base class for all Routers, all actual routing implementations must be derived from this.</div><div class="ttdef"><b>Definition</b> Router.hpp:12</div></div>
 <div class="ttc" id="aclassRouter_html_a08b26e7f6b763934113eff22f8217892"><div class="ttname"><a href="classRouter.html#a08b26e7f6b763934113eff22f8217892">Router::prepareForSend</a></div><div class="ttdeci">Bundle * prepareForSend(Bundle *bundle)</div><div class="ttdoc">prepares bundle for forwarding, takes care off processing (cf. RFC 9171, 5.4 Bundle Forwarding Step 4...</div><div class="ttdef"><b>Definition</b> Router.cpp:15</div></div>
 <div class="ttc" id="aclassRouter_html_a27233c55a9fabdf72cfe4c6b720efd2f"><div class="ttname"><a href="classRouter.html#a27233c55a9fabdf72cfe4c6b720efd2f">Router::handleForwarding</a></div><div class="ttdeci">virtual bool handleForwarding(BundleInfo *bundle, uint &amp;reasonCode)=0</div><div class="ttdoc">Main bundle forwarding handling, cf. RFC9171Section 5.4 Step 2. Decides to forward a bundle to potent...</div></div>
-<div class="ttc" id="aclassRouter_html_a437b6e514e6b7fe57a4428d62d006889"><div class="ttname"><a href="classRouter.html#a437b6e514e6b7fe57a4428d62d006889">Router::clas</a></div><div class="ttdeci">std::vector&lt; CLA * &gt; clas</div><div class="ttdoc">Pointers to all stored CLA instances.</div><div class="ttdef"><b>Definition</b> Router.hpp:14</div></div>
+<div class="ttc" id="aclassRouter_html_a437b6e514e6b7fe57a4428d62d006889"><div class="ttname"><a href="classRouter.html#a437b6e514e6b7fe57a4428d62d006889">Router::clas</a></div><div class="ttdeci">std::vector&lt; CLA * &gt; clas</div><div class="ttdoc">Pointers to all stored CLA instances.</div><div class="ttdef"><b>Definition</b> Router.hpp:21</div></div>
+<div class="ttc" id="aclassRouter_html_a555428efbf07e22776889b8d9b88027f"><div class="ttname"><a href="classRouter.html#a555428efbf07e22776889b8d9b88027f">Router::Router</a></div><div class="ttdeci">Router()</div><div class="ttdoc">default constructor for the router base class, should never be called</div><div class="ttdef"><b>Definition</b> Router.cpp:8</div></div>
 <div class="ttc" id="aclassRouter_html_a969cd7ff6001bb7444a9383a03c6160a"><div class="ttname"><a href="classRouter.html#a969cd7ff6001bb7444a9383a03c6160a">Router::sendToPreviousNode</a></div><div class="ttdeci">virtual bool sendToPreviousNode(Bundle *bundle)</div><div class="ttdoc">Send a bundle back to its previous node, if it is known. As this is not useful for broadcast,...</div><div class="ttdef"><b>Definition</b> BroadcastRouter.cpp:17</div></div>
 <div class="ttc" id="aclassRouter_html_aa4234fa1da0f6d68051324d8ed1e6a51"><div class="ttname"><a href="classRouter.html#aa4234fa1da0f6d68051324d8ed1e6a51">Router::getNewBundles</a></div><div class="ttdeci">std::vector&lt; ReceivedBundle * &gt; getNewBundles()</div><div class="ttdoc">a method to poll all non-push CLAs for received bundles.</div><div class="ttdef"><b>Definition</b> Router.cpp:62</div></div>
-<div class="ttc" id="aclassStorage_html"><div class="ttname"><a href="classStorage.html">Storage</a></div><div class="ttdoc">base class for storage implementations, access to derived classes needs to be thread safe!</div><div class="ttdef"><b>Definition</b> Storage.hpp:14</div></div>
+<div class="ttc" id="aclassStorage_html"><div class="ttname"><a href="classStorage.html">Storage</a></div><div class="ttdoc">base class for storage implementations, access to derived classes needs to be thread safe!</div><div class="ttdef"><b>Definition</b> Storage.hpp:19</div></div>
 <div class="ttc" id="adtn7-bundle_8hpp_html"><div class="ttname"><a href="dtn7-bundle_8hpp.html">dtn7-bundle.hpp</a></div><div class="ttdoc">This file contains the definition of the DTN7 bundle in accordance to RFC9171.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

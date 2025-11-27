@@ -10,6 +10,7 @@ var searchData=
   ['inmemorystorageserialized_7',['InMemoryStorageSerialized',['../classInMemoryStorageSerialized.html',1,'']]],
   ['inmemorystorageserializedia_8',['InMemoryStorageSerializedIA',['../classInMemoryStorageSerializedIA.html',1,'']]],
   ['insertcanonicalblock_9',['insertCanonicalBlock',['../classBundle.html#a978581b76a176113fa755db52d636cd6',1,'Bundle']]],
-  ['islocaldest_10',['isLocalDest',['../classBundleProtocolAgent.html#af8d6df91dd1356f46a37385f3496323d',1,'BundleProtocolAgent']]],
-  ['isnone_11',['isNone',['../structEID.html#ae5154c70f1ca1c98e4c81cb3d9ed271b',1,'EID']]]
+  ['isadvertising_10',['isAdvertising',['../BLEhandling_8hpp.html#a1581be9aebaa561e8230eb43a55cab1d',1,'BLEhandling.cpp']]],
+  ['islocaldest_11',['isLocalDest',['../classBundleProtocolAgent.html#af8d6df91dd1356f46a37385f3496323d',1,'BundleProtocolAgent']]],
+  ['isnone_12',['isNone',['../structEID.html#ae5154c70f1ca1c98e4c81cb3d9ed271b',1,'EID']]]
 ];

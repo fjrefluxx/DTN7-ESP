@@ -24,8 +24,10 @@ var searchData=
   ['spibegin_21',['spiBegin',['../classEspHal2.html#ad92a0fe3c9e42d04aa54592e15739694',1,'EspHal2']]],
   ['spibegintransaction_22',['spiBeginTransaction',['../classEspHal2.html#a755020f423a4f45214990b5a3d26ea96',1,'EspHal2']]],
   ['spitransfer_23',['spiTransfer',['../classEspHal2.html#a301bc0e86812bedce6784ecbe6970ebc',1,'EspHal2']]],
-  ['storage_24',['Storage',['../classStorage.html#a80ef6af5e4c9fd4424ae16e808d05291',1,'Storage']]],
-  ['storeseen_25',['storeseen',['../classInMemoryStorageSerialized.html#a6abfa3e5fe0a5be502764122ae21cc84',1,'InMemoryStorageSerialized::storeSeen()'],['../classStorage.html#a51c48f513db9ee772e7210da7d88b638',1,'Storage::storeSeen()'],['../classDummyStorage.html#ae2875680d9ac4f6fa204ed89e48d24ff',1,'DummyStorage::storeSeen()'],['../classInMemoryStorage.html#ac43bf9f46036daddef208b7107d5ea88',1,'InMemoryStorage::storeSeen()'],['../classFlashStorage.html#aea1c5bcc14f1e49b0e52b79e0b756a66',1,'FlashStorage::storeSeen()']]],
-  ['stringfromcbor_26',['stringFromCbor',['../helpers_8h.html#ae622e76ceddf80a00f7a43e3dc3cf1da',1,'helpers.h']]],
-  ['stringtocbor_27',['stringToCbor',['../helpers_8h.html#a39262bc3dc1bd972a7cbdb5e6c2e08d6',1,'helpers.h']]]
+  ['start_5fble_5fscan_24',['start_ble_scan',['../BLEhandling_8hpp.html#afdc912ac0fe14be62efa9fe0612917f4',1,'BLEhandling.cpp']]],
+  ['storage_25',['Storage',['../classStorage.html#a80ef6af5e4c9fd4424ae16e808d05291',1,'Storage']]],
+  ['storeseen_26',['storeseen',['../classFlashStorage.html#aea1c5bcc14f1e49b0e52b79e0b756a66',1,'FlashStorage::storeSeen()'],['../classDummyStorage.html#ae2875680d9ac4f6fa204ed89e48d24ff',1,'DummyStorage::storeSeen()'],['../classStorage.html#a51c48f513db9ee772e7210da7d88b638',1,'Storage::storeSeen()'],['../classInMemoryStorageSerialized.html#a6abfa3e5fe0a5be502764122ae21cc84',1,'InMemoryStorageSerialized::storeSeen()'],['../classInMemoryStorage.html#ac43bf9f46036daddef208b7107d5ea88',1,'InMemoryStorage::storeSeen()']]],
+  ['stringfromcbor_27',['stringFromCbor',['../helpers_8h.html#ae622e76ceddf80a00f7a43e3dc3cf1da',1,'helpers.h']]],
+  ['stringtocbor_28',['stringToCbor',['../helpers_8h.html#a39262bc3dc1bd972a7cbdb5e6c2e08d6',1,'helpers.h']]],
+  ['switchscanadvertisetask_29',['switchScanAdvertiseTask',['../BLEhandling_8hpp.html#a6ff1d7220944fa940afa432f986669ee',1,'BLEhandling.cpp']]]
 ];
