@@ -7,7 +7,7 @@
 #include "esp_heap_caps.h"
 
 /**
- * @file cborBlockDecode.h
+ * @file cborBlockDecode.hpp
  * @brief This file contains the implementation of CBOR decoding for individual Blocks of a Bundle
 */
 

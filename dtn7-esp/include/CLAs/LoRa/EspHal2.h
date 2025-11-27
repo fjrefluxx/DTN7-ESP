@@ -7,8 +7,8 @@
  * @file EspHal2.h
  * @brief The content of this file is a modification of https://github.com/jgromes/RadioLib/blob/master/examples/NonArduino/ESP-IDF/main/EspHal.h
  *        Additional inspiration was drawn from: https://github.com/IanBurwell/DynamicLRS/blob/main/components/DLRS_LoRadio/radiolib_esp32s3_hal.hpp
-*         The goal is to allow radiolib to work not only with the ESP32 but also its variants, for example the ESP32-S3, still work in progress.
-*         This shall be achieved by using the SPI high level drivers of the ESP-IDF
+*         The goal is to allow radiolib to work not only with the ESP32 but also its variants, for example the ESP32-S3. It has been tested on ESP32 and ESP32-S3.
+*         This is achieved by using the SPI high level drivers of the ESP-IDF
 */
 
 // include RadioLib

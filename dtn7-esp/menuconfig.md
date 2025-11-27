@@ -1,8 +1,4 @@
-## Overview
-[[_TOC_]]
-
-
-# DTN7-esp Config
+# DTN7-esp Config {#menuconfig_options}
 ## Basic Settings
 
 ### Router Type

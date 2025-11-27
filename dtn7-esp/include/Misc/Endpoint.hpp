@@ -7,9 +7,14 @@
 #include "freertos/queue.h"
 #include "freertos/task.h"
 
+/**
+ * @file Endpoint.hpp
+ * @brief This file contains the Endpoint Class. This class facilitates transmission/reception of data and represents a DTN endpoint.
+ */
+
 class BundleProtocolAgent;
 
-/// @brief This Class represents an DTN endpoint
+/// @brief This Class represents an DTN endpoint, no differentiation of group/singleton endpoints is made.
 class Endpoint {
    private:
     /// @brief last time a bundle was created from this endpoint, in ms

@@ -6,6 +6,15 @@
 #include "Data.hpp"
 #include "dtn7-esp.hpp"
 
+/**
+ * @file BLE_CLA.hpp
+ * @brief This file contains the BleCLA as well as a helper Class to store BLE peers.
+ *        BLEhandling.hpp contains the actual interaction with the nimble GAP/GATT functions.
+ * @note For the BLE-CLA to work, the following settings must be made in menuconfig:
+ *           CONFIG_BT_ENABLED = y
+ *           CONFIG_BT_NIMBLE_ENABLED = y
+ */
+
 /*
 For the BLE-CLA to work, the following settings must be made in menuconfig:
 CONFIG_BT_ENABLED = y

@@ -18,6 +18,8 @@
  * The BundleProtocolAgent as well as the Endpoint documentation may also be of interest.
  * For details on CBOR encoding and the representation of the bundle view the Bundle class and Block.hpp.
  * For details on usage and features read the readme of the Project.
+ * The documentation of the Endpoint class may be of interest, as interacting with instances of this class is required to send/receive data.
+ * View the available \ref menuconfig_options for an overview of available configuration options.
  * @file dtn7-esp.hpp
  * @brief Defines the DTN7 namespace containing most vital functionality.
  */

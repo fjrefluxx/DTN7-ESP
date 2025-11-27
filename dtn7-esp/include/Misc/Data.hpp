@@ -9,6 +9,12 @@
 #define RETENTION_CONSTRAINT_FORWARD_PENDING 1
 #define RETENTION_CONSTRAINT_NONE 0
 
+/**
+ * @file DATA.hpp
+ * @brief This file contains helper Classes to store required information.
+ */
+
+
 /// @brief This class represents a DTN node
 class Node {
    public:

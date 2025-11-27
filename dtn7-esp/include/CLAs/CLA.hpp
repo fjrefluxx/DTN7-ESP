@@ -5,7 +5,13 @@
 #include "dtn7-bundle.hpp"
 #include "sdkconfig.h"
 
-/// @brief generic bas class for all CLA's
+/**
+ * @file CLA.hpp
+ * @brief This file contains the base CLA class
+ */
+
+
+/// @brief generic base class for all CLA's
 class CLA {
    private:
     /// @brief the name of the CLA, should be set to a unique and readable value for each type of CLA
