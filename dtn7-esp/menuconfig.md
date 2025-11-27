@@ -1,4 +1,4 @@
-# DTN7-esp Config {#menuconfig_options}
+# DTN7-ESP Config {#menuconfig_options}
 ## Basic Settings
 
 ### Router Type

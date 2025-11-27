@@ -10,7 +10,7 @@
 #include "sdkconfig.h"
 
 /**
- * @file CLA.hpp
+ * @file SerialCLA.hpp
  * @brief This file contains the SerialCLA.
  */
 
