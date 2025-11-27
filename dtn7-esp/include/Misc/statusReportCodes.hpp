@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @file CLA.hpp
+ * @file statusReportCodes.hpp
  * @brief This file contains the a namespace for the various BundleStatusReportReasonCodes.
  */
 

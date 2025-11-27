@@ -14,7 +14,7 @@
 #define BUNDLE_STORAGE_NAMESPACE "bundles"
 
 /**
- * @file Storage.hpp
+ * @file FlashStorage.hpp
  * @brief This file contains the definitions for the FlashStorage.
  */
 

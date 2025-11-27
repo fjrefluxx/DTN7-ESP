@@ -13,7 +13,7 @@
 #include "nvs_flash.h"
 
 /**
- * @file Storage.hpp
+ * @file InMemoryStorage.hpp
  * @brief This file contains the definitions for the different versions of in-memory storage.
  *        These are:
  *              InMemoryStorage

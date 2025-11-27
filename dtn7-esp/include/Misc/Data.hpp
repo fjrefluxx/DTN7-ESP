@@ -10,7 +10,7 @@
 #define RETENTION_CONSTRAINT_NONE 0
 
 /**
- * @file DATA.hpp
+ * @file Data.hpp
  * @brief This file contains helper Classes to store required information.
  */
 
