@@ -7,7 +7,12 @@
 #include "cborBlockDecode.hpp"
 #include "esp_heap_caps.h"
 
-/// @brief creates/updates the cbor representation of the bundle
+/**
+ * @file dtn7-bundle.cpp
+ * @brief This file contains implementations for some of the more complex functions of the Bundle class. Most notably the toCbor and fromCbor functions.
+*/
+
+/// @brief creates/updates the CBOR representation of the bundle
 void Bundle::toCbor(uint8_t** cbor, size_t& cborSize) {
 
     // the first element is the primary block

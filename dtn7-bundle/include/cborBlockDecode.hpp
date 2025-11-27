@@ -6,6 +6,12 @@
 #include "utils.hpp"
 #include "esp_heap_caps.h"
 
+/**
+ * @file cborBlockDecode.h
+ * @brief This file contains the implementation of CBOR decoding for individual Blocks of a Bundle
+*/
+
+
 /// @brief Creates a Canonical Block from a given Cbor parser
 /// @param value the Cbor Parsers value object, it has to point to an valid Cbor Array with fixed Length
 /// @param size the size of the Cbor array Pointed to by the value Object

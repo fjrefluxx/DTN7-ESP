@@ -1,5 +1,11 @@
 #pragma once
 
+/**
+ * @file crc32.h
+ * @brief This file contains the implementation of the Castagnoli CRC32C Checksum Algorithm.
+ *        Original source: github.com/qemu/qemu/blob/master/util/crc32c.c (v10.0.2)
+*/
+
 /*
  * Castagnoli CRC32C Checksum Algorithm as provided by QEMU.
  *

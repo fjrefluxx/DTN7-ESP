@@ -9,6 +9,11 @@
 #define RETENTION_CONSTRAINT_FORWARD_PENDING 1
 #define RETENTION_CONSTRAINT_NONE 0
 
+/**
+ * @file dtn7-bundle.hpp
+ * @brief This file contains the definition of the DTN7 bundle in accordance to RFC9171.
+*/
+
 /// @brief Representation of a DTN7 bundle in accordance to RFC9171
 class Bundle {
    private:

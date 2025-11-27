@@ -3,6 +3,12 @@
 #include "esp_log.h"
 #include "esp_rom_crc.h"
 
+/**
+ * @file Block.cpp
+ * @brief This file contains the implementation of some of the functions of the Block class.
+ *        Additionally, helper functions for CRC checking/generating are implemented.
+*/
+
 //array of zeros, used as source to default initialize CRC fields
 static uint8_t zeros[4] = {0, 0, 0, 0};
 
@@ -191,6 +197,14 @@ void PrimaryBlock::toCbor(uint8_t** cbor, size_t& cborSize) {
     return;
 }
 
+/**
+ * @brief Calculates CRC of the corresponding type for given data.
+ * @param crcType The type of CRC to calculate (CRC_TYPE_X25, CRC_TYPE_CRC32C).
+ * @param data Pointer to the data to calculate CRC for.
+ * @param dataSize The size of the data in bytes.
+ * @return The calculated CRC value as a 32-bit unsigned integer.
+ *         Returns 0 if an invalid CRC type is provided.
+ */
 uint32_t calculateCRC(uint8_t crcType, const uint8_t* data, size_t dataSize) {
     uint32_t result = 0;
     if (crcType == CRC_TYPE_X25) {
@@ -209,6 +223,14 @@ uint32_t calculateCRC(uint8_t crcType, const uint8_t* data, size_t dataSize) {
     return result;
 }
 
+/**
+ * @brief Checks the crc of given data.
+ * @param crcType The type of CRC to use for verification (CRC_TYPE_X25, CRC_TYPE_CRC32C).
+ * @param data Pointer to the data including the CRC at the end.
+ * @param dataSize The total size of the data in bytes.
+ * @return true if the calculated CRC matches the included CRC value.
+ * @return false if the CRC values do not match or if an unsupported CRC type is provided.
+ */
 bool checkCRC(uint8_t crcType, const uint8_t* data, size_t dataSize) {
     //create a copy of the data
     uint8_t* dataWithoutCRC = new uint8_t[dataSize];

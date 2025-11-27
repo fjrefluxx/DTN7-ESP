@@ -24,6 +24,11 @@
 #define CRC_TYPE_X25 1
 #define CRC_TYPE_CRC32C 2
 
+/**
+ * @file utils.hpp
+ * @brief This file contains helper classes required to store/construct CreationTimestamps and Bundle/Block processing control flags.
+*/
+
 /// @brief represents the creation timestamp
 struct CreationTimestamp {
     uint64_t creationTime;

@@ -7,7 +7,7 @@
 /**
  * @file Block.hpp
  * @brief This file contains all relevant definitions for the CanonicalBlock and PrimaryBlock classes.
- */
+*/
 
 
 /// @brief calculates the CRC as specified in rfc9171

@@ -11,6 +11,11 @@
 #define NONE_ENDPOINT_SPECIFIC_PART_NAME "none"
 #define NONE_ENDPOINT_SPECIFIC_PART_ENCODED 0
 
+/**
+ * @file EID.hpp
+ * @brief This file contains the implementation of the EID struct
+*/
+
 /// @brief Struct representing the EID
 struct EID {
     /// @brief scheme code used by the EID
