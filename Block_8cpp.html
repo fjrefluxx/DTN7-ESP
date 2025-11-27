@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>dtn7-esp: dtn7-bundle/include/Block.hpp File Reference</title>
+<title>dtn7-esp: dtn7-bundle/Block.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,54 +70,30 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_04100f6311ceee55e5ffbb8e2957229b.html">dtn7-bundle</a></li><li class="navelem"><a class="el" href="dir_1eee3b936bd8d6bfd245244e4aacbecf.html">include</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_04100f6311ceee55e5ffbb8e2957229b.html">dtn7-bundle</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">Block.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">Block.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>This file contains all relevant definitions for the <a class="el" href="classCanonicalBlock.html" title="represents a generic canonical block">CanonicalBlock</a> and <a class="el" href="classPrimaryBlock.html" title="Represents the primary block.">PrimaryBlock</a> classes.  
+<p>This file contains the implementation of some of the functions of the Block class. Additionally, helper functions for CRC checking/generating are implemented.  
 <a href="#details">More...</a></p>
-
-<p><a href="Block_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCanonicalBlock.html">CanonicalBlock</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">represents a generic canonical block  <a href="classCanonicalBlock.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPrimaryBlock.html">PrimaryBlock</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the primary block.  <a href="classPrimaryBlock.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPreviousNodeBlock.html">PreviousNodeBlock</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">this object represents the previous node block. Used for creation of the bundle, not decoding.  <a href="classPreviousNodeBlock.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBundleAgeBlock.html">BundleAgeBlock</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">this object represents the bundle age block. Used for creation of the bundle, not decoding.  <a href="classBundleAgeBlock.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHopCountBlock.html">HopCountBlock</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class representing the <a class="el" href="classHopCountBlock.html" title="Class representing the HopCountBlock, used for bundle encoding.">HopCountBlock</a>, used for bundle encoding.  <a href="classHopCountBlock.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPayloadBlock.html">PayloadBlock</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class representing the <a class="el" href="classPayloadBlock.html" title="Class representing the PayloadBlock, used when decoding and encoding Bundle.">PayloadBlock</a>, used when decoding and encoding <a class="el" href="classBundle.html" title="Representation of a DTN7 bundle in accordance to RFC9171.">Bundle</a>.  <a href="classPayloadBlock.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a091b4ec7bc164bb15cd46b090b587de0" id="r_a091b4ec7bc164bb15cd46b090b587de0"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Block_8hpp.html#a091b4ec7bc164bb15cd46b090b587de0">calculateCRC</a> (uint8_t crcType, const uint8_t *data, size_t dataSize)</td></tr>
-<tr class="memdesc:a091b4ec7bc164bb15cd46b090b587de0"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates the CRC as specified in rfc9171  <br /></td></tr>
+<tr class="memitem:a091b4ec7bc164bb15cd46b090b587de0" id="r_a091b4ec7bc164bb15cd46b090b587de0"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Block_8cpp.html#a091b4ec7bc164bb15cd46b090b587de0">calculateCRC</a> (uint8_t crcType, const uint8_t *data, size_t dataSize)</td></tr>
+<tr class="memdesc:a091b4ec7bc164bb15cd46b090b587de0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates CRC of the corresponding type for given data.  <br /></td></tr>
 <tr class="separator:a091b4ec7bc164bb15cd46b090b587de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad309963b9ad7b0276fe39ee373ee0dfe" id="r_ad309963b9ad7b0276fe39ee373ee0dfe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Block_8hpp.html#ad309963b9ad7b0276fe39ee373ee0dfe">checkCRC</a> (uint8_t crcType, const uint8_t *data, size_t dataSize)</td></tr>
-<tr class="memdesc:ad309963b9ad7b0276fe39ee373ee0dfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if the given data has a valid crc attached (either in the last 2 bytes for CRC type 1 or in the last 4 for CRC type 2). This checking is implemented by replacing the bytes representing the CRC and then recalculating it and checking whether this calculation yields the expected result.  <br /></td></tr>
+<tr class="memitem:ad309963b9ad7b0276fe39ee373ee0dfe" id="r_ad309963b9ad7b0276fe39ee373ee0dfe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Block_8cpp.html#ad309963b9ad7b0276fe39ee373ee0dfe">checkCRC</a> (uint8_t crcType, const uint8_t *data, size_t dataSize)</td></tr>
+<tr class="memdesc:ad309963b9ad7b0276fe39ee373ee0dfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the crc of given data.  <br /></td></tr>
 <tr class="separator:ad309963b9ad7b0276fe39ee373ee0dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This file contains all relevant definitions for the <a class="el" href="classCanonicalBlock.html" title="represents a generic canonical block">CanonicalBlock</a> and <a class="el" href="classPrimaryBlock.html" title="Represents the primary block.">PrimaryBlock</a> classes. </p>
+<div class="textblock"><p>This file contains the implementation of some of the functions of the Block class. Additionally, helper functions for CRC checking/generating are implemented. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a091b4ec7bc164bb15cd46b090b587de0" name="a091b4ec7bc164bb15cd46b090b587de0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a091b4ec7bc164bb15cd46b090b587de0">&#9670;&#160;</a></span>calculateCRC()</h2>
@@ -151,16 +127,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>calculates the CRC as specified in rfc9171 </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">crcType</td><td>the type of crc To calculate </td></tr>
-    <tr><td class="paramname">data</td><td>data to calculate CRC on </td></tr>
-    <tr><td class="paramname">dataSize</td><td>size of the input data </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>the calculated CRC</dd></dl>
+<p>Calculates CRC of the corresponding type for given data. </p>
 <p>calculates the CRC as specified in rfc9171</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -206,16 +173,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>checks if the given data has a valid crc attached (either in the last 2 bytes for CRC type 1 or in the last 4 for CRC type 2). This checking is implemented by replacing the bytes representing the CRC and then recalculating it and checking whether this calculation yields the expected result. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">crcType</td><td>type of the included CRC </td></tr>
-    <tr><td class="paramname">data</td><td>data to check </td></tr>
-    <tr><td class="paramname">dataSize</td><td>size of the data </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>whether the CRC check passed</dd></dl>
+<p>Checks the crc of given data. </p>
 <p>checks if the given data has a valid crc attached (either in the last 2 bytes for CRC type 1 or in the last 4 for CRC type 2). This checking is implemented by replacing the bytes representing the CRC and then recalculating it and checking whether this calculation yields the expected result.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
