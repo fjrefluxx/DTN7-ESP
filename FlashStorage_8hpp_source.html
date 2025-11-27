@@ -82,12 +82,12 @@ $(document).ready(function() { init_codefold(0); });
   <div class="headertitle"><div class="title">FlashStorage.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<a href="FlashStorage_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;list&gt;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Data.hpp&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="Data_8hpp.html">Data.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="Storage_8hpp.html">Storage.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="dtn7-bundle_8hpp.html">dtn7-bundle.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
@@ -189,7 +189,8 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classFlashStorage.html#aef2fd426f4d3a56b47c573d67453c4da">hasBundlesToRetry</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>};</div>
 </div>
-<div class="ttc" id="aStorage_8hpp_html"><div class="ttname"><a href="Storage_8hpp.html">Storage.hpp</a></div><div class="ttdoc">This file contains the definitions for the FlashStorage.</div></div>
+<div class="ttc" id="aData_8hpp_html"><div class="ttname"><a href="Data_8hpp.html">Data.hpp</a></div><div class="ttdoc">This file contains helper Classes to store required information.</div></div>
+<div class="ttc" id="aStorage_8hpp_html"><div class="ttname"><a href="Storage_8hpp.html">Storage.hpp</a></div><div class="ttdoc">This file contains the definitions for the Storage base class.</div></div>
 <div class="ttc" id="aclassBundleInfo_html"><div class="ttname"><a href="classBundleInfo.html">BundleInfo</a></div><div class="ttdoc">this class stores additional info to bundles and the corresponding Bundle</div><div class="ttdef"><b>Definition</b> Data.hpp:104</div></div>
 <div class="ttc" id="aclassFlashStorage_html"><div class="ttname"><a href="classFlashStorage.html">FlashStorage</a></div><div class="ttdoc">class which stores bundles in the ESP32's flash, a custom partition table is to be used</div><div class="ttdef"><b>Definition</b> FlashStorage.hpp:22</div></div>
 <div class="ttc" id="aclassFlashStorage_html_a0645539e7b1e67e651ce55526d210cab"><div class="ttname"><a href="classFlashStorage.html#a0645539e7b1e67e651ce55526d210cab">FlashStorage::addNode</a></div><div class="ttdeci">void addNode(Node node) override</div><div class="ttdoc">adds a node to the known nodes, if it is already present, it is overwritten</div><div class="ttdef"><b>Definition</b> FlashStorage.cpp:10</div></div>

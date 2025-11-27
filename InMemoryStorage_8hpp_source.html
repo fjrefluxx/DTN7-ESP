@@ -82,13 +82,13 @@ $(document).ready(function() { init_codefold(0); });
   <div class="headertitle"><div class="title">InMemoryStorage.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<a href="InMemoryStorage_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;list&gt;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;set&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Data.hpp&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="Data_8hpp.html">Data.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="Storage_8hpp.html">Storage.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="dtn7-bundle_8hpp.html">dtn7-bundle.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
@@ -242,7 +242,8 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classInMemoryStorageSerializedIA.html#a91a145fc83296c8f80e085f27c007887">hasBundlesToRetry</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>};</div>
 </div>
-<div class="ttc" id="aStorage_8hpp_html"><div class="ttname"><a href="Storage_8hpp.html">Storage.hpp</a></div><div class="ttdoc">This file contains the definitions for the FlashStorage.</div></div>
+<div class="ttc" id="aData_8hpp_html"><div class="ttname"><a href="Data_8hpp.html">Data.hpp</a></div><div class="ttdoc">This file contains helper Classes to store required information.</div></div>
+<div class="ttc" id="aStorage_8hpp_html"><div class="ttname"><a href="Storage_8hpp.html">Storage.hpp</a></div><div class="ttdoc">This file contains the definitions for the Storage base class.</div></div>
 <div class="ttc" id="aclassBundleInfo_html"><div class="ttname"><a href="classBundleInfo.html">BundleInfo</a></div><div class="ttdoc">this class stores additional info to bundles and the corresponding Bundle</div><div class="ttdef"><b>Definition</b> Data.hpp:104</div></div>
 <div class="ttc" id="aclassInMemoryStorageSerializedIA_html"><div class="ttname"><a href="classInMemoryStorageSerializedIA.html">InMemoryStorageSerializedIA</a></div><div class="ttdoc">Stores bundles, nodes and bundle IDs in memory. Bundles and nodes are serialized for storage....</div><div class="ttdef"><b>Definition</b> InMemoryStorage.hpp:204</div></div>
 <div class="ttc" id="aclassInMemoryStorageSerializedIA_html_a0e9e4bfa0da953d35a89226531a39d48"><div class="ttname"><a href="classInMemoryStorageSerializedIA.html#a0e9e4bfa0da953d35a89226531a39d48">InMemoryStorageSerializedIA::delayBundle</a></div><div class="ttdeci">std::vector&lt; BundleInfo &gt; delayBundle(BundleInfo *bundle) override</div><div class="ttdoc">stores a given bundle for later retransmission</div><div class="ttdef"><b>Definition</b> StorageSerialized.cpp:191</div></div>
