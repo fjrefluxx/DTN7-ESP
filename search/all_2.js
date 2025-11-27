@@ -19,7 +19,7 @@ var searchData=
   ['clearflag_16',['clearflag',['../classCanonicalBlock.html#aa4f4c0571625703151760c1546436af8',1,'CanonicalBlock::clearFlag()'],['../classPrimaryBlock.html#ae81929b528bee78b48bd5249269f415f',1,'PrimaryBlock::clearFlag()']]],
   ['clearoldpeers_17',['clearOldPeers',['../namespaceDTN7.html#a0bb289baa90be45fba61a84b69750cd4',1,'DTN7']]],
   ['clocksynced_18',['clockSynced',['../namespaceDTN7.html#a000e2786c07d7e25c1082ce3f2db4624',1,'DTN7']]],
-  ['config_19',['DTN7-esp Config',['../menuconfig_options.html',1,'']]],
+  ['config_19',['DTN7-ESP Config',['../menuconfig_options.html',1,'']]],
   ['confirmedreception_20',['confirmedReception',['../classNode.html#a3cf7d79c278d949628359bf47f414449',1,'Node']]],
   ['connect_5fto_5fpeer_21',['connect_to_peer',['../BLEhandling_8hpp.html#a4bdf161689b30461dde5e79bfabe4715',1,'BLEhandling.cpp']]],
   ['cpeerdiscovery_22',['cPeerDiscovery',['../BLEhandling_8hpp.html#acac54c6a63500d20ec2280e6c06e7c93',1,'BLEhandling.cpp']]],

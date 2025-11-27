@@ -16,7 +16,7 @@ var searchData=
   ['dtn7_13',['DTN7',['../namespaceDTN7.html',1,'']]],
   ['dtn7_20bundle_14',['dtn7-bundle',['../md_dtn7-bundle_2README.html',1,'']]],
   ['dtn7_20esp_15',['dtn7 esp',['../md_dtn7-esp_2README.html',1,'dtn7-esp'],['../index.html',1,'dtn7-esp']]],
-  ['dtn7_20esp_20config_16',['DTN7-esp Config',['../menuconfig_options.html',1,'']]],
+  ['dtn7_20esp_20config_16',['DTN7-ESP Config',['../menuconfig_options.html',1,'']]],
   ['dtn7_2dbundle_2ecpp_17',['dtn7-bundle.cpp',['../dtn7-bundle_8cpp.html',1,'']]],
   ['dtn7_2dbundle_2ehpp_18',['dtn7-bundle.hpp',['../dtn7-bundle_8hpp.html',1,'']]],
   ['dtn7_2desp_2ecpp_19',['dtn7-esp.cpp',['../dtn7-esp_8cpp.html',1,'']]],

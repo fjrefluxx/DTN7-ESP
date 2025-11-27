@@ -15,7 +15,7 @@ var searchData=
   ['epidemicrouter_12',['epidemicrouter',['../classEpidemicRouter.html#ab8bd187bc8634a1b2cc2dc1bc54de9e8',1,'EpidemicRouter::EpidemicRouter()'],['../classEpidemicRouter.html#ab1d74a8334b9de889ec5e308f0bde523',1,'EpidemicRouter::EpidemicRouter(std::vector&lt; CLA * &gt; clas, Storage *storage)'],['../classEpidemicRouter.html',1,'EpidemicRouter']]],
   ['epidemicrouter_2ehpp_13',['EpidemicRouter.hpp',['../EpidemicRouter_8hpp.html',1,'']]],
   ['esp_14',['esp',['../md_dtn7-esp_2README.html',1,'dtn7-esp'],['../index.html',1,'dtn7-esp']]],
-  ['esp_20config_15',['DTN7-esp Config',['../menuconfig_options.html',1,'']]],
+  ['esp_20config_15',['DTN7-ESP Config',['../menuconfig_options.html',1,'']]],
   ['esphal_16',['EspHal',['../classEspHal.html',1,'']]],
   ['esphal_2eh_17',['EspHal.h',['../EspHal_8h.html',1,'']]],
   ['esphal2_18',['EspHal2',['../classEspHal2.html',1,'']]],
