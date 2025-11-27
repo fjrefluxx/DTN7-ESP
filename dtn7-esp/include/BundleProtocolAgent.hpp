@@ -8,10 +8,15 @@
 #include "freertos/task.h"
 #include "statusReportCodes.hpp"
 
+/**
+ * @file BundleProtocolAgent.hpp
+ * @brief This file contains the definitions for the BundleProtocolAgent.
+ */
+
 /// @brief class representing a DTN endpoint
 class Endpoint;
 
-/// @brief The main Bundle Protocol Agent Class, may only be initialized via the setup() method from the DTN7 namespace
+/// @brief The main BundleProtocolAgent class, may only be initialized via the setup() method from the DTN7 namespace
 class BundleProtocolAgent {
 
    public:

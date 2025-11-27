@@ -10,6 +10,11 @@
 #include "nvs.h"
 #include "nvs_flash.h"
 
+/**
+ * @file Storage.hpp
+ * @brief This file contains the definitions for the Storage base class.
+ */
+
 /// @brief base class for storage implementations, access to derived classes needs to be thread safe!
 class Storage {
    protected:

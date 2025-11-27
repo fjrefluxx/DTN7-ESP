@@ -3,11 +3,18 @@
 #include "Storage.hpp"
 #include "dtn7-bundle.hpp"
 
+/**
+ * @file Router.hpp
+ * @brief This file contains the base Router class
+ */
+
+/// @brief generic base class for all Routers, all  actual routing implementations must be derived from this.
 class Router {
    private:
     Storage* storage;
 
    public:
+    /// @brief default constructor for the router base class, should never be called
     Router();
 
     /// @brief Pointers to all stored CLA instances

@@ -4,6 +4,12 @@
 #include "Storage.hpp"
 #include "dtn7-bundle.hpp"
 
+/**
+ * @file BroadcastRouter.hpp
+ * @brief This file contains the definitions for the SimpleBroadcastRouter.
+ */
+
+
 /// @brief  This class represents the functionality of the simple broadcast router.
 ///         This router is similar to the SimpleEpidemicRouter from dtn7zero (https:// github.com/dtn7/dtn7zero/blob/main/dtn7zero/routers/simple_epidemic_router.py) with some adaptations.
 ///         A delay between broadcast attempts of each bundle and the ability to declare a transmission success after a set number of broadcasts has been added.

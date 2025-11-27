@@ -13,6 +13,11 @@
 
 #define BUNDLE_STORAGE_NAMESPACE "bundles"
 
+/**
+ * @file Storage.hpp
+ * @brief This file contains the definitions for the FlashStorage.
+ */
+
 /// @brief class which stores bundles in the ESP32's flash, a custom partition table is to be used
 class FlashStorage : public Storage {
     /// @brief stores known Nodes, key is node address/identifier

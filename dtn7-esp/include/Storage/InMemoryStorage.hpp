@@ -12,6 +12,15 @@
 #include "nvs.h"
 #include "nvs_flash.h"
 
+/**
+ * @file Storage.hpp
+ * @brief This file contains the definitions for the different versions of in-memory storage.
+ *        These are:
+ *              InMemoryStorage
+ *              InMemoryStorageSerialized
+ *              InMemoryStorageSerializedIA
+ */
+
 /// @brief stores bundles, nodes and bundle ids in memory
 class InMemoryStorage : public Storage {
     /// @brief stores bundles, first value is BundleID

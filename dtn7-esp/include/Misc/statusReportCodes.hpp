@@ -1,5 +1,11 @@
 #pragma once
 
+/**
+ * @file CLA.hpp
+ * @brief This file contains the a namespace for the various BundleStatusReportReasonCodes.
+ */
+
+
 /// @brief this namespace contains a mapping between status report reason codes and numerical values
 namespace BundleStatusReportReasonCodes {
 

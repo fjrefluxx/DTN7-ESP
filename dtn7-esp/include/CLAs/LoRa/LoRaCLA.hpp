@@ -47,6 +47,12 @@
 #define LORA_BUSY CONFIG_BUSY_PIN
 #endif
 
+/**
+ * @file LoRaCLA.hpp
+ * @brief This file contains the LoRa CLA, including its predefined devkits. If an additional predefined devkit is to be added, this can be used as reference, in conjunction with "Kconfig.projbuild".
+ */
+
+
 /// @brief the task handle of the loraReceiver Handler
 extern TaskHandle_t loraRecHandle;
 #if CONFIG_enableBPoL

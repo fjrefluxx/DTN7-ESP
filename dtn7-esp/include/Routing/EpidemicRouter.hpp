@@ -4,6 +4,11 @@
 #include "Storage.hpp"
 #include "dtn7-bundle.hpp"
 
+/**
+ * @file EpidemicRouter.hpp
+ * @brief This file contains the definitions for the EpidemicRouter.
+ */
+
 /// @brief  Epidemic router functionality.
 ///         The epidemic router checks whether any nodes are in range, to which a bundle has not been forwarded, before broadcasting.
 ///         This requires a peer discovery mechanism by the CLA, as provided by the LoRa CLA in BPoL-compatible mode.

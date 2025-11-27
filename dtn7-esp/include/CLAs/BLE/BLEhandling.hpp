@@ -26,6 +26,15 @@ extern "C" {
 #include "nvs_flash.h"
 }
 
+/**
+ * @file BLEhandling.hpp
+ * @brief This file contains the helper functions to interact with the nimble GAP/GATT functions.
+ * @note For the BLE-CLA to work, the following settings must be made in menuconfig:
+ *           CONFIG_BT_ENABLED = y
+ *           CONFIG_BT_NIMBLE_ENABLED = y
+ */
+
+
 // define the times required for advertising/scanning
 #define ADVERTISE_TIME_MS CONFIG_BLE_ADVERTISE_TIME
 #define SCAN_TIME_MS CONFIG_BLE_SCAN_TIME

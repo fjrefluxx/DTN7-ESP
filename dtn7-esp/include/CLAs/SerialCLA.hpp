@@ -9,6 +9,12 @@
 #include "dtn7-bundle.hpp"
 #include "sdkconfig.h"
 
+/**
+ * @file CLA.hpp
+ * @brief This file contains the SerialCLA.
+ */
+
+
 /// @brief A Simple Serial CLA, not using the queue system, does not use CTS/RTS. Mainly intended to serve as an example of a CLA not using the queue System
 class SerialCLA : public CLA {
    private:
